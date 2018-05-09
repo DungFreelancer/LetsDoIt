@@ -1,0 +1,15 @@
+PODS:
+  - GravitySliderFlowLayout (1.0)
+  - IQKeyboardManagerSwift (6.0.2)
+
+DEPENDENCIES:
+  - GravitySliderFlowLayout (~> 1.0)
+  - IQKeyboardManagerSwift (~> 6.0)
+
+SPEC CHECKSUMS:
+  GravitySliderFlowLayout: bb9ae6a302b85821c9e0271c00533fae8091143b
+  IQKeyboardManagerSwift: 59d4b0e140bc546c3c76ae5bb35b3dafd10b8172
+
+PODFILE CHECKSUM: ff6c88ca929aa19d9d82c5360558e4da245c5eb5
+
+COCOAPODS: 1.3.1

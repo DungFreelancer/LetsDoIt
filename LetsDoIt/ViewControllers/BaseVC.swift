@@ -16,5 +16,10 @@ class BaseVC: UIViewController {
         
     }
     
+    // MARK: - private function
+    func hideNavigationBar(_ isHidden: Bool) {
+        self.navigationController?.setNavigationBarHidden(isHidden, animated: false)
+    }
+    
 }
 

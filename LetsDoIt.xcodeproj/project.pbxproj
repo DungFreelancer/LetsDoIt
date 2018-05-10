@@ -10,6 +10,12 @@
 		9A09080920A35E74001BA4B4 /* ModeSelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A09080820A35E74001BA4B4 /* ModeSelectionVC.swift */; };
 		9A09080B20A35EB9001BA4B4 /* ModeSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A09080A20A35EB9001BA4B4 /* ModeSelection.storyboard */; };
 		9A94BCB620A0B6FA00A60DED /* UIViewEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A94BCB520A0B6FA00A60DED /* UIViewEx.swift */; };
+		9AB9552C20A48FF00073CBB9 /* PlayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB9552B20A48FF00073CBB9 /* PlayVC.swift */; };
+		9AB9552E20A4901D0073CBB9 /* CardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB9552D20A4901D0073CBB9 /* CardVC.swift */; };
+		9AB9553020A4903D0073CBB9 /* RecordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB9552F20A4903D0073CBB9 /* RecordVC.swift */; };
+		9AB9553220A4908B0073CBB9 /* Play.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AB9553120A4908B0073CBB9 /* Play.storyboard */; };
+		9AB9553420A490A90073CBB9 /* Card.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AB9553320A490A90073CBB9 /* Card.storyboard */; };
+		9AB9553620A490B30073CBB9 /* Record.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AB9553520A490B30073CBB9 /* Record.storyboard */; };
 		A0BA6DED20A2A45E0041466D /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BA6DEC20A2A45E0041466D /* AlertHelper.swift */; };
 		ADA63C7C3BBE7B3A04EB64B1 /* Pods_LetsDoIt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB6BD7309657A187AEA34468 /* Pods_LetsDoIt.framework */; };
 		E80B521620A0E275000083AE /* UIColorEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80B521520A0E275000083AE /* UIColorEx.swift */; };
@@ -33,6 +39,12 @@
 		9A09080820A35E74001BA4B4 /* ModeSelectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeSelectionVC.swift; sourceTree = "<group>"; };
 		9A09080A20A35EB9001BA4B4 /* ModeSelection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ModeSelection.storyboard; sourceTree = "<group>"; };
 		9A94BCB520A0B6FA00A60DED /* UIViewEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewEx.swift; sourceTree = "<group>"; };
+		9AB9552B20A48FF00073CBB9 /* PlayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayVC.swift; sourceTree = "<group>"; };
+		9AB9552D20A4901D0073CBB9 /* CardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardVC.swift; sourceTree = "<group>"; };
+		9AB9552F20A4903D0073CBB9 /* RecordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordVC.swift; sourceTree = "<group>"; };
+		9AB9553120A4908B0073CBB9 /* Play.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Play.storyboard; sourceTree = "<group>"; };
+		9AB9553320A490A90073CBB9 /* Card.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Card.storyboard; sourceTree = "<group>"; };
+		9AB9553520A490B30073CBB9 /* Record.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Record.storyboard; sourceTree = "<group>"; };
 		A0BA6DEC20A2A45E0041466D /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
 		BAB76CFD7309A3C94DCD59DA /* Pods-TemplateProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TemplateProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TemplateProject/Pods-TemplateProject.debug.xcconfig"; sourceTree = "<group>"; };
 		CB6BD7309657A187AEA34468 /* Pods_LetsDoIt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LetsDoIt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -164,8 +176,11 @@
 			isa = PBXGroup;
 			children = (
 				E8B892DE1F7FFF8000DDA048 /* BaseVC.swift */,
+				9AB9552B20A48FF00073CBB9 /* PlayVC.swift */,
 				9A09080820A35E74001BA4B4 /* ModeSelectionVC.swift */,
 				E81B988620A3CB01003DA2B2 /* CardSelectionVC.swift */,
+				9AB9552D20A4901D0073CBB9 /* CardVC.swift */,
+				9AB9552F20A4903D0073CBB9 /* RecordVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -173,8 +188,11 @@
 		E8B892F51F8000CF00DDA048 /* Layouts */ = {
 			isa = PBXGroup;
 			children = (
+				9AB9553120A4908B0073CBB9 /* Play.storyboard */,
 				9A09080A20A35EB9001BA4B4 /* ModeSelection.storyboard */,
 				E81B988A20A3CD05003DA2B2 /* CardSelection.storyboard */,
+				9AB9553320A490A90073CBB9 /* Card.storyboard */,
+				9AB9553520A490B30073CBB9 /* Record.storyboard */,
 			);
 			path = Layouts;
 			sourceTree = "<group>";
@@ -200,7 +218,6 @@
 				E8B892D61F7FFF8000DDA048 /* Frameworks */,
 				E8B892D71F7FFF8000DDA048 /* Resources */,
 				DDE459F32DFCFE4C0B1F3CB3 /* [CP] Embed Pods Frameworks */,
-				0A6E50918570447DF5FF8D22 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -252,29 +269,17 @@
 			files = (
 				E8B892F01F80005000DDA048 /* Localization.strings in Resources */,
 				9A09080B20A35EB9001BA4B4 /* ModeSelection.storyboard in Resources */,
+				9AB9553420A490A90073CBB9 /* Card.storyboard in Resources */,
 				E8B892E41F7FFF8000DDA048 /* Assets.xcassets in Resources */,
+				9AB9553620A490B30073CBB9 /* Record.storyboard in Resources */,
 				E81B988B20A3CD05003DA2B2 /* CardSelection.storyboard in Resources */,
+				9AB9553220A4908B0073CBB9 /* Play.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0A6E50918570447DF5FF8D22 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LetsDoIt/Pods-LetsDoIt-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		4782434C645483FA4565A47F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -321,9 +326,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0BA6DED20A2A45E0041466D /* AlertHelper.swift in Sources */,
+				9AB9553020A4903D0073CBB9 /* RecordVC.swift in Sources */,
 				9A09080920A35E74001BA4B4 /* ModeSelectionVC.swift in Sources */,
+				9AB9552C20A48FF00073CBB9 /* PlayVC.swift in Sources */,
 				9A94BCB620A0B6FA00A60DED /* UIViewEx.swift in Sources */,
 				E8B892DF1F7FFF8000DDA048 /* BaseVC.swift in Sources */,
+				9AB9552E20A4901D0073CBB9 /* CardVC.swift in Sources */,
 				E81B988720A3CB01003DA2B2 /* CardSelectionVC.swift in Sources */,
 				E8B892DD1F7FFF8000DDA048 /* AppDelegate.swift in Sources */,
 				E80B521620A0E275000083AE /* UIColorEx.swift in Sources */,

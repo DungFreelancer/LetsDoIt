@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A0702A620A5FA6E0018C015 /* DestinationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0702A520A5FA6E0018C015 /* DestinationView.swift */; };
 		9A09080920A35E74001BA4B4 /* ModeSelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A09080820A35E74001BA4B4 /* ModeSelectionVC.swift */; };
 		9A09080B20A35EB9001BA4B4 /* ModeSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A09080A20A35EB9001BA4B4 /* ModeSelection.storyboard */; };
 		9A94BCB620A0B6FA00A60DED /* UIViewEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A94BCB520A0B6FA00A60DED /* UIViewEx.swift */; };
@@ -40,6 +41,7 @@
 		562E6270BBF6425629DA4D55 /* Pods-LetsDoIt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LetsDoIt.release.xcconfig"; path = "Pods/Target Support Files/Pods-LetsDoIt/Pods-LetsDoIt.release.xcconfig"; sourceTree = "<group>"; };
 		806B17CD0282EE7B34A545DD /* Pods-LetsDoIt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LetsDoIt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LetsDoIt/Pods-LetsDoIt.debug.xcconfig"; sourceTree = "<group>"; };
 		8BA573B5AC986056DB03586C /* Pods_TemplateProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TemplateProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A0702A520A5FA6E0018C015 /* DestinationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationView.swift; sourceTree = "<group>"; };
 		9A09080820A35E74001BA4B4 /* ModeSelectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeSelectionVC.swift; sourceTree = "<group>"; };
 		9A09080A20A35EB9001BA4B4 /* ModeSelection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ModeSelection.storyboard; sourceTree = "<group>"; };
 		9A94BCB520A0B6FA00A60DED /* UIViewEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewEx.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				E880D09E1F808D5E002EEB55 /* Constants.swift */,
 				E880D0A01F809F4F002EEB55 /* Commons.swift */,
 				A0BA6DEC20A2A45E0041466D /* AlertHelper.swift */,
+				9A0702A520A5FA6E0018C015 /* DestinationView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				9A94BCB620A0B6FA00A60DED /* UIViewEx.swift in Sources */,
 				9AB9553E20A49ED00073CBB9 /* CardCell.swift in Sources */,
 				E8B892DF1F7FFF8000DDA048 /* BaseVC.swift in Sources */,
+				9A0702A620A5FA6E0018C015 /* DestinationView.swift in Sources */,
 				9AB9552E20A4901D0073CBB9 /* CardVC.swift in Sources */,
 				E81B988720A3CB01003DA2B2 /* CardSelectionVC.swift in Sources */,
 				E8B892DD1F7FFF8000DDA048 /* AppDelegate.swift in Sources */,

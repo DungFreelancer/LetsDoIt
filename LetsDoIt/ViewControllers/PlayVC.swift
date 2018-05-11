@@ -13,7 +13,11 @@ class PlayVC: BaseVC {
     
     @IBOutlet weak var clCard: UICollectionView!
     let playVM = PlayVM()
+    private var timr = Timer()
+    private var w: CGFloat = 0.0
     
+    @IBOutlet weak var btnPlay: UIButton!
+    @IBOutlet weak var btnStop: UIButton!
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +42,55 @@ class PlayVC: BaseVC {
     
     // MARK: - Action
     @IBAction func onClickPlay(_ sender: Any) {
+        configAutoscrollTimer()
+        self.btnPlay.isHidden = true
+        self.btnStop.isHidden = false
+    }
+    
+    @IBAction func onClickStop(_ sender: Any) {
+        deconfigAutoscrollTimer()
+        self.btnStop.isHidden = true
+        self.btnPlay.isHidden = false
+    }
+    
+    func configAutoscrollTimer()
+    {
+        timr = Timer.scheduledTimer(timeInterval: -0.01, target: self, selector: #selector(autoScrollView), userInfo: nil, repeats: true)
+    }
+    
+    func deconfigAutoscrollTimer()
+    {
+        timr.invalidate()
+    }
+    
+    func onTimer()
+    {
+        autoScrollView()
+    }
+    
+    @objc func autoScrollView()
+    {
+        let initailPoint = CGPoint(x: w,y :0)
         
+        if __CGPointEqualToPoint(initailPoint, clCard.contentOffset)
+        {
+            if w < clCard.contentSize.width
+            {
+                w += 0.5
+            }
+            else
+            {
+                w = -self.view.frame.size.width
+            }
+            
+            let offsetPoint = CGPoint(x: w,y :0)
+            
+            clCard.contentOffset=offsetPoint
+        }
+        else
+        {
+            w = clCard.contentOffset.x
+        }
     }
 
 }

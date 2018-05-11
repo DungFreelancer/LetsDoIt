@@ -42,9 +42,23 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sgE-RT-R74">
+                                <rect key="frame" x="168" y="537" width="39" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="QDh-iz-rVV"/>
+                                    <constraint firstAttribute="width" constant="39" id="QwV-Lm-GOU"/>
+                                </constraints>
+                                <state key="normal" title="Stop">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="onClickStop:" destination="C79-Mi-Tbq" eventType="touchUpInside" id="Ndw-Sh-TLu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="sgE-RT-R74" firstAttribute="top" secondItem="j6T-KY-Wnk" secondAttribute="bottom" constant="60" id="4th-0I-yLv"/>
                             <constraint firstItem="Bze-Y5-fZu" firstAttribute="top" secondItem="j6T-KY-Wnk" secondAttribute="bottom" constant="60" id="6cJ-xs-cgz"/>
                             <constraint firstItem="6Mb-pE-bCR" firstAttribute="bottom" secondItem="aIh-uI-k8s" secondAttribute="bottom" id="K6c-Ea-W0M"/>
                             <constraint firstItem="6Mb-pE-bCR" firstAttribute="top" secondItem="7me-KI-F74" secondAttribute="top" id="QHU-Ut-TVw"/>
@@ -54,6 +68,7 @@
                             <constraint firstItem="6Mb-pE-bCR" firstAttribute="leading" secondItem="aIh-uI-k8s" secondAttribute="leading" id="hRK-f3-oG2"/>
                             <constraint firstItem="6Mb-pE-bCR" firstAttribute="trailing" secondItem="aIh-uI-k8s" secondAttribute="trailing" id="iGr-Pd-MHa"/>
                             <constraint firstItem="j6T-KY-Wnk" firstAttribute="trailing" secondItem="aIh-uI-k8s" secondAttribute="trailing" id="lFN-Wb-fwa"/>
+                            <constraint firstItem="sgE-RT-R74" firstAttribute="centerX" secondItem="6Mb-pE-bCR" secondAttribute="centerX" id="lLg-0z-J4z"/>
                             <constraint firstItem="Bze-Y5-fZu" firstAttribute="centerX" secondItem="7me-KI-F74" secondAttribute="centerX" id="wjP-SF-Gfv"/>
                             <constraint firstItem="j6T-KY-Wnk" firstAttribute="centerX" secondItem="7me-KI-F74" secondAttribute="centerX" id="zTa-18-vwr"/>
                         </constraints>
@@ -61,6 +76,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="XJ7-xD-5Me"/>
                     <connections>
+                        <outlet property="btnPlay" destination="Bze-Y5-fZu" id="wvy-lG-K2x"/>
+                        <outlet property="btnStop" destination="sgE-RT-R74" id="82h-z1-H0w"/>
                         <outlet property="clCard" destination="j6T-KY-Wnk" id="bvI-98-Ppl"/>
                     </connections>
                 </viewController>

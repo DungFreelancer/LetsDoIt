@@ -12,12 +12,13 @@ import GravitySliderFlowLayout
 class PlayVC: BaseVC {
     
     @IBOutlet weak var clCard: UICollectionView!
+    @IBOutlet weak var btnPlay: UIButton!
+    @IBOutlet weak var btnStop: UIButton!
+    
     let playVM = PlayVM()
     private var timr = Timer()
     private var w: CGFloat = 0.0
     
-    @IBOutlet weak var btnPlay: UIButton!
-    @IBOutlet weak var btnStop: UIButton!
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +54,7 @@ class PlayVC: BaseVC {
         self.btnPlay.isHidden = false
     }
     
+    // way cham.
     func configAutoscrollTimer()
     {
         timr = Timer.scheduledTimer(timeInterval: -0.01, target: self, selector: #selector(autoScrollView), userInfo: nil, repeats: true)
@@ -92,7 +94,42 @@ class PlayVC: BaseVC {
             w = clCard.contentOffset.x
         }
     }
-
+    
+    /* cai' nay la way le.
+    //    let kAutoScrollDuration: CGFloat = 1
+    //
+    //    func startTimer() {
+    //        let timer = Timer.scheduledTimer(timeInterval: TimeInterval(kAutoScrollDuration), target: self, selector: #selector(self.scrollToNextCell), userInfo: nil, repeats: true)
+    //        RunLoop.main.add(timer, forMode: RunLoopMode.commonModes)
+    //    }
+    
+    
+    //    @objc func scrollToNextCell(){
+    //
+    //        //get cell size
+    //        let cellSize = CGSize(width: self.collectionView.frame.width, height: self.collectionView.frame.height)
+    //
+    //
+    //        //get current content Offset of the Collection view
+    //        let contentOffset = collectionView.contentOffset
+    //
+    //
+    //        if collectionView.contentSize.width <= collectionView.contentOffset.x + cellSize.width
+    //        {
+    //            collectionView.scrollRectToVisible(CGRect(x: 0, y: contentOffset.y, width: cellSize.width, height: cellSize.height), animated: true)
+    //            collectionView.alpha = 2
+    //
+    //        } else {
+    //            collectionView.scrollRectToVisible(CGRect(x:contentOffset.x + cellSize.width,y: contentOffset.y,width: cellSize.width,height: cellSize.height), animated: true);
+    //            collectionView.alpha = 2
+    //
+    //        }
+    //
+    //    }
+    
+    
+    */
+    
 }
 
 extension PlayVC: UICollectionViewDataSource, UICollectionViewDelegate {

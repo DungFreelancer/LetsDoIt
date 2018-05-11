@@ -55,16 +55,29 @@
                                     <action selector="onClickStop:" destination="C79-Mi-Tbq" eventType="touchUpInside" id="Ndw-Sh-TLu"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q15-bf-nh2">
+                                <rect key="frame" x="319" y="72" width="48" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="7XL-1c-nSh"/>
+                                    <constraint firstAttribute="width" constant="48" id="g53-kS-dYY"/>
+                                </constraints>
+                                <state key="normal" image="galaxy"/>
+                                <connections>
+                                    <segue destination="ABK-HU-Yjx" kind="show" id="UDy-99-wqt"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="sgE-RT-R74" firstAttribute="top" secondItem="j6T-KY-Wnk" secondAttribute="bottom" constant="60" id="4th-0I-yLv"/>
                             <constraint firstItem="Bze-Y5-fZu" firstAttribute="top" secondItem="j6T-KY-Wnk" secondAttribute="bottom" constant="60" id="6cJ-xs-cgz"/>
+                            <constraint firstItem="q15-bf-nh2" firstAttribute="top" secondItem="aIh-uI-k8s" secondAttribute="top" constant="8" id="8xb-yB-kgq"/>
                             <constraint firstItem="6Mb-pE-bCR" firstAttribute="bottom" secondItem="aIh-uI-k8s" secondAttribute="bottom" id="K6c-Ea-W0M"/>
                             <constraint firstItem="6Mb-pE-bCR" firstAttribute="top" secondItem="7me-KI-F74" secondAttribute="top" id="QHU-Ut-TVw"/>
                             <constraint firstItem="j6T-KY-Wnk" firstAttribute="top" secondItem="aIh-uI-k8s" secondAttribute="top" id="QYH-w1-xDU"/>
                             <constraint firstItem="j6T-KY-Wnk" firstAttribute="leading" secondItem="aIh-uI-k8s" secondAttribute="leading" id="aMp-K4-7TC"/>
                             <constraint firstItem="aIh-uI-k8s" firstAttribute="bottom" secondItem="Bze-Y5-fZu" secondAttribute="bottom" constant="100" id="fsu-WV-EGB"/>
+                            <constraint firstItem="aIh-uI-k8s" firstAttribute="trailing" secondItem="q15-bf-nh2" secondAttribute="trailing" constant="8" id="g3E-gj-5hd"/>
                             <constraint firstItem="6Mb-pE-bCR" firstAttribute="leading" secondItem="aIh-uI-k8s" secondAttribute="leading" id="hRK-f3-oG2"/>
                             <constraint firstItem="6Mb-pE-bCR" firstAttribute="trailing" secondItem="aIh-uI-k8s" secondAttribute="trailing" id="iGr-Pd-MHa"/>
                             <constraint firstItem="j6T-KY-Wnk" firstAttribute="trailing" secondItem="aIh-uI-k8s" secondAttribute="trailing" id="lFN-Wb-fwa"/>
@@ -84,6 +97,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yg0-m0-DCI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="900" y="165.06746626686657"/>
+        </scene>
+        <!--ModeSelection-->
+        <scene sceneID="dRc-L5-Nlx">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ModeSelection" referencedIdentifier="ModeSelection" id="ABK-HU-Yjx" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s8l-bD-Olb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1492" y="-108"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kpB-lp-D4u">
@@ -106,5 +127,6 @@
     </scenes>
     <resources>
         <image name="Bg_Play" width="451" height="800"/>
+        <image name="galaxy" width="48" height="48"/>
     </resources>
 </document>

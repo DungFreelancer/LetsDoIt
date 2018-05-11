@@ -17,13 +17,35 @@
                     <view key="view" contentMode="scaleToFill" id="DiE-xu-I70">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="26R-Jn-7bK">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="spo-gd-0pJ">
+                                    <size key="itemSize" width="182" height="209"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="26R-Jn-7bK" firstAttribute="leading" secondItem="HTL-Vt-S3x" secondAttribute="leading" id="9ie-AV-9rx"/>
+                            <constraint firstItem="26R-Jn-7bK" firstAttribute="top" secondItem="HTL-Vt-S3x" secondAttribute="top" id="Phn-k6-Ebt"/>
+                            <constraint firstItem="26R-Jn-7bK" firstAttribute="bottom" secondItem="HTL-Vt-S3x" secondAttribute="bottom" id="Vqk-aC-5jD"/>
+                            <constraint firstItem="26R-Jn-7bK" firstAttribute="trailing" secondItem="HTL-Vt-S3x" secondAttribute="trailing" id="dvW-5E-4Ly"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="HTL-Vt-S3x"/>
                     </view>
+                    <connections>
+                        <outlet property="clView" destination="26R-Jn-7bK" id="wK7-Gq-6Tv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HNB-zw-nuL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1103" y="-576"/>
+            <point key="canvasLocation" x="1101.5999999999999" y="-576.1619190404798"/>
         </scene>
     </scenes>
 </document>

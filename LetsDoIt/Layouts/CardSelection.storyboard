@@ -40,7 +40,7 @@
                         <viewLayoutGuide key="safeArea" id="HTL-Vt-S3x"/>
                     </view>
                     <connections>
-                        <outlet property="clView" destination="26R-Jn-7bK" id="wK7-Gq-6Tv"/>
+                        <outlet property="clCard" destination="26R-Jn-7bK" id="9CW-Vm-Vx8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HNB-zw-nuL" userLabel="First Responder" sceneMemberID="firstResponder"/>

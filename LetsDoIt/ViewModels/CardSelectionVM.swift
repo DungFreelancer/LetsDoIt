@@ -10,15 +10,20 @@ import UIKit
 
 class CardSelectionVM {
     
-    private var cardList: Array<Card> = [Card(image: "MIFFY", title: "Default"),Card(image: "MIFFY", title: "Default"),Card(image: "MIFFY", title: "Default"),Card(image: "MIFFY", title: "Default"),Card(image: "MIFFY", title: "Default")]
+    private var arrCard: Array<Card> = [Card(imageName: "MIFFY", title: "Default"),
+                                        Card(imageName: "MIFFY", title: "Default"),
+                                        Card(imageName: "MIFFY", title: "Default"),
+                                        Card(imageName: "MIFFY", title: "Default"),
+                                        Card(imageName: "MIFFY", title: "Default")]
     
     func cellRow() -> Int {
-        return self.cardList.count
+        return self.arrCard.count
     }
     
     func cellInstance(collectionView: UICollectionView, indexPath: IndexPath) -> CardCell {
         let cell: CardCell = collectionView.dequeueReusableCell(withReuseIdentifier: CardCell.cellID, for: indexPath) as! CardCell
-        cell.updateCard(imageName: self.cardList[indexPath.row].image, title: self.cardList[indexPath.row].title)
+        cell.updateUI(imageName: self.arrCard[indexPath.row].imageName, title: self.arrCard[indexPath.row].title)
+        
         return cell
     }
 

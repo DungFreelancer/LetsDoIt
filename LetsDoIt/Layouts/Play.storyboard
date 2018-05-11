@@ -62,9 +62,6 @@
                                     <constraint firstAttribute="width" constant="48" id="g53-kS-dYY"/>
                                 </constraints>
                                 <state key="normal" image="galaxy"/>
-                                <connections>
-                                    <segue destination="ABK-HU-Yjx" kind="show" id="UDy-99-wqt"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -97,14 +94,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yg0-m0-DCI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="900" y="165.06746626686657"/>
-        </scene>
-        <!--ModeSelection-->
-        <scene sceneID="dRc-L5-Nlx">
-            <objects>
-                <viewControllerPlaceholder storyboardName="ModeSelection" referencedIdentifier="ModeSelection" id="ABK-HU-Yjx" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="s8l-bD-Olb" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1492" y="-108"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kpB-lp-D4u">

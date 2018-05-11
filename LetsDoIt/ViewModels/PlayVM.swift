@@ -10,7 +10,11 @@ import UIKit
 
 class PlayVM {
     
-    private let arrCard: Array<String> = ["Card_Beer", "Card_Cry", "Card_Laugh", "Card_Run", "Card_Sing"]
+    private var arrCard: Array<Card> = [Card(imageName: "Card_Beer", title: "Default"),
+                                        Card(imageName: "Card_Cry", title: "Default"),
+                                        Card(imageName: "Card_Laugh", title: "Default"),
+                                        Card(imageName: "Card_Run", title: "Default"),
+                                        Card(imageName: "Card_Sing", title: "Default")]
     
     func cellRow() -> Int {
         return self.arrCard.count
@@ -18,7 +22,7 @@ class PlayVM {
     
     func cellInstance(collectionView: UICollectionView, indexPath: IndexPath) -> CardCell {
         let cell: CardCell = collectionView.dequeueReusableCell(withReuseIdentifier: CardCell.cellID, for: indexPath) as! CardCell
-        cell.updateUI(imageName: self.arrCard[indexPath.row])
+        cell.updateUI(imageName: self.arrCard[indexPath.row].imageName, title: self.arrCard[indexPath.row].title)
         
         return cell
     }

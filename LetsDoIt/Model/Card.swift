@@ -10,11 +10,11 @@ import UIKit
 
 struct Card: Codable {
     
-    var image: String
+    var imageName: String
     var title: String
     
-    init(image: String, title: String) {
-        self.image = image
+    init(imageName: String, title: String) {
+        self.imageName = imageName
         self.title = title
     }
     

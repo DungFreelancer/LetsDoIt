@@ -75,14 +75,6 @@
             </objects>
             <point key="canvasLocation" x="832.79999999999995" y="131.78410794602701"/>
         </scene>
-        <!--CardSelection-->
-        <scene sceneID="h6Z-qs-cIA">
-            <objects>
-                <viewControllerPlaceholder storyboardName="CardSelection" referencedIdentifier="CardSelection" id="5Sg-Jb-kPR" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="uNQ-p2-Z8Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1600" y="-24"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="YBM-ej-uOa">
             <objects>

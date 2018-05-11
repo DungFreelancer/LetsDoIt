@@ -12,23 +12,24 @@ class CardSelectionVC: BaseVC {
     
     let cardSelectionVM = CardSelectionVM()
     
-    @IBOutlet weak var clView: UICollectionView!
+    @IBOutlet weak var clCard: UICollectionView!
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.setUpCollectionView()
     }
 
     func setUpCollectionView() {
-        self.clView.register(UINib(nibName: CardCell.nibName, bundle: nil), forCellWithReuseIdentifier: CardCell.cellID)
-        self.clView.dataSource = self
-        self.clView.delegate = self
-        
+        self.clCard.register(UINib(nibName: CardCell.nibName, bundle: nil), forCellWithReuseIdentifier: CardCell.cellID)
+        self.clCard.dataSource = self
+        self.clCard.delegate = self
     }
 }
 
 extension CardSelectionVC : UICollectionViewDataSource, UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 5
     }

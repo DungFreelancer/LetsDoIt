@@ -13,22 +13,17 @@ class CardCell: UICollectionViewCell {
     static let nibName: String = "Card"
     static let cellID: String = "card_cell"
     
-    var cardTitle: String?
-    
     @IBOutlet weak var imgCard: UIImageView!
+    @IBOutlet weak var lbTitle: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self .setBorderWithRadius(5.0, color: UIColor.clear)
+        self.setBorderWithRadius(5.0, color: UIColor.clear)
     }
     
-    func updateUI(imageName: String) {
-        imgCard.image = UIImage(named: imageName)
-    }
-    
-    func updateCard(imageName:String, title:String) -> Card {
-        let card = Card(image: imageName, title: title)
-        return card
+    func updateUI(imageName: String, title: String) {
+        self.imgCard.image = UIImage(named: imageName)
+        self.lbTitle.text = title
     }
 }

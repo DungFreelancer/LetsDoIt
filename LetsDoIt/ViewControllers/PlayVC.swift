@@ -23,7 +23,6 @@ class PlayVC: BaseVC {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        super.hideNavigationBar(true)
         
         self.setUpCollectionView()
     }
@@ -76,8 +75,15 @@ class PlayVC: BaseVC {
         } else if self.countLoop == 1320 {
             self.deconfigAutoscrollTimer()
             self.btnPlay.isHidden = false
+            DispatchQueue.main.async {
+                //time popup appear
+                Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(self.popupActionSheet), userInfo: nil, repeats: false)
+                
+            }
         }
-
+        
+       
+        
     }
     
     func deconfigAutoscrollTimer() {

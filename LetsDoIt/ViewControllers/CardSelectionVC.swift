@@ -11,7 +11,6 @@ import UIKit
 class CardSelectionVC: BaseVC {
     
     let cardSelectionVM = CardSelectionVM()
-    let cardCell = CardCell()
     
     @IBOutlet weak var clCard: UICollectionView!
     
@@ -26,20 +25,7 @@ class CardSelectionVC: BaseVC {
     
     // Mark: -Action
     @objc func handleSelectImgCard() {
-        let picker = UIImagePickerController()
-        picker.delegate = self
-        
-        AlertHelper.showActionSheet(on: self, title: "Photo Source", message: nil, firstButton: "Camera", firstComplete: { (action: UIAlertAction) in
-                if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                    picker.sourceType = .camera
-                    self.present(picker,animated: true, completion: nil)
-                } else {
-                    Log.error("Camera is not available")
-                }
-            }, secondButton: "Photo Library", secondComplete: { (action:UIAlertAction) in
-                picker.sourceType = .photoLibrary
-                self.present(picker,animated: true, completion: nil)
-            }, thirdButton: nil, thirdComplete: nil)
+        self.navigationController?.pushViewController(DestinationView.cardVC(), animated: true)
     }
     
     func setUpCollectionView() {
@@ -60,25 +46,10 @@ extension CardSelectionVC : UICollectionViewDataSource, UICollectionViewDelegate
     }
 }
 
-extension CardSelectionVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        var selectedImageFromPicker: UIImage?
-        
-        if let editedImage = info["UIimagePickerControllerEditedImage"] as? UIImage {
-            selectedImageFromPicker = editedImage
-        } else if let originalImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
-            selectedImageFromPicker = originalImage
-        }
-        // bi loi Nil dong nay
-        if let selectedImage = selectedImageFromPicker {
-        cardCell.imgCard.image = selectedImage
-        }
-        picker.dismiss(animated: true, completion: nil)
+extension CardSelectionVC: PassImgCardtoCardSelectionVC {
+    func passImgCard(type: UIImage) -> UIImage{
+        return type
     }
     
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        picker.dismiss(animated: true, completion: nil)
-    }
+    
 }
-

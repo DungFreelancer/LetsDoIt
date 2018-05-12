@@ -15,9 +15,7 @@ class CardSelectionVM {
                                         Card(imageName: "MIFFY", title: "Default"),
                                         Card(imageName: "MIFFY", title: "Default"),
                                         Card(imageName: "MIFFY", title: "Default")]
-    
-    
-    
+
     func cellRow() -> Int {
         return self.arrCard.count
     }

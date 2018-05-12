@@ -17,13 +17,46 @@
                     <view key="view" contentMode="scaleToFill" id="sUF-yZ-G4M">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MIFFY" translatesAutoresizingMaskIntoConstraints="NO" id="ad0-hz-OMh">
+                                <rect key="frame" x="68" y="188.5" width="238" height="310"/>
+                                <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="310" id="BQL-c0-F5P"/>
+                                    <constraint firstAttribute="width" constant="238" id="hqs-dr-Yuh"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Title..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BZs-Sc-CWN">
+                                <rect key="frame" x="68" y="123.5" width="238" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="e2N-3b-IZx"/>
+                                    <constraint firstAttribute="width" constant="238" id="fyO-lJ-PyZ"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ad0-hz-OMh" firstAttribute="centerX" secondItem="yUl-Nk-Esx" secondAttribute="centerX" id="26F-2A-AKX"/>
+                            <constraint firstItem="BZs-Sc-CWN" firstAttribute="leading" secondItem="ad0-hz-OMh" secondAttribute="leading" id="7Bn-bh-pub"/>
+                            <constraint firstItem="ad0-hz-OMh" firstAttribute="centerY" secondItem="yUl-Nk-Esx" secondAttribute="centerY" id="LtP-dA-S4f"/>
+                            <constraint firstItem="ad0-hz-OMh" firstAttribute="top" secondItem="BZs-Sc-CWN" secondAttribute="bottom" constant="25" id="Uii-Ja-Bgj"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="yUl-Nk-Esx"/>
                     </view>
+                    <connections>
+                        <outlet property="imgCard" destination="ad0-hz-OMh" id="zzd-lZ-Mon"/>
+                        <outlet property="textTitle" destination="BZs-Sc-CWN" id="9iX-Yc-KXT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sTG-oK-w0J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="50" y="179"/>
+            <point key="canvasLocation" x="48.799999999999997" y="178.56071964017991"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="MIFFY" width="731" height="1000"/>
+    </resources>
 </document>

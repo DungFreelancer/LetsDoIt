@@ -28,3 +28,5 @@ var IOS: Int {
     }
 }
 
+let NUMBER_CARD: Int = 5
+

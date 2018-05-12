@@ -16,4 +16,21 @@ class DestinationView {
         return modeSelectionVC
     }
     
+    static func cardSelectionVC() -> CardSelectionVC {
+        let storyboard = UIStoryboard(name: "CardSelection", bundle: nil)
+        let cardSelectionVC = storyboard.instantiateViewController(withIdentifier: "CardSelectionVC") as! CardSelectionVC
+        return cardSelectionVC
+    }
+    
+    static func cardVC() -> CardVC {
+        let storyboard = UIStoryboard(name: "Card", bundle: nil)
+        let cardVC = storyboard.instantiateViewController(withIdentifier: "CardVC") as! CardVC
+        return cardVC
+    }
+    
+    static func recordVC() -> RecordVC {
+        let storyboard = UIStoryboard(name: "Record", bundle: nil)
+        let recordVC = storyboard.instantiateViewController(withIdentifier: "RecordVC") as! RecordVC
+        return recordVC
+    }
 }

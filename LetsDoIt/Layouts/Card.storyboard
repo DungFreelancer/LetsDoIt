@@ -13,7 +13,7 @@
         <!--CardVC-->
         <scene sceneID="WU0-UC-CGV">
             <objects>
-                <viewController id="YRO-Yc-d3x" customClass="CardVC" customModule="LetsDoIt" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CardVC" id="YRO-Yc-d3x" customClass="CardVC" customModule="LetsDoIt" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sUF-yZ-G4M">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

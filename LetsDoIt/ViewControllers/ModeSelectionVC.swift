@@ -14,8 +14,6 @@ class ModeSelectionVC: BaseVC {
     @IBOutlet weak var btnCrazy: UIButton!
     @IBOutlet weak var btnCustom: UIButton!
     
-    let playVC = PlayVC()
-    
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -34,8 +32,7 @@ class ModeSelectionVC: BaseVC {
     }
     
     @IBAction func onClickBtnCustom(_ sender: Any) {
-        let cardSelectionVC = CardSelectionVC()
-        self.navigationController?.pushViewController(cardSelectionVC, animated: true)
+        self.navigationController?.pushViewController(DestinationView.cardSelectionVC(), animated: true)
     }
     
 }

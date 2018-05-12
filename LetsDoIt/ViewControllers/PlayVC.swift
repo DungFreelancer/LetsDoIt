@@ -42,6 +42,11 @@ class PlayVC: BaseVC {
     }
     
     // MARK: - Action
+    
+    @IBAction func onClickGoToModeSelectionVC(_ sender: Any) {
+        self.navigationController?.pushViewController(DestinationView.modeSelectionVC(), animated: true)
+    }
+    
     @IBAction func onClickPlay(_ sender: Any) {
         configAutoscrollTimer()
         self.btnPlay.isHidden = true

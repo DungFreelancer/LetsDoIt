@@ -13,7 +13,7 @@
         <!--Card SelectionVC-->
         <scene sceneID="0ty-o3-Nct">
             <objects>
-                <viewController id="hm9-jq-zdC" customClass="CardSelectionVC" customModule="LetsDoIt" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CardSelectionVC" id="hm9-jq-zdC" customClass="CardSelectionVC" customModule="LetsDoIt" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DiE-xu-I70">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

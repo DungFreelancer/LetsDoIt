@@ -13,11 +13,11 @@ class PlayVC: BaseVC {
     
     @IBOutlet weak var clCard: UICollectionView!
     @IBOutlet weak var btnPlay: UIButton!
-    @IBOutlet weak var btnStop: UIButton!
     
-    let playVM = PlayVM()
-    private var timr = Timer()
-    private var w: CGFloat = 0.0
+    private let playVM = PlayVM()
+    private var timerPlay: Timer?
+    private var tempWidth: CGFloat = 0.0
+    private var countLoop = 0
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -36,104 +36,77 @@ class PlayVC: BaseVC {
         self.clCard.register(UINib(nibName: CardCell.nibName, bundle: nil), forCellWithReuseIdentifier: CardCell.cellID)
         self.clCard.dataSource = self
         self.clCard.delegate = self
+        self.clCard.isScrollEnabled = false
         
         let sliderLayout = GravitySliderFlowLayout(with: CGSize(width: 200, height: 300))
         self.clCard.collectionViewLayout = sliderLayout
     }
     
-    // MARK: - Action
+    func configAutoscrollTimer() {
+        self.countLoop += 1
+        
+        if self.countLoop == 1 {
+            self.timerPlay = Timer.scheduledTimer(timeInterval: 0.001, target: self, selector: #selector(offsetCard), userInfo: nil, repeats: true)
+        } else if self.countLoop == 500 {
+            self.deconfigAutoscrollTimer()
+            self.timerPlay = Timer.scheduledTimer(timeInterval: 0.002, target: self, selector: #selector(offsetCard), userInfo: nil, repeats: true)
+        } else if self.countLoop == 900 {
+            self.deconfigAutoscrollTimer()
+            self.timerPlay = Timer.scheduledTimer(timeInterval: 0.004, target: self, selector: #selector(offsetCard), userInfo: nil, repeats: true)
+        } else if self.countLoop == 1100 {
+            self.deconfigAutoscrollTimer()
+            self.timerPlay = Timer.scheduledTimer(timeInterval: 0.007, target: self, selector: #selector(offsetCard), userInfo: nil, repeats: true)
+        } else if self.countLoop == 1200 {
+            self.deconfigAutoscrollTimer()
+            self.timerPlay = Timer.scheduledTimer(timeInterval: 0.011, target: self, selector: #selector(offsetCard), userInfo: nil, repeats: true)
+        } else if self.countLoop == 1250 {
+            self.deconfigAutoscrollTimer()
+            self.timerPlay = Timer.scheduledTimer(timeInterval: 0.016, target: self, selector: #selector(offsetCard), userInfo: nil, repeats: true)
+        } else if self.countLoop == 1320 {
+            self.deconfigAutoscrollTimer()
+            self.onClickStop(NSNull())
+        }
+    }
     
+    func deconfigAutoscrollTimer() {
+        self.timerPlay?.invalidate()
+        self.timerPlay = nil
+    }
+    
+    @objc func offsetCard() {
+        let initailPoint = CGPoint(x: tempWidth,y :0)
+        
+        if __CGPointEqualToPoint(initailPoint, clCard.contentOffset) {
+            if tempWidth < clCard.contentSize.width {
+                tempWidth += 1
+            } else {
+                tempWidth = -self.view.frame.size.width
+            }
+            
+            let offsetPoint = CGPoint(x: tempWidth,y :0)
+            clCard.contentOffset = offsetPoint
+        } else {
+            tempWidth = clCard.contentOffset.x
+        }
+        
+        self.configAutoscrollTimer()
+    }
+    
+    // MARK: - Action
     @IBAction func onClickGoToModeSelectionVC(_ sender: Any) {
         self.navigationController?.pushViewController(DestinationView.modeSelectionVC(), animated: true)
     }
     
     @IBAction func onClickPlay(_ sender: Any) {
-        configAutoscrollTimer()
+        self.countLoop = 0
+        self.configAutoscrollTimer()
         self.btnPlay.isHidden = true
-        self.btnStop.isHidden = false
     }
     
     @IBAction func onClickStop(_ sender: Any) {
-        deconfigAutoscrollTimer()
-        self.btnStop.isHidden = true
+        self.deconfigAutoscrollTimer()
         self.btnPlay.isHidden = false
     }
-    
-    // way cham.
-    func configAutoscrollTimer()
-    {
-        timr = Timer.scheduledTimer(timeInterval: -0.01, target: self, selector: #selector(autoScrollView), userInfo: nil, repeats: true)
-    }
-    
-    func deconfigAutoscrollTimer()
-    {
-        timr.invalidate()
-    }
-    
-    func onTimer()
-    {
-        autoScrollView()
-    }
-    
-    @objc func autoScrollView()
-    {
-        let initailPoint = CGPoint(x: w,y :0)
-        
-        if __CGPointEqualToPoint(initailPoint, clCard.contentOffset)
-        {
-            if w < clCard.contentSize.width
-            {
-                w += 0.5
-            }
-            else
-            {
-                w = -self.view.frame.size.width
-            }
-            
-            let offsetPoint = CGPoint(x: w,y :0)
-            
-            clCard.contentOffset=offsetPoint
-        }
-        else
-        {
-            w = clCard.contentOffset.x
-        }
-    }
-    
-    /* cai' nay la way le.
-    //    let kAutoScrollDuration: CGFloat = 1
-    //
-    //    func startTimer() {
-    //        let timer = Timer.scheduledTimer(timeInterval: TimeInterval(kAutoScrollDuration), target: self, selector: #selector(self.scrollToNextCell), userInfo: nil, repeats: true)
-    //        RunLoop.main.add(timer, forMode: RunLoopMode.commonModes)
-    //    }
-    
-    
-    //    @objc func scrollToNextCell(){
-    //
-    //        //get cell size
-    //        let cellSize = CGSize(width: self.collectionView.frame.width, height: self.collectionView.frame.height)
-    //
-    //
-    //        //get current content Offset of the Collection view
-    //        let contentOffset = collectionView.contentOffset
-    //
-    //
-    //        if collectionView.contentSize.width <= collectionView.contentOffset.x + cellSize.width
-    //        {
-    //            collectionView.scrollRectToVisible(CGRect(x: 0, y: contentOffset.y, width: cellSize.width, height: cellSize.height), animated: true)
-    //            collectionView.alpha = 2
-    //
-    //        } else {
-    //            collectionView.scrollRectToVisible(CGRect(x:contentOffset.x + cellSize.width,y: contentOffset.y,width: cellSize.width,height: cellSize.height), animated: true);
-    //            collectionView.alpha = 2
-    //
-    //        }
-    //
-    //    }
-    
-    
-    */
     
 }
 

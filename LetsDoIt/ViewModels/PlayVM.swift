@@ -17,12 +17,13 @@ class PlayVM {
                                         Card(imageName: "Card_Sing", title: "Default")]
     
     func cellRow() -> Int {
-        return self.arrCard.count
+        return Int(Int16.max)
     }
     
     func cellInstance(collectionView: UICollectionView, indexPath: IndexPath) -> CardCell {
         let cell: CardCell = collectionView.dequeueReusableCell(withReuseIdentifier: CardCell.cellID, for: indexPath) as! CardCell
-        cell.updateUI(imageName: self.arrCard[indexPath.row].imageName, title: self.arrCard[indexPath.row].title)
+        cell.updateUI(imageName: self.arrCard[indexPath.row % NUMBER_CARD].imageName,
+                      title: self.arrCard[indexPath.row % NUMBER_CARD].title)
         
         return cell
     }

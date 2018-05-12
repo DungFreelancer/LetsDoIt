@@ -27,6 +27,15 @@ class PlayVC: BaseVC {
         self.setUpCollectionView()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // Move to the middle of the card list
+        self.clCard.scrollToItem(at: IndexPath(row: self.playVM.cellRow() / 2, section: 0),
+                                 at: .centeredHorizontally,
+                                 animated: false)
+    }
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -64,7 +73,7 @@ class PlayVC: BaseVC {
             self.timerPlay = Timer.scheduledTimer(timeInterval: 0.016, target: self, selector: #selector(offsetCard), userInfo: nil, repeats: true)
         } else if self.countLoop == 1320 {
             self.deconfigAutoscrollTimer()
-            self.onClickStop(NSNull())
+            self.btnPlay.isHidden = false
         }
     }
     
@@ -98,14 +107,14 @@ class PlayVC: BaseVC {
     }
     
     @IBAction func onClickPlay(_ sender: Any) {
+        self.btnPlay.isHidden = true
+        // Move to the middle of the card list
+        self.clCard.scrollToItem(at: IndexPath(row: self.playVM.cellRow() / 2, section: 0),
+                                 at: .centeredHorizontally,
+                                 animated: false)
+        
         self.countLoop = 0
         self.configAutoscrollTimer()
-        self.btnPlay.isHidden = true
-    }
-    
-    @IBAction func onClickStop(_ sender: Any) {
-        self.deconfigAutoscrollTimer()
-        self.btnPlay.isHidden = false
     }
     
 }

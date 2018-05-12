@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MobileCoreServices
 import GravitySliderFlowLayout
 
 class PlayVC: BaseVC {
@@ -34,6 +35,7 @@ class PlayVC: BaseVC {
         self.clCard.scrollToItem(at: IndexPath(row: self.playVM.cellRow() / 2, section: 0),
                                  at: .centeredHorizontally,
                                  animated: false)
+        
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -75,11 +77,13 @@ class PlayVC: BaseVC {
             self.deconfigAutoscrollTimer()
             self.btnPlay.isHidden = false
         }
+
     }
     
     func deconfigAutoscrollTimer() {
         self.timerPlay?.invalidate()
         self.timerPlay = nil
+        
     }
     
     @objc func offsetCard() {
@@ -100,6 +104,32 @@ class PlayVC: BaseVC {
         
         self.configAutoscrollTimer()
     }
+    
+    //popup ActionSheet to select record or snapshot
+    @objc func popupActionSheet() {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        AlertHelper.showActionSheet(on: self, title: "Save This Moment", message: nil, firstButton: "Snapshot", firstComplete: { (action:UIAlertAction) in
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                picker.sourceType = .camera
+                self.present(picker,animated: true,completion: nil)
+            } else {
+                Log.error("Camera is not available")
+            }
+        }, secondButton: "Short Video", secondComplete: { (action:UIAlertAction) in
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                picker.sourceType = .camera
+                picker.videoMaximumDuration = 5
+                picker.mediaTypes = [kUTTypeMovie as String]
+                picker.allowsEditing = false
+                picker.showsCameraControls = true
+                self.present(picker,animated: true,completion: nil)
+            } else {
+                Log.error("Camera is not available")
+            }
+        }, thirdButton: nil, thirdComplete: nil)
+    }
+    
     
     // MARK: - Action
     @IBAction func onClickGoToModeSelectionVC(_ sender: Any) {
@@ -129,4 +159,14 @@ extension PlayVC: UICollectionViewDataSource, UICollectionViewDelegate {
         return self.playVM.cellInstance(collectionView: collectionView, indexPath: indexPath)
     }
     
+}
+
+extension PlayVC:UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        //
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
 }

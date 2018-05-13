@@ -10,11 +10,11 @@ import UIKit
 
 class PlayVM {
     
-    private var arrCard: Array<Card> = [Card(imageName: "Card_Beer", title: "Default"),
-                                        Card(imageName: "Card_Cry", title: "Default"),
-                                        Card(imageName: "Card_Laugh", title: "Default"),
-                                        Card(imageName: "Card_Run", title: "Default"),
-                                        Card(imageName: "Card_Sing", title: "Default")]
+    private var arrCard: Array<Card> = [Card(imageWrapper: ImageWrapper(image: UIImage(named: "Card_Beer")!), title: "Default"),
+                                        Card(imageWrapper: ImageWrapper(image: UIImage(named: "Card_Cry")!), title: "Default"),
+                                        Card(imageWrapper: ImageWrapper(image: UIImage(named: "Card_Laugh")!), title: "Default"),
+                                        Card(imageWrapper: ImageWrapper(image: UIImage(named: "Card_Run")!), title: "Default"),
+                                        Card(imageWrapper: ImageWrapper(image: UIImage(named: "Card_Sing")!), title: "Default")]
     
     func cellRow() -> Int {
         return Int(Int16.max)
@@ -22,7 +22,7 @@ class PlayVM {
     
     func cellInstance(collectionView: UICollectionView, indexPath: IndexPath) -> CardCell {
         let cell: CardCell = collectionView.dequeueReusableCell(withReuseIdentifier: CardCell.cellID, for: indexPath) as! CardCell
-        cell.updateUI(imageName: self.arrCard[indexPath.row % NUMBER_CARD].imageName,
+        cell.updateUI(imageWrapper: self.arrCard[indexPath.row % NUMBER_CARD].imageWrapper,
                       title: self.arrCard[indexPath.row % NUMBER_CARD].title)
         
         return cell

@@ -10,29 +10,25 @@ import UIKit
 
 class CardSelectionVC: BaseVC {
     
-    let cardSelectionVM = CardSelectionVM()
-    
     @IBOutlet weak var clCard: UICollectionView!
+    
+    let cardSelectionVM = CardSelectionVM()
+    var selectedCellRow: Int?
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.setUpCollectionView()
-        self.clCard.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectImgCard)))
-     
     }
     
-    // Mark: -Action
-    @objc func handleSelectImgCard() {
-        self.navigationController?.pushViewController(DestinationView.cardVC(), animated: true)
-    }
-    
+    // MARK: - Action
     func setUpCollectionView() {
         self.clCard.register(UINib(nibName: CardCell.nibName, bundle: nil), forCellWithReuseIdentifier: CardCell.cellID)
         self.clCard.dataSource = self
         self.clCard.delegate = self
     }
+    
 }
 
 extension CardSelectionVC : UICollectionViewDataSource, UICollectionViewDelegate {
@@ -44,12 +40,23 @@ extension CardSelectionVC : UICollectionViewDataSource, UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         return self.cardSelectionVM.cellInstance(collectionView: collectionView, indexPath: indexPath)
     }
-}
-
-extension CardSelectionVC: PassImgCardtoCardSelectionVC {
-    func passImgCard(type: UIImage) -> UIImage{
-        return type
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.selectedCellRow = indexPath.row
+        
+        let cardVC = DestinationView.cardVC()
+        cardVC.delegate = self
+        cardVC.cardDefault = self.cardSelectionVM.getCard(at: indexPath.row)
+        self.navigationController?.pushViewController(cardVC, animated: true)
     }
     
+}
+
+extension CardSelectionVC: CardVCDelegate {
+    
+    func passCard(_ card: Card) {
+        self.cardSelectionVM.changeCard(at: self.selectedCellRow!, with: card)
+        self.clCard.reloadItems(at: [IndexPath(row: self.selectedCellRow!, section: 0)])
+    }
     
 }

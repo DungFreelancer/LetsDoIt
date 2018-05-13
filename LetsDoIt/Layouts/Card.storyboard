@@ -48,7 +48,7 @@
                     </view>
                     <connections>
                         <outlet property="imgCard" destination="ad0-hz-OMh" id="zzd-lZ-Mon"/>
-                        <outlet property="textTitle" destination="BZs-Sc-CWN" id="9iX-Yc-KXT"/>
+                        <outlet property="txtTitle" destination="BZs-Sc-CWN" id="DHC-hM-xGI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sTG-oK-w0J" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -10,11 +10,11 @@ import UIKit
 
 class CardSelectionVM {
     
-    private var arrCard: Array<Card> = [Card(imageName: "MIFFY", title: "Default"),
-                                        Card(imageName: "MIFFY", title: "Default"),
-                                        Card(imageName: "MIFFY", title: "Default"),
-                                        Card(imageName: "MIFFY", title: "Default"),
-                                        Card(imageName: "MIFFY", title: "Default")]
+    private var arrCard: Array<Card> = [Card(imageWrapper: ImageWrapper(image: UIImage(named: "MIFFY")!), title: "Default"),
+                                        Card(imageWrapper: ImageWrapper(image: UIImage(named: "MIFFY")!), title: "Default"),
+                                        Card(imageWrapper: ImageWrapper(image: UIImage(named: "MIFFY")!), title: "Default"),
+                                        Card(imageWrapper: ImageWrapper(image: UIImage(named: "MIFFY")!), title: "Default"),
+                                        Card(imageWrapper: ImageWrapper(image: UIImage(named: "MIFFY")!), title: "Default")]
 
     func cellRow() -> Int {
         return self.arrCard.count
@@ -22,9 +22,25 @@ class CardSelectionVM {
     
     func cellInstance(collectionView: UICollectionView, indexPath: IndexPath) -> CardCell {
         let cell: CardCell = collectionView.dequeueReusableCell(withReuseIdentifier: CardCell.cellID, for: indexPath) as! CardCell
-        cell.updateUI(imageName: self.arrCard[indexPath.row].imageName, title: self.arrCard[indexPath.row].title)
+        cell.updateUI(imageWrapper: self.arrCard[indexPath.row].imageWrapper, title: self.arrCard[indexPath.row].title)
         
         return cell
+    }
+    
+    func getCard(at index: Int) -> Card? {
+        guard 0 <= index && index < self.arrCard.count else {
+            return nil
+        }
+        
+        return self.arrCard[index]
+    }
+    
+    func changeCard(at index: Int, with card: Card) {
+        guard 0 <= index && index < self.arrCard.count else {
+            return
+        }
+        
+        self.arrCard[index] = card
     }
 
 }

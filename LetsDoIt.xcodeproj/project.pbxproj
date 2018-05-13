@@ -20,6 +20,7 @@
 		9AB9553B20A49D7E0073CBB9 /* Card.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AB9553A20A49D7E0073CBB9 /* Card.xib */; };
 		9AB9553E20A49ED00073CBB9 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB9553D20A49ED00073CBB9 /* CardCell.swift */; };
 		9AB9554020A4AA000073CBB9 /* PlayVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB9553F20A4AA000073CBB9 /* PlayVM.swift */; };
+		9ACE696920A8A30A00E88FEF /* ImageWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACE696820A8A30A00E88FEF /* ImageWrapper.swift */; };
 		A0BA6DED20A2A45E0041466D /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BA6DEC20A2A45E0041466D /* AlertHelper.swift */; };
 		ADA63C7C3BBE7B3A04EB64B1 /* Pods_LetsDoIt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB6BD7309657A187AEA34468 /* Pods_LetsDoIt.framework */; };
 		E80B521620A0E275000083AE /* UIColorEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80B521520A0E275000083AE /* UIColorEx.swift */; };
@@ -54,6 +55,7 @@
 		9AB9553A20A49D7E0073CBB9 /* Card.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Card.xib; sourceTree = "<group>"; };
 		9AB9553D20A49ED00073CBB9 /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
 		9AB9553F20A4AA000073CBB9 /* PlayVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlayVM.swift; path = LetsDoIt/ViewModels/PlayVM.swift; sourceTree = SOURCE_ROOT; };
+		9ACE696820A8A30A00E88FEF /* ImageWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageWrapper.swift; sourceTree = "<group>"; };
 		A0BA6DEC20A2A45E0041466D /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
 		BAB76CFD7309A3C94DCD59DA /* Pods-TemplateProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TemplateProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TemplateProject/Pods-TemplateProject.debug.xcconfig"; sourceTree = "<group>"; };
 		CB6BD7309657A187AEA34468 /* Pods_LetsDoIt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LetsDoIt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -197,6 +199,7 @@
 				E880D0A01F809F4F002EEB55 /* Commons.swift */,
 				A0BA6DEC20A2A45E0041466D /* AlertHelper.swift */,
 				9A0702A520A5FA6E0018C015 /* DestinationView.swift */,
+				9ACE696820A8A30A00E88FEF /* ImageWrapper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -374,6 +377,7 @@
 				E880D0A11F809F4F002EEB55 /* Commons.swift in Sources */,
 				E81B988420A3C6A2003DA2B2 /* Card.swift in Sources */,
 				E880D09B1F807803002EEB55 /* Log.swift in Sources */,
+				9ACE696920A8A30A00E88FEF /* ImageWrapper.swift in Sources */,
 				E880D09F1F808D5E002EEB55 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

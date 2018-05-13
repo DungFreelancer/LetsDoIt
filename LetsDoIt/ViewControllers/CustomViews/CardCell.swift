@@ -22,8 +22,9 @@ class CardCell: UICollectionViewCell {
         self.setBorderWithRadius(5.0, color: UIColor.clear)
     }
     
-    func updateUI(imageName: String, title: String) {
-        self.imgCard.image = UIImage(named: imageName)
+    func updateUI(imageWrapper: ImageWrapper, title: String) {
+        self.imgCard.image = imageWrapper.image
         self.lbTitle.text = title
     }
+    
 }

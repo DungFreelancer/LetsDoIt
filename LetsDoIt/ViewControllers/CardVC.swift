@@ -8,40 +8,53 @@
 
 import UIKit
 
-protocol PassImgCardtoCardSelectionVC {
-    func passImgCard(type: UIImage) -> UIImage
+protocol CardVCDelegate {
+    func passCard(_ card: Card)
 }
+
 class CardVC: BaseVC {
+    
     @IBOutlet weak var imgCard: UIImageView!
+    @IBOutlet weak var txtTitle: UITextField!
     
-    @IBOutlet weak var textTitle: UITextField!
+    var cardDefault: Card?
     
-    var delegate: PassImgCardtoCardSelectionVC?
+    var delegate: CardVCDelegate?
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.imgCard.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleImgCard)))
-        self.imgCard.isUserInteractionEnabled = true
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(onClickAdd))
         
+        self.txtTitle.text = self.cardDefault?.title
+        self.imgCard.image = self.cardDefault?.imageWrapper.image
+        self.imgCard.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleImageCard)))
+        self.imgCard.isUserInteractionEnabled = true
     }
+    
     // MARK: - Action
-    @objc func handleImgCard() {
+    @objc func handleImageCard() {
         let picker = UIImagePickerController()
         picker.delegate = self
-        Log.debug("handleImgCard is working")
+        
         AlertHelper.showActionSheet(on: self, title: "Photo Source", message: nil, firstButton: "Camera", firstComplete: { (action: UIAlertAction) in
-                    if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                        picker.sourceType = .camera
-                        self.present(picker,animated: true, completion: nil)
-                    } else {
-                        Log.error("Camera is not available")
-                        }
-            }, secondButton: "Photo Library", secondComplete: { (action:UIAlertAction) in
-                    picker.sourceType = .photoLibrary
+                if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                    picker.sourceType = .camera
                     self.present(picker,animated: true, completion: nil)
-            }, thirdButton: nil, thirdComplete: nil)
+                } else {
+                    Log.error("Camera is not available")
+                }
+            }, secondButton: "Photo Library", secondComplete: { (action:UIAlertAction) in
+                picker.sourceType = .photoLibrary
+                self.present(picker,animated: true, completion: nil)
+            })
+    }
+    
+    @objc func onClickAdd() {
+        self.delegate?.passCard(Card(imageWrapper: ImageWrapper(image: self.imgCard.image!),
+                                     title: self.txtTitle.text!))
+        self.navigationController?.popViewController(animated: true)
     }
 
 }
@@ -58,7 +71,6 @@ extension CardVC: UIImagePickerControllerDelegate, UINavigationControllerDelegat
         }
         if let selectedImage = selectedImageFromPicker {
             self.imgCard.image = selectedImage
-            self.delegate?.passImgCard(type: selectedImage)
         }
         picker.dismiss(animated: true, completion: nil)
     }
@@ -66,5 +78,6 @@ extension CardVC: UIImagePickerControllerDelegate, UINavigationControllerDelegat
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
+    
 }
 

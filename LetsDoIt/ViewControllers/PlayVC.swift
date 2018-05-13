@@ -75,21 +75,17 @@ class PlayVC: BaseVC {
         } else if self.countLoop == 1320 {
             self.deconfigAutoscrollTimer()
             self.btnPlay.isHidden = false
-            DispatchQueue.main.async {
-                //time popup appear
-                Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(self.popupActionSheet), userInfo: nil, repeats: false)
-                
-            }
+            
+            let timeDelay = 2.0 // second unit
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + timeDelay, execute: {
+                self.popupActionSheet()
+            })
         }
-        
-       
-        
     }
     
     func deconfigAutoscrollTimer() {
         self.timerPlay?.invalidate()
         self.timerPlay = nil
-        
     }
     
     @objc func offsetCard() {
@@ -112,7 +108,7 @@ class PlayVC: BaseVC {
     }
     
     //popup ActionSheet to select record or snapshot
-    @objc func popupActionSheet() {
+    func popupActionSheet() {
         let picker = UIImagePickerController()
         picker.delegate = self
         AlertHelper.showActionSheet(on: self, title: "Save This Moment", message: nil, firstButton: "Snapshot", firstComplete: { (action:UIAlertAction) in
@@ -133,7 +129,7 @@ class PlayVC: BaseVC {
             } else {
                 Log.error("Camera is not available")
             }
-        }, thirdButton: nil, thirdComplete: nil)
+        })
     }
     
     

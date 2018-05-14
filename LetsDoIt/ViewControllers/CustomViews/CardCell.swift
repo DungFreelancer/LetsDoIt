@@ -19,7 +19,7 @@ class CardCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.setBorderWithRadius(5.0, color: UIColor.clear)
+        self.imgCard.setBorderWithRadius(5.0, color: UIColor.clear)
     }
     
     func updateUI(image: UIImage, title: String) {

@@ -28,7 +28,7 @@ class CardVC: BaseVC {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(onClickAdd))
         
         self.txtTitle.text = self.cardDefault?.title
-        self.imgCard.image = self.cardDefault?.imageWrapper.image
+        self.imgCard.image = self.cardDefault?.image
         self.imgCard.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleImageCard)))
         self.imgCard.isUserInteractionEnabled = true
     }
@@ -52,7 +52,7 @@ class CardVC: BaseVC {
     }
     
     @objc func onClickAdd() {
-        self.delegate?.passCard(Card(imageWrapper: ImageWrapper(image: self.imgCard.image!),
+        self.delegate?.passCard(Card(image: self.imgCard.image!,
                                      title: self.txtTitle.text!))
         self.navigationController?.popViewController(animated: true)
     }

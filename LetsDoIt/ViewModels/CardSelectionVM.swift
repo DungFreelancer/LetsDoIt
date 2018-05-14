@@ -10,11 +10,11 @@ import UIKit
 
 class CardSelectionVM {
     
-    private var arrCard: Array<Card> = [Card(imageWrapper: ImageWrapper(image: UIImage(named: "MIFFY")!), title: "Default"),
-                                        Card(imageWrapper: ImageWrapper(image: UIImage(named: "MIFFY")!), title: "Default"),
-                                        Card(imageWrapper: ImageWrapper(image: UIImage(named: "MIFFY")!), title: "Default"),
-                                        Card(imageWrapper: ImageWrapper(image: UIImage(named: "MIFFY")!), title: "Default"),
-                                        Card(imageWrapper: ImageWrapper(image: UIImage(named: "MIFFY")!), title: "Default")]
+    private var arrCard: Array<Card> = [Card(image: UIImage(named: "MIFFY")!, title: "Default"),
+                                        Card(image: UIImage(named: "MIFFY")!, title: "Default"),
+                                        Card(image: UIImage(named: "MIFFY")!, title: "Default"),
+                                        Card(image: UIImage(named: "MIFFY")!, title: "Default"),
+                                        Card(image: UIImage(named: "MIFFY")!, title: "Default")]
 
     func cellRow() -> Int {
         return self.arrCard.count
@@ -22,7 +22,7 @@ class CardSelectionVM {
     
     func cellInstance(collectionView: UICollectionView, indexPath: IndexPath) -> CardCell {
         let cell: CardCell = collectionView.dequeueReusableCell(withReuseIdentifier: CardCell.cellID, for: indexPath) as! CardCell
-        cell.updateUI(imageWrapper: self.arrCard[indexPath.row].imageWrapper, title: self.arrCard[indexPath.row].title)
+        cell.updateUI(image: self.arrCard[indexPath.row].image, title: self.arrCard[indexPath.row].title)
         
         return cell
     }

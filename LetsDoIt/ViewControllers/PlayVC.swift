@@ -72,7 +72,7 @@ class PlayVC: BaseVC {
         } else if self.countLoop == 1250 {
             self.deconfigAutoscrollTimer()
             self.timerPlay = Timer.scheduledTimer(timeInterval: 0.016, target: self, selector: #selector(offsetCard), userInfo: nil, repeats: true)
-        } else if self.countLoop == 1320 {
+        } else if self.countLoop == 1322 {
             self.deconfigAutoscrollTimer()
             self.btnPlay.isHidden = false
             

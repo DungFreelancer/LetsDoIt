@@ -44,6 +44,7 @@ extension CardSelectionVC : UICollectionViewDataSource, UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.selectedCellRow = indexPath.row
         
+        // pass to CardVC
         let cardVC = DestinationView.cardVC()
         cardVC.delegate = self
         cardVC.cardDefault = self.cardSelectionVM.getCard(at: indexPath.row)
@@ -58,5 +59,5 @@ extension CardSelectionVC: CardVCDelegate {
         self.cardSelectionVM.changeCard(at: self.selectedCellRow!, with: card)
         self.clCard.reloadItems(at: [IndexPath(row: self.selectedCellRow!, section: 0)])
     }
-    
+
 }

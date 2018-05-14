@@ -78,7 +78,7 @@ class PlayVC: BaseVC {
             
             let timeDelay = 2.0 // second unit
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + timeDelay, execute: {
-                self.popupActionSheet()
+                self.popupAlert()
             })
         }
     }
@@ -107,31 +107,11 @@ class PlayVC: BaseVC {
         self.configAutoscrollTimer()
     }
     
-    //popup ActionSheet to select record or snapshot
-    func popupActionSheet() {
-        let picker = UIImagePickerController()
-        picker.delegate = self
-        AlertHelper.showActionSheet(on: self, title: "Save This Moment", message: nil, firstButton: "Snapshot", firstComplete: { (action:UIAlertAction) in
-            if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                picker.sourceType = .camera
-                self.present(picker,animated: true,completion: nil)
-            } else {
-                Log.error("Camera is not available")
-            }
-        }, secondButton: "Short Video", secondComplete: { (action:UIAlertAction) in
-            if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                picker.sourceType = .camera
-                picker.videoMaximumDuration = 5
-                picker.mediaTypes = [kUTTypeMovie as String]
-                picker.allowsEditing = false
-                picker.showsCameraControls = true
-                self.present(picker,animated: true,completion: nil)
-            } else {
-                Log.error("Camera is not available")
-            }
-        })
+    @objc func popupAlert() {
+        AlertHelper.showPopup(on: self, title: nil, message: "Wana save this moment?", mainButton: "Yes", mainComplete: { (action:UIAlertAction) in
+            self.navigationController?.pushViewController(DestinationView.recordVC(), animated: true)
+        }, otherButton: "No", otherComplete: nil)
     }
-    
     
     // MARK: - Action
     @IBAction func onClickGoToModeSelectionVC(_ sender: Any) {
@@ -148,7 +128,7 @@ class PlayVC: BaseVC {
         self.countLoop = 0
         self.configAutoscrollTimer()
     }
-    
+
 }
 
 extension PlayVC: UICollectionViewDataSource, UICollectionViewDelegate {
@@ -163,12 +143,3 @@ extension PlayVC: UICollectionViewDataSource, UICollectionViewDelegate {
     
 }
 
-extension PlayVC:UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        //
-    }
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        picker.dismiss(animated: true, completion: nil)
-    }
-}

@@ -27,6 +27,11 @@ class PlayVC: BaseVC {
         self.setUpCollectionView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        super.hideNavigationBar(true)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -35,6 +40,11 @@ class PlayVC: BaseVC {
                                  at: .centeredHorizontally,
                                  animated: false)
         
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        super.hideNavigationBar(false)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {

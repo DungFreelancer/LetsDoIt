@@ -28,4 +28,16 @@ class PlayVM {
         return cell
     }
     
+    func getCard(at index: Int) -> Card? {
+        guard 0 <= index && index < self.arrCard.count else {
+            return nil
+        }
+        
+        return self.arrCard[index]
+    }
+    
+    func randomIndexCard() -> Int {
+        return Int(arc4random_uniform(UInt32(NUMBER_CARD)))
+    }
+    
 }

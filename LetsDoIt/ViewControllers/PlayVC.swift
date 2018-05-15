@@ -13,6 +13,7 @@ import GravitySliderFlowLayout
 class PlayVC: BaseVC {
     
     @IBOutlet weak var clCard: UICollectionView!
+    @IBOutlet weak var btnMode: UIButton!
     @IBOutlet weak var btnPlay: UIButton!
     
     private let playVM = PlayVM()
@@ -84,11 +85,13 @@ class PlayVC: BaseVC {
             self.timerPlay = Timer.scheduledTimer(timeInterval: 0.016, target: self, selector: #selector(offsetCard), userInfo: nil, repeats: true)
         } else if self.countLoop == 1322 {
             self.deconfigAutoscrollTimer()
-            self.btnPlay.isHidden = false
+            self.flipCard(at: self.playVM.randomIndexCard())
             
             let timeDelay = 2.0 // second unit
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + timeDelay, execute: {
-                self.popupAlert()
+                self.showSaveMomentPopup()
+                self.btnMode.isHidden = false
+                self.btnPlay.isHidden = false
             })
         }
     }
@@ -117,10 +120,19 @@ class PlayVC: BaseVC {
         self.configAutoscrollTimer()
     }
     
-    @objc func popupAlert() {
+    @objc func showSaveMomentPopup() {
         AlertHelper.showPopup(on: self, title: nil, message: "Wana save this moment?", mainButton: "Yes", mainComplete: { (action:UIAlertAction) in
             self.navigationController?.pushViewController(DestinationView.recordVC(), animated: true)
         }, otherButton: "No", otherComplete: nil)
+    }
+    
+    func flipCard(at index: Int) {
+        let cardRandom = self.playVM.getCard(at: index)
+        let cellCenter = self.clCard.cellForItem(at: IndexPath(item: 16394, section: 0)) as! CardCell
+        
+        UIView.transition(with: cellCenter, duration: 0.5, options: .transitionFlipFromLeft, animations: {
+            cellCenter.imgCard.image = cardRandom?.image
+        }, completion: nil)
     }
     
     // MARK: - Action
@@ -129,6 +141,7 @@ class PlayVC: BaseVC {
     }
     
     @IBAction func onClickPlay(_ sender: Any) {
+        self.btnMode.isHidden = true
         self.btnPlay.isHidden = true
         // Move to the middle of the card list
         self.clCard.scrollToItem(at: IndexPath(row: self.playVM.cellRow() / 2, section: 0),

@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "MIFFY.jpg",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "Card_Back.png",
       "scale" : "2x"
     },
     {

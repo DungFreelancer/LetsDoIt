@@ -10,11 +10,11 @@ import UIKit
 
 class CardSelectionVM {
     
-    private var arrCard: Array<Card> = [Card(image: UIImage(named: "MIFFY")!, title: "Default"),
-                                        Card(image: UIImage(named: "MIFFY")!, title: "Default"),
-                                        Card(image: UIImage(named: "MIFFY")!, title: "Default"),
-                                        Card(image: UIImage(named: "MIFFY")!, title: "Default"),
-                                        Card(image: UIImage(named: "MIFFY")!, title: "Default")]
+    private var arrCard: Array<Card> = [Card(image: UIImage(named: "Card_Back")!, title: "Default"),
+                                        Card(image: UIImage(named: "Card_Back")!, title: "Default"),
+                                        Card(image: UIImage(named: "Card_Back")!, title: "Default"),
+                                        Card(image: UIImage(named: "Card_Back")!, title: "Default"),
+                                        Card(image: UIImage(named: "Card_Back")!, title: "Default")]
 
     func cellRow() -> Int {
         return self.arrCard.count

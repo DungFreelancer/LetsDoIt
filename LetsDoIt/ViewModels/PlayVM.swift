@@ -22,7 +22,7 @@ class PlayVM {
     
     func cellInstance(collectionView: UICollectionView, indexPath: IndexPath) -> CardCell {
         let cell: CardCell = collectionView.dequeueReusableCell(withReuseIdentifier: CardCell.cellID, for: indexPath) as! CardCell
-        cell.updateUI(image: self.arrCard[indexPath.row % NUMBER_CARD].image,
+        cell.updateUI(image: UIImage(named: "Card_Back")!,
                       title: self.arrCard[indexPath.row % NUMBER_CARD].title)
         
         return cell

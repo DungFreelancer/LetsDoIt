@@ -6,6 +6,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,19 +20,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MIFFY" translatesAutoresizingMaskIntoConstraints="NO" id="ad0-hz-OMh">
-                                <rect key="frame" x="68" y="188.5" width="238" height="310"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Card_Back" translatesAutoresizingMaskIntoConstraints="NO" id="ad0-hz-OMh">
+                                <rect key="frame" x="58" y="149.5" width="260" height="388.5"/>
                                 <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="310" id="BQL-c0-F5P"/>
-                                    <constraint firstAttribute="width" constant="238" id="hqs-dr-Yuh"/>
+                                    <constraint firstAttribute="width" secondItem="ad0-hz-OMh" secondAttribute="height" multiplier="450:671" id="kPS-3y-gg1"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Title..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BZs-Sc-CWN">
-                                <rect key="frame" x="68" y="123.5" width="238" height="40"/>
+                                <rect key="frame" x="58" y="85.5" width="260" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="e2N-3b-IZx"/>
-                                    <constraint firstAttribute="width" constant="238" id="fyO-lJ-PyZ"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -42,7 +42,9 @@
                             <constraint firstItem="ad0-hz-OMh" firstAttribute="centerX" secondItem="yUl-Nk-Esx" secondAttribute="centerX" id="26F-2A-AKX"/>
                             <constraint firstItem="BZs-Sc-CWN" firstAttribute="leading" secondItem="ad0-hz-OMh" secondAttribute="leading" id="7Bn-bh-pub"/>
                             <constraint firstItem="ad0-hz-OMh" firstAttribute="centerY" secondItem="yUl-Nk-Esx" secondAttribute="centerY" id="LtP-dA-S4f"/>
-                            <constraint firstItem="ad0-hz-OMh" firstAttribute="top" secondItem="BZs-Sc-CWN" secondAttribute="bottom" constant="25" id="Uii-Ja-Bgj"/>
+                            <constraint firstItem="ad0-hz-OMh" firstAttribute="top" secondItem="BZs-Sc-CWN" secondAttribute="bottom" constant="24" id="Uii-Ja-Bgj"/>
+                            <constraint firstItem="ad0-hz-OMh" firstAttribute="height" secondItem="yUl-Nk-Esx" secondAttribute="height" multiplier="0.6" id="s3g-8M-fZ6"/>
+                            <constraint firstItem="BZs-Sc-CWN" firstAttribute="width" secondItem="ad0-hz-OMh" secondAttribute="width" id="zgW-j9-UWt"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yUl-Nk-Esx"/>
                     </view>
@@ -57,6 +59,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="MIFFY" width="731" height="1000"/>
+        <image name="Card_Back" width="450" height="671"/>
     </resources>
 </document>

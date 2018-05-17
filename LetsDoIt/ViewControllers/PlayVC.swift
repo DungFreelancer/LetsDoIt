@@ -121,7 +121,7 @@ class PlayVC: BaseVC {
     }
     
     @objc func showSaveMomentPopup() {
-        AlertHelper.showPopup(on: self, title: nil, message: "Wana save this moment?", mainButton: "Yes", mainComplete: { (action:UIAlertAction) in
+        AlertHelper.showPopup(on: self, title: nil, message: "Wana save this moment?".localized(), mainButton: "Yes", mainComplete: { (action:UIAlertAction) in
             self.navigationController?.pushViewController(DestinationView.recordVC(), animated: true)
         }, otherButton: "No", otherComplete: nil)
     }

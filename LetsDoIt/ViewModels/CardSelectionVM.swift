@@ -15,7 +15,11 @@ class CardSelectionVM {
                                         Card(image: UIImage(named: "Card_Back")!, title: "Default"),
                                         Card(image: UIImage(named: "Card_Back")!, title: "Default"),
                                         Card(image: UIImage(named: "Card_Back")!, title: "Default")]
-
+    
+    init() {
+        self.loadCards()
+    }
+    
     func cellRow() -> Int {
         return self.arrCard.count
     }
@@ -43,20 +47,19 @@ class CardSelectionVM {
         self.arrCard[index] = card
     }
     
-    func saveArray(_ info: [Card]) {
-        let dataInfo: Data = try! JSONEncoder().encode(info)
-        USER_DEFAULT.set(dataInfo, forKey: "array")
+    func saveCards(_ info: [Card]) {
+        let dataCards: Data? = try? JSONEncoder().encode(info)
+        USER_DEFAULT.set(dataCards, forKey: ARRAY_CARD)
         USER_DEFAULT.synchronize()
     }
     
-    func loadArray(_ KeyInfo: String) -> [Card]? {
-        guard let dataInfo: Data = USER_DEFAULT.object(forKey: KeyInfo) as? Data else {
-            Log.error("Can't load the data from UserDefault!!!")
-            return nil
+    func loadCards() {
+        guard let dataCards: Data = USER_DEFAULT.object(forKey: ARRAY_CARD) as? Data else {
+            Log.error("Can't load cards from UserDefault!!!")
+            return
         }
         
-        let info: [Card]? = try? JSONDecoder().decode([Card].self, from: dataInfo)
-        return info
+        self.arrCard = try! JSONDecoder().decode([Card].self, from: dataCards)
     }
 }
 

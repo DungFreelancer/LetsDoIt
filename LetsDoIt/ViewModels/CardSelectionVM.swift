@@ -33,6 +33,7 @@ class CardSelectionVM {
     
     func getCard(at index: Int) -> Card? {
         guard 0 <= index && index < self.arrCard.count else {
+            Log.error("Index out of range!!!")
             return nil
         }
         
@@ -41,6 +42,7 @@ class CardSelectionVM {
     
     func changeCard(at index: Int, with card: Card) {
         guard 0 <= index && index < self.arrCard.count else {
+            Log.error("Index out of range!!!")
             return
         }
         
@@ -48,7 +50,11 @@ class CardSelectionVM {
     }
     
     func saveCards(_ info: [Card]) {
-        let dataCards: Data? = try? JSONEncoder().encode(info)
+        guard let dataCards: Data = try? JSONEncoder().encode(info) else {
+            Log.error("Can't save cards to UserDefault!!!")
+            return
+        }
+        
         USER_DEFAULT.set(dataCards, forKey: ARRAY_CARD)
         USER_DEFAULT.synchronize()
     }

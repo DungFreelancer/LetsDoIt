@@ -30,6 +30,7 @@ class PlayVM {
     
     func getCard(at index: Int) -> Card? {
         guard 0 <= index && index < self.arrCard.count else {
+            Log.error("Index out of range!!!")
             return nil
         }
         

@@ -9,3 +9,29 @@
 // MARK: - PlayVC
 
 "Wana save this moment?" = "Wana save this moment?";
+"Play" = "Play";
+"Default" = "Default";
+
+// MARK: - ModeSelectionVC
+
+"Normal" = "Normal";
+"Crazy" = "Crazy";
+"Custom" = "Custom";
+
+// MARK: - CardSelectionVC
+
+
+// MARK: - CardVC
+
+"Photo Source" = "Photo Source";
+"Camera" = "Camera";
+"Camera is not available!!!" = "Camera is not available!!!";
+"Photo Library" = "Photo Library";
+
+// MARK: - RecordVC
+
+"Save This Moment" = "Save This Moment";
+"Snapshot" = "Snapshot";
+"Camera is not available!!!" = "Camera is not available!!!";
+"Short Video" = "Short Video";
+"Camera is not available!!!" = "Camera is not available!!!";

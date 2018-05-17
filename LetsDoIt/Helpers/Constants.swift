@@ -12,6 +12,8 @@ let DEBUG = true
 
 let USER_DEFAULT: UserDefaults = UserDefaults.standard
 
+let ARRAY_CARD: String = "arraycard"
+
 let APP_DELEGATE: AppDelegate = UIApplication.shared.delegate as! AppDelegate
 
 let SCREEN_SIZE: CGSize = UIScreen.main.bounds.size

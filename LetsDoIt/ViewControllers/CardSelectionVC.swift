@@ -44,7 +44,7 @@ extension CardSelectionVC : UICollectionViewDataSource, UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.selectedCellRow = indexPath.row
         
-        // pass to CardVC
+        // pass data to CardVC
         let cardVC = DestinationView.cardVC()
         cardVC.delegate = self
         cardVC.cardDefault = self.cardSelectionVM.getCard(at: indexPath.row)

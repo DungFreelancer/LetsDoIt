@@ -42,6 +42,21 @@ class CardSelectionVM {
         
         self.arrCard[index] = card
     }
-
+    
+    func saveArray(_ info: [Card]) {
+        let dataInfo: Data = try! JSONEncoder().encode(info)
+        USER_DEFAULT.set(dataInfo, forKey: "array")
+        USER_DEFAULT.synchronize()
+    }
+    
+    func loadArray(_ KeyInfo: String) -> [Card]? {
+        guard let dataInfo: Data = USER_DEFAULT.object(forKey: KeyInfo) as? Data else {
+            Log.error("Can't load the data from UserDefault!!!")
+            return nil
+        }
+        
+        let info: [Card]? = try? JSONDecoder().decode([Card].self, from: dataInfo)
+        return info
+    }
 }
 

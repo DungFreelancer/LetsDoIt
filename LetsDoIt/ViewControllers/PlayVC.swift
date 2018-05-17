@@ -103,7 +103,7 @@ class PlayVC: BaseVC {
     
     @objc func offsetCard() {
         let initailPoint = CGPoint(x: tempWidth,y :0)
-        
+        //contentOffset la gi
         if __CGPointEqualToPoint(initailPoint, clCard.contentOffset) {
             if tempWidth < clCard.contentSize.width {
                 tempWidth += 1

@@ -10,11 +10,11 @@ import UIKit
 
 class CardSelectionVM {
     
-    private var arrCard: Array<Card> = [Card(image: UIImage(named: "Card_Back")!, title: "Default"),
-                                        Card(image: UIImage(named: "Card_Back")!, title: "Default"),
-                                        Card(image: UIImage(named: "Card_Back")!, title: "Default"),
-                                        Card(image: UIImage(named: "Card_Back")!, title: "Default"),
-                                        Card(image: UIImage(named: "Card_Back")!, title: "Default")]
+    var arrCard: Array<Card> = [Card(image: UIImage(named: "Card_Back")!, title: "Default"),
+                                Card(image: UIImage(named: "Card_Back")!, title: "Default"),
+                                Card(image: UIImage(named: "Card_Back")!, title: "Default"),
+                                Card(image: UIImage(named: "Card_Back")!, title: "Default"),
+                                Card(image: UIImage(named: "Card_Back")!, title: "Default")]
     
     init() {
         self.loadCards()

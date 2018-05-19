@@ -27,7 +27,7 @@ class RecordVC: BaseVC {
                     picker.sourceType = .camera
                     self.present(picker,animated: true,completion: nil)
                 } else {
-                    Log.error("Camera is not available!!!".localized())
+                    Log.error("Camera is not available!!!")
                 }
             }, secondButton: "Short Video".localized(), secondComplete: { (action:UIAlertAction) in
                 if UIImagePickerController.isSourceTypeAvailable(.camera) {
@@ -38,7 +38,7 @@ class RecordVC: BaseVC {
                     picker.showsCameraControls = true
                     self.present(picker,animated: true,completion: nil)
                 } else {
-                    Log.error("Camera is not available!!!".localized())
+                    Log.error("Camera is not available!!!")
                 }
             })
         }

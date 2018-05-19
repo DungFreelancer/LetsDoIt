@@ -21,6 +21,7 @@
 		9AB9553B20A49D7E0073CBB9 /* Card.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AB9553A20A49D7E0073CBB9 /* Card.xib */; };
 		9AB9553E20A49ED00073CBB9 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB9553D20A49ED00073CBB9 /* CardCell.swift */; };
 		9AB9554020A4AA000073CBB9 /* PlayVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB9553F20A4AA000073CBB9 /* PlayVM.swift */; };
+		9AC07A7920B075500053D776 /* HUDHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC07A7820B075500053D776 /* HUDHelper.swift */; };
 		A0BA6DED20A2A45E0041466D /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BA6DEC20A2A45E0041466D /* AlertHelper.swift */; };
 		ADA63C7C3BBE7B3A04EB64B1 /* Pods_LetsDoIt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB6BD7309657A187AEA34468 /* Pods_LetsDoIt.framework */; };
 		E80B521620A0E275000083AE /* UIColorEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80B521520A0E275000083AE /* UIColorEx.swift */; };
@@ -56,6 +57,7 @@
 		9AB9553A20A49D7E0073CBB9 /* Card.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Card.xib; sourceTree = "<group>"; };
 		9AB9553D20A49ED00073CBB9 /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
 		9AB9553F20A4AA000073CBB9 /* PlayVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlayVM.swift; path = LetsDoIt/ViewModels/PlayVM.swift; sourceTree = SOURCE_ROOT; };
+		9AC07A7820B075500053D776 /* HUDHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUDHelper.swift; sourceTree = "<group>"; };
 		A0BA6DEC20A2A45E0041466D /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
 		BAB76CFD7309A3C94DCD59DA /* Pods-TemplateProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TemplateProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TemplateProject/Pods-TemplateProject.debug.xcconfig"; sourceTree = "<group>"; };
 		CB6BD7309657A187AEA34468 /* Pods_LetsDoIt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LetsDoIt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -199,6 +201,7 @@
 				E880D09E1F808D5E002EEB55 /* Constants.swift */,
 				E880D0A01F809F4F002EEB55 /* Commons.swift */,
 				A0BA6DEC20A2A45E0041466D /* AlertHelper.swift */,
+				9AC07A7820B075500053D776 /* HUDHelper.swift */,
 				9A0702A520A5FA6E0018C015 /* DestinationView.swift */,
 			);
 			path = Helpers;
@@ -342,11 +345,13 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-LetsDoIt/Pods-LetsDoIt-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GravitySliderFlowLayout/GravitySliderFlowLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/PKHUD/PKHUD.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GravitySliderFlowLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PKHUD.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -367,6 +372,7 @@
 				9A09080920A35E74001BA4B4 /* ModeSelectionVC.swift in Sources */,
 				9AB9552C20A48FF00073CBB9 /* PlayVC.swift in Sources */,
 				9A94BCB620A0B6FA00A60DED /* UIViewEx.swift in Sources */,
+				9AC07A7920B075500053D776 /* HUDHelper.swift in Sources */,
 				9AB9553E20A49ED00073CBB9 /* CardCell.swift in Sources */,
 				E8B892DF1F7FFF8000DDA048 /* BaseVC.swift in Sources */,
 				9A0702A620A5FA6E0018C015 /* DestinationView.swift in Sources */,

@@ -16,19 +16,13 @@ class CardSelectionVM {
                                         Card(image: UIImage(named: "Card_Back")!, title: "Default"),
                                         Card(image: UIImage(named: "Card_Back")!, title: "Default")]
     
-    init() {
-        DispatchQueue.main.async {
-            self.loadCards()
-        }
-    }
-    
     func cellRow() -> Int {
         return self.arrCard.count
     }
     
     func cellInstance(collectionView: UICollectionView, indexPath: IndexPath) -> CardCell {
         let cell: CardCell = collectionView.dequeueReusableCell(withReuseIdentifier: CardCell.cellID, for: indexPath) as! CardCell
-        cell.updateUI(image: self.arrCard[indexPath.row].image, title: self.arrCard[indexPath.row].title)
+        cell.updateUI(image: self.arrCard[indexPath.row].image, title: self.arrCard[indexPath.row].title, canDelete: true)
         
         return cell
     }
@@ -51,7 +45,7 @@ class CardSelectionVM {
         self.arrCard[index] = card
     }
     
-    func deleteCardAndReturnToDefault(at index:Int) {
+    func resetCardToDefault(at index:Int) {
         guard 0 <= index && index < self.arrCard.count else {
             Log.error("Index out of range!!!")
             return
@@ -62,7 +56,8 @@ class CardSelectionVM {
     }
     
     func saveCards() {
-        guard let dataCards: Data = try? JSONEncoder().encode(self.arrCard) else {
+        DispatchQueue.global().async {
+            guard let dataCards: Data = try? JSONEncoder().encode(self.arrCard) else {
                 Log.error("Can't save cards to UserDefault!!!")
                 return
             }
@@ -70,14 +65,23 @@ class CardSelectionVM {
             USER_DEFAULT.set(dataCards, forKey: ARRAY_CARD)
             USER_DEFAULT.synchronize()
         }
+    }
     
-    func loadCards() {
+    func loadCards(_ completion:(()->())? = nil) {
+        DispatchQueue.global().async {
             guard let dataCards: Data = USER_DEFAULT.object(forKey: ARRAY_CARD) as? Data else {
                 Log.error("Can't load cards from UserDefault!!!")
                 return
             }
             
             self.arrCard = try! JSONDecoder().decode([Card].self, from: dataCards)
+            if let completion = completion {
+                DispatchQueue.main.async {
+                    completion()
+                }
+            }
         }
     }
+    
+}
 

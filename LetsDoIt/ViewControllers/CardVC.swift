@@ -43,7 +43,7 @@ class CardVC: BaseVC {
                     picker.sourceType = .camera
                     self.present(picker,animated: true, completion: nil)
                 } else {
-                    Log.error("Camera is not available!!!".localized())
+                    Log.error("Camera is not available!!!")
                 }
             }, secondButton: "Photo Library".localized(), secondComplete: { (action:UIAlertAction) in
                 picker.sourceType = .photoLibrary

@@ -21,6 +21,12 @@ class CardSelectionVC: BaseVC {
         super.viewDidLoad()
         
         self.setUpCollectionView()
+        
+        HUDHelper.showLoading(view: self.view)
+        self.cardSelectionVM.loadCards {
+            HUDHelper.hideLoading()
+            self.clCard.reloadData()
+        }
     }
     
     // MARK: - Action
@@ -50,7 +56,7 @@ extension CardSelectionVC : UICollectionViewDataSource, UICollectionViewDelegate
         cardVC.delegate = self
         cardVC.cardDefault = self.cardSelectionVM.getCard(at: indexPath.row)
         
-        if cardSelectionVM.getCard(at: selectedCellRow)?.image.
+//        if cardSelectionVM.getCard(at: selectedCellRow)?.image.
         
         self.navigationController?.pushViewController(cardVC, animated: true)
     }
@@ -61,10 +67,7 @@ extension CardSelectionVC: CardVCDelegate {
     
     func passCard(_ card: Card) {
         self.cardSelectionVM.changeCard(at: self.selectedCellRow!, with: card)
-        
-        DispatchQueue.global().async {
-            self.cardSelectionVM.saveCards()
-        }
+        self.cardSelectionVM.saveCards()
         self.clCard.reloadItems(at: [IndexPath(row: self.selectedCellRow!, section: 0)])
     }
 

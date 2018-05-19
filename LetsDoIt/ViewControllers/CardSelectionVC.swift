@@ -78,12 +78,12 @@ extension CardSelectionVC : UICollectionViewDataSource, UICollectionViewDelegate
         return CGSize(width: 150, height: 250)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 10
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsetsMake(0, 35, 0, 35)
+        return UIEdgeInsetsMake(0, 20, 0, 20)
     }
 }
 

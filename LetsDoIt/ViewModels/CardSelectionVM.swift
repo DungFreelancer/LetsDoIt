@@ -58,7 +58,7 @@ class CardSelectionVM {
         DispatchQueue.global().async {
             guard let dataCards: Data = try? JSONEncoder().encode(self.arrCard) else {
                 Log.error("Can't save cards to UserDefault!!!")
-                return
+                return 
             }
             
             USER_DEFAULT.set(dataCards, forKey: ARRAY_CARD)
@@ -72,6 +72,7 @@ class CardSelectionVM {
     }
     
     func loadCards(_ completion:(()->())? = nil) {
+        
         DispatchQueue.global().async {
             guard let dataCards: Data = USER_DEFAULT.object(forKey: ARRAY_CARD) as? Data else {
                 Log.error("Can't load cards from UserDefault!!!")

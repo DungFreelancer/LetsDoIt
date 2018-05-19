@@ -29,11 +29,22 @@ class CardSelectionVC: BaseVC {
         }
     }
     
-    // MARK: - Action
-    func setUpCollectionView() {
+    // MARK: - Private methods
+    private func setUpCollectionView() {
         self.clCard.register(UINib(nibName: CardCell.nibName, bundle: nil), forCellWithReuseIdentifier: CardCell.cellID)
         self.clCard.dataSource = self
         self.clCard.delegate = self
+    }
+    
+    // MARK: - Action
+    @objc private func onClickDelete(sender: UIButton) {
+        self.cardSelectionVM.resetCardToDefault(at: sender.tag)
+        
+        HUDHelper.showLoading(view: self.view)
+        self.cardSelectionVM.saveCards {
+            HUDHelper.hideLoading()
+            self.clCard.reloadItems(at: [IndexPath(row: sender.tag, section: 0)])
+        }
     }
     
 }
@@ -45,7 +56,11 @@ extension CardSelectionVC : UICollectionViewDataSource, UICollectionViewDelegate
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return self.cardSelectionVM.cellInstance(collectionView: collectionView, indexPath: indexPath)
+        let cell = self.cardSelectionVM.cellInstance(collectionView: collectionView, indexPath: indexPath)
+        cell.btnDelete.tag = indexPath.row
+        cell.btnDelete.addTarget(self, action: #selector(self.onClickDelete(sender:)), for: .touchUpInside)
+        
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -56,8 +71,6 @@ extension CardSelectionVC : UICollectionViewDataSource, UICollectionViewDelegate
         cardVC.delegate = self
         cardVC.cardDefault = self.cardSelectionVM.getCard(at: indexPath.row)
         
-//        if cardSelectionVM.getCard(at: selectedCellRow)?.image.
-        
         self.navigationController?.pushViewController(cardVC, animated: true)
     }
     
@@ -67,8 +80,13 @@ extension CardSelectionVC: CardVCDelegate {
     
     func passCard(_ card: Card) {
         self.cardSelectionVM.changeCard(at: self.selectedCellRow!, with: card)
-        self.cardSelectionVM.saveCards()
         self.clCard.reloadItems(at: [IndexPath(row: self.selectedCellRow!, section: 0)])
+        
+        HUDHelper.showLoading(view: self.view)
+        self.cardSelectionVM.saveCards {
+            HUDHelper.hideLoading()
+        }
+        
     }
 
 }

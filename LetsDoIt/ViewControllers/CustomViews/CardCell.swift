@@ -20,15 +20,15 @@ class CardCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.btnDelete.isHidden = true
         self.btnDelete.titleLabel?.text = "Delete".localized()
         self.btnDelete.backgroundColor = UIColor.red
         self.imgCard.setBorderWithRadius(5.0, color: UIColor.clear)
     }
     
-    func updateUI(image: UIImage, title: String) {
+    func updateUI(image: UIImage, title: String, canDelete: Bool = false) {
         self.imgCard.image = image
         self.lbTitle.text = title
+        self.btnDelete.isHidden = canDelete ? false : true
     }
     
 }

@@ -49,8 +49,8 @@ class CardSelectionVM {
         self.arrCard[index] = card
     }
     
-    func saveCards(_ info: [Card]) {
-        guard let dataCards: Data = try? JSONEncoder().encode(info) else {
+    func saveCards() {
+        guard let dataCards: Data = try? JSONEncoder().encode(self.arrCard) else {
                 Log.error("Can't save cards to UserDefault!!!")
                 return
             }

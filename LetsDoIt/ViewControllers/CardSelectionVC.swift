@@ -49,7 +49,7 @@ class CardSelectionVC: BaseVC {
     
 }
 
-extension CardSelectionVC : UICollectionViewDataSource, UICollectionViewDelegate {
+extension CardSelectionVC : UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return NUMBER_CARD
@@ -74,6 +74,17 @@ extension CardSelectionVC : UICollectionViewDataSource, UICollectionViewDelegate
         self.navigationController?.pushViewController(cardVC, animated: true)
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 150, height: 250)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsetsMake(0, 35, 0, 35)
+    }
 }
 
 extension CardSelectionVC: CardVCDelegate {

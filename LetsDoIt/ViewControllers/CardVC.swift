@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol CardVCDelegate {
+protocol CardVCDelegate: class {
     func passCard(_ card: Card)
 }
 
@@ -19,7 +19,7 @@ class CardVC: BaseVC {
     
     var cardDefault: Card?
     
-    var delegate: CardVCDelegate?
+    weak var delegate: CardVCDelegate?
     
     // MARK: - Lifecycle
     override func viewDidLoad() {

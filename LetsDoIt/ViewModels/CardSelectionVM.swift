@@ -10,7 +10,7 @@ import UIKit
 
 class CardSelectionVM {
     
-    var arrCard: Array<Card> = [Card(image: UIImage(named: "Card_Back")!, title: "Default"),
+    private var arrCard: Array<Card> = [Card(image: UIImage(named: "Card_Back")!, title: "Default"),
                                 Card(image: UIImage(named: "Card_Back")!, title: "Default"),
                                 Card(image: UIImage(named: "Card_Back")!, title: "Default"),
                                 Card(image: UIImage(named: "Card_Back")!, title: "Default"),
@@ -51,21 +51,21 @@ class CardSelectionVM {
     
     func saveCards(_ info: [Card]) {
         guard let dataCards: Data = try? JSONEncoder().encode(info) else {
-            Log.error("Can't save cards to UserDefault!!!")
-            return
+                Log.error("Can't save cards to UserDefault!!!")
+                return
+            }
+            
+            USER_DEFAULT.set(dataCards, forKey: ARRAY_CARD)
+            USER_DEFAULT.synchronize()
         }
-        
-        USER_DEFAULT.set(dataCards, forKey: ARRAY_CARD)
-        USER_DEFAULT.synchronize()
-    }
     
     func loadCards() {
-        guard let dataCards: Data = USER_DEFAULT.object(forKey: ARRAY_CARD) as? Data else {
-            Log.error("Can't load cards from UserDefault!!!")
-            return
+            guard let dataCards: Data = USER_DEFAULT.object(forKey: ARRAY_CARD) as? Data else {
+                Log.error("Can't load cards from UserDefault!!!")
+                return
+            }
+            
+            self.arrCard = try! JSONDecoder().decode([Card].self, from: dataCards)
         }
-        
-        self.arrCard = try! JSONDecoder().decode([Card].self, from: dataCards)
     }
-}
 

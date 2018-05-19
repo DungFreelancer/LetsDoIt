@@ -28,6 +28,7 @@
 		E81B988420A3C6A2003DA2B2 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81B988320A3C6A2003DA2B2 /* Card.swift */; };
 		E81B988720A3CB01003DA2B2 /* CardSelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81B988620A3CB01003DA2B2 /* CardSelectionVC.swift */; };
 		E81B988B20A3CD05003DA2B2 /* CardSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E81B988A20A3CD05003DA2B2 /* CardSelection.storyboard */; };
+		E834071520B0E02900AA7168 /* ModeSelectionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E834071420B0E02900AA7168 /* ModeSelectionVM.swift */; };
 		E880D09B1F807803002EEB55 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = E880D09A1F807803002EEB55 /* Log.swift */; };
 		E880D09F1F808D5E002EEB55 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E880D09E1F808D5E002EEB55 /* Constants.swift */; };
 		E880D0A11F809F4F002EEB55 /* Commons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E880D0A01F809F4F002EEB55 /* Commons.swift */; };
@@ -65,6 +66,7 @@
 		E81B988320A3C6A2003DA2B2 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		E81B988620A3CB01003DA2B2 /* CardSelectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSelectionVC.swift; sourceTree = "<group>"; };
 		E81B988A20A3CD05003DA2B2 /* CardSelection.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CardSelection.storyboard; sourceTree = "<group>"; };
+		E834071420B0E02900AA7168 /* ModeSelectionVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeSelectionVM.swift; sourceTree = "<group>"; };
 		E880D09A1F807803002EEB55 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		E880D09E1F808D5E002EEB55 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E880D0A01F809F4F002EEB55 /* Commons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commons.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 			children = (
 				9AB9553F20A4AA000073CBB9 /* PlayVM.swift */,
 				E8AABAA720A5DE9800BE9D04 /* CardSelectionVM.swift */,
+				E834071420B0E02900AA7168 /* ModeSelectionVM.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -343,12 +346,14 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-LetsDoIt/Pods-LetsDoIt-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/CircleMenu/CircleMenu.framework",
 				"${BUILT_PRODUCTS_DIR}/GravitySliderFlowLayout/GravitySliderFlowLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/PKHUD/PKHUD.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CircleMenu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GravitySliderFlowLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PKHUD.framework",
@@ -376,6 +381,7 @@
 				9AB9553E20A49ED00073CBB9 /* CardCell.swift in Sources */,
 				E8B892DF1F7FFF8000DDA048 /* BaseVC.swift in Sources */,
 				9A0702A620A5FA6E0018C015 /* DestinationView.swift in Sources */,
+				E834071520B0E02900AA7168 /* ModeSelectionVM.swift in Sources */,
 				9AB9552E20A4901D0073CBB9 /* CardVC.swift in Sources */,
 				E81B988720A3CB01003DA2B2 /* CardSelectionVC.swift in Sources */,
 				E8B892DD1F7FFF8000DDA048 /* AppDelegate.swift in Sources */,

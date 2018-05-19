@@ -9,4 +9,6 @@ target 'LetsDoIt' do
   
   pod 'PKHUD', '~> 5.0'
 
+  pod 'CircleMenu', '~> 3.0.6'
+
 end

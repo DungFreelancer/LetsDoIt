@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bg_Play" translatesAutoresizingMaskIntoConstraints="NO" id="6Mb-pE-bCR">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Giethoorn" translatesAutoresizingMaskIntoConstraints="NO" id="6Mb-pE-bCR">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bze-Y5-fZu">
@@ -106,7 +106,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Bg_Play" width="451" height="800"/>
+        <image name="Giethoorn" width="1698" height="2048"/>
         <image name="galaxy" width="48" height="48"/>
     </resources>
 </document>

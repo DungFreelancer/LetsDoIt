@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,61 +18,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6FF-f2-DUK">
-                                <rect key="frame" x="137" y="144.5" width="100" height="55"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="55" id="Cdv-hy-C6b"/>
-                                    <constraint firstAttribute="width" constant="100" id="Hqf-CD-n1a"/>
-                                </constraints>
-                                <state key="normal" title="Normal"/>
-                                <connections>
-                                    <action selector="onClickBtnNormal:" destination="wDa-J4-yIo" eventType="touchUpInside" id="PiP-ET-8wc"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uxl-DW-JFu">
-                                <rect key="frame" x="137" y="289.5" width="100" height="55"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="JiT-B2-w52"/>
-                                    <constraint firstAttribute="height" constant="55" id="noF-2d-bp4"/>
-                                </constraints>
-                                <state key="normal" title="Crazy"/>
-                                <connections>
-                                    <action selector="onClickBtnCrazy:" destination="wDa-J4-yIo" eventType="touchUpInside" id="GEe-N8-L3d"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o73-y2-sP1">
-                                <rect key="frame" x="137" y="434.5" width="100" height="55"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="l4U-5j-iWe"/>
-                                    <constraint firstAttribute="height" constant="55" id="mqR-gE-Lv4"/>
-                                </constraints>
-                                <state key="normal" title="Custom"/>
-                                <connections>
-                                    <action selector="onClickBtnCustom:" destination="wDa-J4-yIo" eventType="touchUpInside" id="nq3-PU-8RH"/>
-                                </connections>
-                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Giethoorn" translatesAutoresizingMaskIntoConstraints="NO" id="snn-bd-ugX">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="6FF-f2-DUK" firstAttribute="centerX" secondItem="bw5-7t-ii3" secondAttribute="centerX" id="75b-LN-Nds"/>
-                            <constraint firstItem="o73-y2-sP1" firstAttribute="leading" secondItem="uxl-DW-JFu" secondAttribute="leading" id="YrL-wz-n1D"/>
-                            <constraint firstItem="uxl-DW-JFu" firstAttribute="top" secondItem="6FF-f2-DUK" secondAttribute="bottom" constant="90" id="eP3-aB-vDf"/>
-                            <constraint firstItem="uxl-DW-JFu" firstAttribute="leading" secondItem="6FF-f2-DUK" secondAttribute="leading" id="gWR-Ea-NRw"/>
-                            <constraint firstItem="o73-y2-sP1" firstAttribute="top" secondItem="uxl-DW-JFu" secondAttribute="bottom" constant="90" id="rLH-ec-wkU"/>
-                            <constraint firstItem="6FF-f2-DUK" firstAttribute="centerY" secondItem="bw5-7t-ii3" secondAttribute="centerY" multiplier="1/2" id="xUv-mt-uYO"/>
+                            <constraint firstItem="bw5-7t-ii3" firstAttribute="bottom" secondItem="snn-bd-ugX" secondAttribute="bottom" id="KqX-bp-CIc"/>
+                            <constraint firstItem="snn-bd-ugX" firstAttribute="top" secondItem="bw5-7t-ii3" secondAttribute="top" id="Lff-9h-Alp"/>
+                            <constraint firstItem="bw5-7t-ii3" firstAttribute="trailing" secondItem="snn-bd-ugX" secondAttribute="trailing" id="VVY-Ta-UbA"/>
+                            <constraint firstItem="snn-bd-ugX" firstAttribute="leading" secondItem="bw5-7t-ii3" secondAttribute="leading" id="l8y-00-vyo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bw5-7t-ii3"/>
                     </view>
                     <navigationItem key="navigationItem" id="ahd-fj-qdR"/>
-                    <connections>
-                        <outlet property="btnCrazy" destination="uxl-DW-JFu" id="aYJ-Zd-UzX"/>
-                        <outlet property="btnCustom" destination="o73-y2-sP1" id="ZN7-p1-HWi"/>
-                        <outlet property="btnNormal" destination="6FF-f2-DUK" id="REV-Bc-MyM"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N1q-mx-2dr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="832.79999999999995" y="131.78410794602701"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Giethoorn" width="1698" height="2048"/>
+    </resources>
 </document>

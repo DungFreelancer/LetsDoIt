@@ -38,14 +38,14 @@ class CardVC: BaseVC {
         let picker = UIImagePickerController()
         picker.delegate = self
         
-        AlertHelper.showActionSheet(on: self, title: "Photo Source", message: nil, firstButton: "Camera", firstComplete: { (action: UIAlertAction) in
+        AlertHelper.showActionSheet(on: self, title: "Photo Source".localized(), message: nil, firstButton: "Camera".localized(), firstComplete: { (action: UIAlertAction) in
                 if UIImagePickerController.isSourceTypeAvailable(.camera) {
                     picker.sourceType = .camera
                     self.present(picker,animated: true, completion: nil)
                 } else {
-                    Log.error("Camera is not available!!!")
+                    Log.error("Camera is not available!!!".localized())
                 }
-            }, secondButton: "Photo Library", secondComplete: { (action:UIAlertAction) in
+            }, secondButton: "Photo Library".localized(), secondComplete: { (action:UIAlertAction) in
                 picker.sourceType = .photoLibrary
                 self.present(picker,animated: true, completion: nil)
             })

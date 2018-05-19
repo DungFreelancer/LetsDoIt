@@ -11,13 +11,15 @@ import UIKit
 class CardSelectionVM {
     
     private var arrCard: Array<Card> = [Card(image: UIImage(named: "Card_Back")!, title: "Default"),
-                                Card(image: UIImage(named: "Card_Back")!, title: "Default"),
-                                Card(image: UIImage(named: "Card_Back")!, title: "Default"),
-                                Card(image: UIImage(named: "Card_Back")!, title: "Default"),
-                                Card(image: UIImage(named: "Card_Back")!, title: "Default")]
+                                        Card(image: UIImage(named: "Card_Back")!, title: "Default"),
+                                        Card(image: UIImage(named: "Card_Back")!, title: "Default"),
+                                        Card(image: UIImage(named: "Card_Back")!, title: "Default"),
+                                        Card(image: UIImage(named: "Card_Back")!, title: "Default")]
     
     init() {
-        self.loadCards()
+        DispatchQueue.main.async {
+            self.loadCards()
+        }
     }
     
     func cellRow() -> Int {
@@ -47,6 +49,16 @@ class CardSelectionVM {
         }
         
         self.arrCard[index] = card
+    }
+    
+    func deleteCardAndReturnToDefault(at index:Int) {
+        guard 0 <= index && index < self.arrCard.count else {
+            Log.error("Index out of range!!!")
+            return
+        }
+        
+        self.arrCard[index] = Card(image: UIImage(named: "Card_Back")!, title: "Default")
+        self.saveCards()
     }
     
     func saveCards() {

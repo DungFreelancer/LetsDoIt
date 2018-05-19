@@ -15,10 +15,14 @@ class CardCell: UICollectionViewCell {
     
     @IBOutlet weak var imgCard: UIImageView!
     @IBOutlet weak var lbTitle: UILabel!
+    @IBOutlet weak var btnDelete: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        self.btnDelete.isHidden = true
+        self.btnDelete.titleLabel?.text = "Delete".localized()
+        self.btnDelete.backgroundColor = UIColor.red
         self.imgCard.setBorderWithRadius(5.0, color: UIColor.clear)
     }
     

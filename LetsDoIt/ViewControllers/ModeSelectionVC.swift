@@ -18,7 +18,9 @@ class ModeSelectionVC: BaseVC {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        btnNormal.titleLabel?.text = "Normal".localized()
+        btnCrazy.titleLabel?.text = "Crazy".localized()
+        btnCustom.titleLabel?.text = "Custom".localized()
     }
     
     // MARK: - Action

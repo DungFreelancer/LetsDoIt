@@ -12,6 +12,7 @@ class CardSelectionVC: BaseVC {
     
     @IBOutlet weak var clCard: UICollectionView!
     
+    
     let cardSelectionVM = CardSelectionVM()
     var selectedCellRow: Int?
     
@@ -48,6 +49,9 @@ extension CardSelectionVC : UICollectionViewDataSource, UICollectionViewDelegate
         let cardVC = DestinationView.cardVC()
         cardVC.delegate = self
         cardVC.cardDefault = self.cardSelectionVM.getCard(at: indexPath.row)
+        
+        if cardSelectionVM.getCard(at: selectedCellRow)?.image.
+        
         self.navigationController?.pushViewController(cardVC, animated: true)
     }
     
@@ -57,7 +61,10 @@ extension CardSelectionVC: CardVCDelegate {
     
     func passCard(_ card: Card) {
         self.cardSelectionVM.changeCard(at: self.selectedCellRow!, with: card)
-        self.cardSelectionVM.saveCards()
+        
+        DispatchQueue.global().async {
+            self.cardSelectionVM.saveCards()
+        }
         self.clCard.reloadItems(at: [IndexPath(row: self.selectedCellRow!, section: 0)])
     }
 

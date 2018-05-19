@@ -22,14 +22,14 @@ class RecordVC: BaseVC {
     func popupActionSheet() {
         let picker = UIImagePickerController()
         picker.delegate = self
-        AlertHelper.showActionSheet(on: self, title: "Save This Moment", message: nil, firstButton: "Snapshot", firstComplete: { (action:UIAlertAction) in
+        AlertHelper.showActionSheet(on: self, title: "Save This Moment".localized(), message: nil, firstButton: "Snapshot".localized(), firstComplete: { (action:UIAlertAction) in
                 if UIImagePickerController.isSourceTypeAvailable(.camera) {
                     picker.sourceType = .camera
                     self.present(picker,animated: true,completion: nil)
                 } else {
-                    Log.error("Camera is not available!!!")
+                    Log.error("Camera is not available!!!".localized())
                 }
-            }, secondButton: "Short Video", secondComplete: { (action:UIAlertAction) in
+            }, secondButton: "Short Video".localized(), secondComplete: { (action:UIAlertAction) in
                 if UIImagePickerController.isSourceTypeAvailable(.camera) {
                     picker.sourceType = .camera
                     picker.videoMaximumDuration = 5
@@ -38,7 +38,7 @@ class RecordVC: BaseVC {
                     picker.showsCameraControls = true
                     self.present(picker,animated: true,completion: nil)
                 } else {
-                    Log.error("Camera is not available!!!")
+                    Log.error("Camera is not available!!!".localized())
                 }
             })
         }

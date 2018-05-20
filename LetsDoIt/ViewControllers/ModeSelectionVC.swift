@@ -65,3 +65,4 @@ extension ModeSelectionVC: CircleMenuDelegate {
     //    // call upon cancel of the menu
     //    optional func menuCollapsed(circleMenu: CircleMenu)
 }
+

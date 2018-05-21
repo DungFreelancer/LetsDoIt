@@ -25,12 +25,16 @@ class PlayVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         self.setUpCollectionView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         super.hideNavigationBar(true)
+        
+        let modeSelectionVC = DestinationView.modeSelectionVC()
+        modeSelectionVC.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -86,6 +90,7 @@ class PlayVC: BaseVC {
         } else if self.countLoop == 1322 {
             self.deconfigAutoscrollTimer()
             self.flipCard(at: self.playVM.randomIndexCard())
+          
             
             let timeDelay = 2.0 // second unit
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + timeDelay, execute: {
@@ -166,3 +171,9 @@ extension PlayVC: UICollectionViewDataSource, UICollectionViewDelegate {
     
 }
 
+extension PlayVC : ModeSelectionVCDelegate {
+    func passMode(mode: String) {
+        Log.debug(mode)
+        self.playVM.changeMode(mode: mode)
+    }
+}

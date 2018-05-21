@@ -69,6 +69,7 @@ extension CardSelectionVC : UICollectionViewDataSource, UICollectionViewDelegate
         // pass data to CardVC
         let cardVC = DestinationView.cardVC()
         cardVC.delegate = self
+        
         cardVC.cardDefault = self.cardSelectionVM.getCard(at: indexPath.row)
         
         self.navigationController?.pushViewController(cardVC, animated: true)

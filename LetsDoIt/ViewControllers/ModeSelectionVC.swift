@@ -9,10 +9,16 @@
 import UIKit
 import CircleMenu
 
+protocol ModeSelectionVCDelegate: class {
+    func passMode(mode: String)
+}
+
 class ModeSelectionVC: BaseVC {
     
-   private let modeSelectionVM = ModeSelectionVM()
+    private let modeSelectionVM = ModeSelectionVM()
+    private let playVM = PlayVM()
     
+    var delegate: ModeSelectionVCDelegate?
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -45,8 +51,10 @@ extension ModeSelectionVC: CircleMenuDelegate {
     func circleMenu(_: CircleMenu, buttonDidSelected _: UIButton, atIndex: Int) {
         print("button will selected: \(atIndex)")
         if atIndex == 0 {
+            self.delegate?.passMode(mode: "Normal") 
             self.navigationController?.popViewController(animated: true)
         } else if atIndex == 1 {
+            self.delegate?.passMode(mode: "Crazy")
             self.navigationController?.popViewController(animated: true)
         } else if atIndex == 2 {
             self.navigationController?.pushViewController(DestinationView.cardSelectionVC(), animated: true)

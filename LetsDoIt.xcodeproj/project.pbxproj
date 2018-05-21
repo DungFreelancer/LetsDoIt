@@ -122,8 +122,8 @@
 			isa = PBXGroup;
 			children = (
 				9AB9553F20A4AA000073CBB9 /* PlayVM.swift */,
-				E8AABAA720A5DE9800BE9D04 /* CardSelectionVM.swift */,
 				E834071420B0E02900AA7168 /* ModeSelectionVM.swift */,
+				E8AABAA720A5DE9800BE9D04 /* CardSelectionVM.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";

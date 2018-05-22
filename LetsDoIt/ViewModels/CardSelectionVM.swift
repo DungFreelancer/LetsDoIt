@@ -54,35 +54,45 @@ class CardSelectionVM {
         self.arrCard[index] = Card(image: UIImage(named: "Card_Back")!, title: "Default")
     }
     
-    func saveCards(_ completion:(()->())? = nil) {
+    func saveCards(_ completion:((_ isSuccess: Bool)->())? = nil) {
         DispatchQueue.global().async {
             guard let dataCards: Data = try? JSONEncoder().encode(self.arrCard) else {
                 Log.error("Can't save cards to UserDefault!!!")
-                return 
+                if let completion = completion {
+                    DispatchQueue.main.async {
+                        completion(false)
+                    }
+                }
+                return
             }
             
             USER_DEFAULT.set(dataCards, forKey: ARRAY_CARD)
             USER_DEFAULT.synchronize()
             if let completion = completion {
                 DispatchQueue.main.async {
-                    completion()
+                    completion(true)
                 }
             }
         }
     }
     
-    func loadCards(_ completion:(()->())? = nil) {
+    func loadCards(_ completion:((_ isSuccess: Bool)->())? = nil) {
         
         DispatchQueue.global().async {
             guard let dataCards: Data = USER_DEFAULT.object(forKey: ARRAY_CARD) as? Data else {
                 Log.error("Can't load cards from UserDefault!!!")
+                if let completion = completion {
+                    DispatchQueue.main.async {
+                        completion(false)
+                    }
+                }
                 return
             }
             
             self.arrCard = try! JSONDecoder().decode([Card].self, from: dataCards)
             if let completion = completion {
                 DispatchQueue.main.async {
-                    completion()
+                    completion(true)
                 }
             }
         }

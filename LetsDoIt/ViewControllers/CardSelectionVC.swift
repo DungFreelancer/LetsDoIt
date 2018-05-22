@@ -22,10 +22,13 @@ class CardSelectionVC: BaseVC {
         
         self.setUpCollectionView()
         
-        HUDHelper.showLoading(view: self.view)
-        self.cardSelectionVM.loadCards {
+        HUDHelper.showLoading()
+        
+        self.cardSelectionVM.loadCards { [weak self] (isSuccess) in
             HUDHelper.hideLoading()
-            self.clCard.reloadData()
+            if isSuccess {
+                self?.clCard.reloadData()
+            }
         }
     }
     
@@ -40,10 +43,12 @@ class CardSelectionVC: BaseVC {
     @objc private func onClickDelete(sender: UIButton) {
         self.cardSelectionVM.resetCardToDefault(at: sender.tag)
         
-        HUDHelper.showLoading(view: self.view)
-        self.cardSelectionVM.saveCards {
+        HUDHelper.showLoading()
+        self.cardSelectionVM.saveCards { [weak self] (isSuccess) in
             HUDHelper.hideLoading()
-            self.clCard.reloadItems(at: [IndexPath(row: sender.tag, section: 0)])
+            if isSuccess {
+                self?.clCard.reloadItems(at: [IndexPath(row: sender.tag, section: 0)])
+            }
         }
     }
     
@@ -94,8 +99,8 @@ extension CardSelectionVC: CardVCDelegate {
         self.cardSelectionVM.changeCard(at: self.selectedCellRow!, with: card)
         self.clCard.reloadItems(at: [IndexPath(row: self.selectedCellRow!, section: 0)])
         
-        HUDHelper.showLoading(view: self.view)
-        self.cardSelectionVM.saveCards {
+        HUDHelper.showLoading()
+        self.cardSelectionVM.saveCards { (isSuccess) in
             HUDHelper.hideLoading()
         }
         

@@ -20,6 +20,7 @@ class PlayVC: BaseVC {
     private var timerPlay: Timer?
     private var tempWidth: CGFloat = 0.0
     private var countLoop = 0
+    private var isCardOpen: Bool?
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -138,11 +139,20 @@ class PlayVC: BaseVC {
         UIView.transition(with: cellCenter, duration: 0.5, options: .transitionFlipFromLeft, animations: {
             cellCenter.imgCard.image = cardRandom?.image
         }, completion: nil)
+        self.isCardOpen = true
     }
+    
     
     // MARK: - Action
     @IBAction func onClickGoToModeSelectionVC(_ sender: Any) {
-        self.navigationController?.pushViewController(DestinationView.modeSelectionVC(), animated: true)
+        if self.isCardOpen == true {
+             let cellCenter = self.clCard.cellForItem(at: IndexPath(item: 16394, section: 0)) as! CardCell
+            cellCenter.imgCard.image = UIImage(named: "Card_Back")
+            self.isCardOpen = false
+        }
+        let modeSelectionVC = DestinationView.modeSelectionVC()
+        modeSelectionVC.delegate = self
+        self.navigationController?.pushViewController(modeSelectionVC, animated: true)
     }
     
     @IBAction func onClickPlay(_ sender: Any) {

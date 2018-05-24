@@ -77,10 +77,9 @@ class CardSelectionVM {
     }
     
     func loadCards(_ completion:((_ isSuccess: Bool)->())? = nil) {
-        
         DispatchQueue.global().async {
             guard let dataCards: Data = USER_DEFAULT.object(forKey: ARRAY_CARD) as? Data else {
-                Log.error("Can't load cards from UserDefault!!!")
+                    Log.error("Can't load cards from UserDefault!!!")
                 if let completion = completion {
                     DispatchQueue.main.async {
                         completion(false)
@@ -88,7 +87,6 @@ class CardSelectionVM {
                 }
                 return
             }
-            
             self.arrCard = try! JSONDecoder().decode([Card].self, from: dataCards)
             if let completion = completion {
                 DispatchQueue.main.async {

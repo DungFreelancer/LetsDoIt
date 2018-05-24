@@ -1,28 +1,24 @@
 PODS:
-  - CircleMenu (3.0.6)
   - GravitySliderFlowLayout (1.0)
   - IQKeyboardManagerSwift (6.0.3)
   - PKHUD (5.0.0)
 
 DEPENDENCIES:
-  - CircleMenu (~> 3.0.6)
   - GravitySliderFlowLayout (~> 1.0)
   - IQKeyboardManagerSwift (~> 6.0)
   - PKHUD (~> 5.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - CircleMenu
     - GravitySliderFlowLayout
     - IQKeyboardManagerSwift
     - PKHUD
 
 SPEC CHECKSUMS:
-  CircleMenu: 743ac815475e8e40e8848d2954fa7f7263d9f78d
   GravitySliderFlowLayout: bb9ae6a302b85821c9e0271c00533fae8091143b
   IQKeyboardManagerSwift: 04e8679f85e496bb2c474eeb9284052f1b3c391c
   PKHUD: 3c001512c6e002091184197a8de7a20420786e3b
 
-PODFILE CHECKSUM: 05027369536ba471b55900d55c69199148a69132
+PODFILE CHECKSUM: b93353ca5cd1665a3ef75678f045ebe8a6a96d8d
 
 COCOAPODS: 1.5.2

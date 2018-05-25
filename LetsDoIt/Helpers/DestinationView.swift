@@ -10,12 +10,6 @@ import UIKit
 
 class DestinationView {
     
-    static func modeSelectionVC() -> ModeSelectionVC {
-        let storyboard = UIStoryboard(name: "ModeSelection", bundle: nil)
-        let modeSelectionVC = storyboard.instantiateViewController(withIdentifier: "ModeSelectionVC") as! ModeSelectionVC
-        return modeSelectionVC
-    }
-    
     static func cardSelectionVC() -> CardSelectionVC {
         let storyboard = UIStoryboard(name: "CardSelection", bundle: nil)
         let cardSelectionVC = storyboard.instantiateViewController(withIdentifier: "CardSelectionVC") as! CardSelectionVC

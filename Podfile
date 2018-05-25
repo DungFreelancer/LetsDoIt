@@ -8,7 +8,9 @@ target 'LetsDoIt' do
   pod 'GravitySliderFlowLayout', '~> 1.0'
   
   pod 'PKHUD', '~> 5.0'
-
-
+  
+  pod 'FanMenu', '~>0.7.0'
+  
+  
 
 end

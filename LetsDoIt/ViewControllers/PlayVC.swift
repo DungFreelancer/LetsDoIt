@@ -9,6 +9,8 @@
 import UIKit
 import MobileCoreServices
 import GravitySliderFlowLayout
+import Macaw
+import FanMenu
 
 class PlayVC: BaseVC {
     
@@ -16,16 +18,42 @@ class PlayVC: BaseVC {
     @IBOutlet weak var btnMode: UIButton!
     @IBOutlet weak var btnPlay: UIButton!
     
+    @IBOutlet weak var fanMenu: FanMenu!
+    
+    
     private let playVM = PlayVM()
     private var timerPlay: Timer?
     private var tempWidth: CGFloat = 0.0
     private var countLoop = 0
     private var isCardOpen: Bool?
     
+    private let colors = [0x231FE4, 0x00BFB6, 0xFFC43D, 0xFF5F3D, 0xF34766]
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        fanMenu.button = mainButton(colorHex: 0x7C93FE)
+        fanMenu.items = colors.enumerated().map { (index,item) in
+            FanMenuButton(
+                id: String(index), image: "", color: Color(val: item)
+            )
+        }
+        fanMenu.menuRadius = 20.0
+        fanMenu.duration = 0.2
+        fanMenu.interval = (Double.pi, 2 * Double.pi)
+        fanMenu.radius = 15.0
+        
+        fanMenu.onItemWillClick = { button in
+            if button.id != "main" {
+                let newColor = self.colors[Int(button.id)!]
+                let fanGroup = self.fanMenu.node as? Group
+                let circleGroup = fanGroup?.contents[2] as? Group
+                let shape = circleGroup?.contents[0] as? Shape
+                shape?.fill = Color(val: newColor)
+            }
+        }
+        fanMenu.transform = CGAffineTransform(rotationAngle: CGFloat(3 * Double.pi/2.0))
         
         self.setUpCollectionView()
     }
@@ -33,9 +61,6 @@ class PlayVC: BaseVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         super.hideNavigationBar(true)
-        
-        let modeSelectionVC = DestinationView.modeSelectionVC()
-        modeSelectionVC.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -142,6 +167,13 @@ class PlayVC: BaseVC {
         self.isCardOpen = true
     }
     
+    func mainButton(colorHex: Int) -> FanMenuButton {
+        return FanMenuButton(
+            id: "main",
+            image: "",
+            color: Color(val: colorHex)
+        )
+    }
     
     // MARK: - Action
     @IBAction func onClickGoToModeSelectionVC(_ sender: Any) {
@@ -150,9 +182,6 @@ class PlayVC: BaseVC {
             cellCenter.imgCard.image = UIImage(named: "Card_Back")
             self.isCardOpen = false
         }
-        let modeSelectionVC = DestinationView.modeSelectionVC()
-        modeSelectionVC.delegate = self
-        self.navigationController?.pushViewController(modeSelectionVC, animated: true)
     }
     
     @IBAction func onClickPlay(_ sender: Any) {
@@ -181,9 +210,4 @@ extension PlayVC: UICollectionViewDataSource, UICollectionViewDelegate {
     
 }
 
-extension PlayVC : ModeSelectionVCDelegate {
-    func passMode(mode: String) {
-        Log.debug(mode)
-        self.playVM.changeMode(mode: mode)
-    }
-}
+

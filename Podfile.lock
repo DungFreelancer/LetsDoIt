@@ -1,24 +1,36 @@
 PODS:
+  - FanMenu (0.7.0):
+    - Macaw
   - GravitySliderFlowLayout (1.0)
   - IQKeyboardManagerSwift (6.0.3)
+  - Macaw (0.9.0):
+    - SWXMLHash
   - PKHUD (5.0.0)
+  - SWXMLHash (4.7.0)
 
 DEPENDENCIES:
+  - FanMenu
   - GravitySliderFlowLayout (~> 1.0)
   - IQKeyboardManagerSwift (~> 6.0)
   - PKHUD (~> 5.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - FanMenu
     - GravitySliderFlowLayout
     - IQKeyboardManagerSwift
+    - Macaw
     - PKHUD
+    - SWXMLHash
 
 SPEC CHECKSUMS:
+  FanMenu: aba7ad85e29d7cda4a34eddf5f0938b7ebd2ea9c
   GravitySliderFlowLayout: bb9ae6a302b85821c9e0271c00533fae8091143b
   IQKeyboardManagerSwift: 04e8679f85e496bb2c474eeb9284052f1b3c391c
+  Macaw: 6337ed621a73df10522eaab17f45c1ae0b753dc0
   PKHUD: 3c001512c6e002091184197a8de7a20420786e3b
+  SWXMLHash: f4522438189f72b41e39676d19469a8969d60dd1
 
-PODFILE CHECKSUM: b93353ca5cd1665a3ef75678f045ebe8a6a96d8d
+PODFILE CHECKSUM: e8d2c1c5b4720d62969f2d8d1d74d70b91a63cb8
 
 COCOAPODS: 1.5.2

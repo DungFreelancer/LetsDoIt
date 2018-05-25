@@ -31,7 +31,7 @@ class PlayVM {
     
     
     func cellRow() -> Int {
-        return Int(Int16.max)
+        return 30
     }
     
     func cellInstance(collectionView: UICollectionView, indexPath: IndexPath) -> CardCell {

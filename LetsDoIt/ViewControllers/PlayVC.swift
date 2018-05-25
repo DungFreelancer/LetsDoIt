@@ -25,7 +25,7 @@ class PlayVC: BaseVC {
     private var timerPlay: Timer?
     private var tempWidth: CGFloat = 0.0
     private var countLoop = 0
-    private var isCardOpen: Bool?
+    private var isCardOpen: Bool = true
     
     private let colors = [0x231FE4, 0x00BFB6, 0xFFC43D, 0xFF5F3D, 0xF34766]
     
@@ -67,7 +67,7 @@ class PlayVC: BaseVC {
         super.viewDidAppear(animated)
         
         // Move to the middle of the card list
-        self.clCard.scrollToItem(at: IndexPath(row: self.playVM.cellRow() / 2, section: 0),
+        self.clCard.scrollToItem(at: IndexPath(row: self.playVM.cellRow()/2, section: 0),
                                  at: .centeredHorizontally,
                                  animated: false)
         
@@ -115,9 +115,8 @@ class PlayVC: BaseVC {
             self.timerPlay = Timer.scheduledTimer(timeInterval: 0.016, target: self, selector: #selector(offsetCard), userInfo: nil, repeats: true)
         } else if self.countLoop == 1322 {
             self.deconfigAutoscrollTimer()
-            self.flipCard(at: self.playVM.randomIndexCard())
+            self.flipCard(at: 26)
           
-            
             let timeDelay = 2.0 // second unit
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + timeDelay, execute: {
                 self.showSaveMomentPopup()
@@ -158,13 +157,24 @@ class PlayVC: BaseVC {
     }
     
     func flipCard(at index: Int) {
-        let cardRandom = self.playVM.getCard(at: index)
-        let cellCenter = self.clCard.cellForItem(at: IndexPath(item: 16394, section: 0)) as! CardCell
+        guard let cellCenter = self.clCard.cellForItem(at: IndexPath(item: index, section: 0)) as? CardCell else {
+            // Fix crash for small screen
+            self.isCardOpen = false
+            return
+        }
         
-        UIView.transition(with: cellCenter, duration: 0.5, options: .transitionFlipFromLeft, animations: {
-            cellCenter.imgCard.image = cardRandom?.image
-        }, completion: nil)
-        self.isCardOpen = true
+        if self.isCardOpen {
+            UIView.transition(with: cellCenter, duration: 0.5, options: .transitionFlipFromRight, animations: {
+                cellCenter.imgCard.image = UIImage(named: "Card_Back")
+            }, completion: nil)
+            self.isCardOpen = false
+        } else {
+            let cardRandom = self.playVM.getCard(at: self.playVM.randomIndexCard())
+            UIView.transition(with: cellCenter, duration: 0.5, options: .transitionFlipFromLeft, animations: {
+                cellCenter.imgCard.image = cardRandom?.image
+            }, completion: nil)
+            self.isCardOpen = true
+        }
     }
     
     func mainButton(colorHex: Int) -> FanMenuButton {
@@ -177,23 +187,22 @@ class PlayVC: BaseVC {
     
     // MARK: - Action
     @IBAction func onClickGoToModeSelectionVC(_ sender: Any) {
-        if self.isCardOpen == true {
-             let cellCenter = self.clCard.cellForItem(at: IndexPath(item: 16394, section: 0)) as! CardCell
-            cellCenter.imgCard.image = UIImage(named: "Card_Back")
-            self.isCardOpen = false
-        }
+        self.flipCard(at: 26)
     }
     
     @IBAction func onClickPlay(_ sender: Any) {
         self.btnMode.isHidden = true
         self.btnPlay.isHidden = true
-        // Move to the middle of the card list
-        self.clCard.scrollToItem(at: IndexPath(row: self.playVM.cellRow() / 2, section: 0),
-                                 at: .centeredHorizontally,
-                                 animated: false)
-        
-        self.countLoop = 0
-        self.configAutoscrollTimer()
+        self.flipCard(at: 26)
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.6) {
+            // Move to the middle of the card list
+            self.clCard.scrollToItem(at: IndexPath(row: self.playVM.cellRow()/2, section: 0),
+                                     at: .centeredHorizontally,
+                                     animated: false)
+            
+            self.countLoop = 0
+            self.configAutoscrollTimer()
+        }
     }
 
 }

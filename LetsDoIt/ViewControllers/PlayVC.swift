@@ -25,7 +25,7 @@ class PlayVC: BaseVC {
     private var timerPlay: Timer?
     private var tempWidth: CGFloat = 0.0
     private var countLoop = 0
-    private var isCardOpen: Bool = true
+    private var isCardWillClose: Bool = true
     
     private let colors = [0x231FE4, 0x00BFB6, 0xFFC43D, 0xFF5F3D, 0xF34766]
     
@@ -159,21 +159,21 @@ class PlayVC: BaseVC {
     func flipCard(at index: Int) {
         guard let cellCenter = self.clCard.cellForItem(at: IndexPath(item: index, section: 0)) as? CardCell else {
             // Fix crash for small screen
-            self.isCardOpen = false
+            self.isCardWillClose = false
             return
         }
         
-        if self.isCardOpen {
+        if self.isCardWillClose {
             UIView.transition(with: cellCenter, duration: 0.5, options: .transitionFlipFromRight, animations: {
                 cellCenter.imgCard.image = UIImage(named: "Card_Back")
             }, completion: nil)
-            self.isCardOpen = false
+            self.isCardWillClose = false
         } else {
             let cardRandom = self.playVM.getCard(at: self.playVM.randomIndexCard())
             UIView.transition(with: cellCenter, duration: 0.5, options: .transitionFlipFromLeft, animations: {
                 cellCenter.imgCard.image = cardRandom?.image
             }, completion: nil)
-            self.isCardOpen = true
+            self.isCardWillClose = true
         }
     }
     
@@ -187,12 +187,14 @@ class PlayVC: BaseVC {
     
     // MARK: - Action
     @IBAction func onClickGoToModeSelectionVC(_ sender: Any) {
+        self.isCardWillClose = true
         self.flipCard(at: 26)
     }
     
     @IBAction func onClickPlay(_ sender: Any) {
         self.btnMode.isHidden = true
         self.btnPlay.isHidden = true
+        self.isCardWillClose = true
         self.flipCard(at: 26)
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.6) {
             // Move to the middle of the card list

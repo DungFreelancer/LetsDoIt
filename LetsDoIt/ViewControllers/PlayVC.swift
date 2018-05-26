@@ -154,6 +154,11 @@ class PlayVC: BaseVC {
         //adjust btnMenu
         btnMenu.buttonColor = UIColor.clear
         btnMenu.buttonImage = UIImage(named: "galaxy")
+        btnMenu.verticalDirection = .down
+        
+        //adjust location btnMenu
+        btnMenu.paddingX = 14
+        btnMenu.paddingY = 500
         
         //add item to btnMenu
         btnMenu.addItem(icon: UIImage(named: "chicken")) { (item) in
@@ -191,7 +196,6 @@ class PlayVC: BaseVC {
             self.configAutoscrollTimer()
         }
     }
-
 }
 
 extension PlayVC: UICollectionViewDataSource, UICollectionViewDelegate {

@@ -9,29 +9,28 @@
 import UIKit
 
 protocol CardSelectionDelegate: class {
-    func passCustomCard(_ arrCard: [Card])
+    func passCustomCards(_ arrCard: [Card])
 }
 
 class CardSelectionVC: BaseVC {
     
     @IBOutlet weak var clCard: UICollectionView!
     
-    
     let cardSelectionVM = CardSelectionVM()
     var selectedCellRow: Int?
     weak var delegate: CardSelectionDelegate?
-    
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(handlerDone))
-        
         self.setUpCollectionView()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done".localized(),
+                                                            style: .plain,
+                                                            target: self,
+                                                            action: #selector(handlerDone))
         
         HUDHelper.showLoading()
-        
         self.cardSelectionVM.loadCards { [weak self] (isSuccess) in
             HUDHelper.hideLoading()
             if isSuccess {
@@ -61,7 +60,7 @@ class CardSelectionVC: BaseVC {
     }
     
     @objc private func handlerDone() {
-        self.delegate?.passCustomCard(cardSelectionVM.arrCard)
+        self.delegate?.passCustomCards(cardSelectionVM.getCards())
         self.navigationController?.popViewController(animated: true)
     }
 }
@@ -103,6 +102,7 @@ extension CardSelectionVC : UICollectionViewDataSource, UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsetsMake(0, 20, 0, 20)
     }
+    
 }
 
 extension CardSelectionVC: CardVCDelegate {
@@ -116,4 +116,5 @@ extension CardSelectionVC: CardVCDelegate {
             HUDHelper.hideLoading()
         }
     }
+    
 }

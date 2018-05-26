@@ -20,6 +20,7 @@
 
 // MARK: - CardSelectionVC
 
+"Done" = "Done";
 
 // MARK: - CardVC
 
@@ -34,7 +35,7 @@
 "Snapshot" = "Snapshot";
 "Camera is not available!!!" = "Camera is not available!!!";
 "Short Video" = "Short Video";
-"Camera is not available!!!" = "Camera is not available!!!";
 
 // MARK: - CardCell
+
 "Delete" = "Delete";

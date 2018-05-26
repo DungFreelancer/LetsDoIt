@@ -46,6 +46,7 @@ class RecordVC: BaseVC {
 }
 
 extension RecordVC:UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         //
     }
@@ -53,5 +54,6 @@ extension RecordVC:UIImagePickerControllerDelegate, UINavigationControllerDelega
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
+    
 }
 

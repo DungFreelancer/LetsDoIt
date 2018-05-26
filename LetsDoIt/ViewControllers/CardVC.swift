@@ -18,7 +18,6 @@ class CardVC: BaseVC {
     @IBOutlet weak var txtTitle: UITextField!
     
     var cardDefault: Card?
-    
     weak var delegate: CardVCDelegate?
     
     // MARK: - Lifecycle

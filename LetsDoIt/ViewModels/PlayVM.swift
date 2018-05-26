@@ -15,7 +15,7 @@ enum Mode: String {
 
 class PlayVM {
     
-    internal var arrCard: Array<Card> = [Card(image: UIImage(named: "Card_Beer")!, title: "Default"),
+    private var arrCard: Array<Card> = [Card(image: UIImage(named: "Card_Beer")!, title: "Default"),
                                         Card(image: UIImage(named: "Card_Cry")!, title: "Default"),
                                         Card(image: UIImage(named: "Card_Laugh")!, title: "Default"),
                                         Card(image: UIImage(named: "Card_Run")!, title: "Default"),
@@ -32,8 +32,6 @@ class PlayVM {
                                              Card(image: UIImage(named: "wines")!, title: "2 glasses of wine"),
                                              Card(image: UIImage(named: "Card_Run")!, title: "Default"),
                                              Card(image: UIImage(named: "Card_Sing")!, title: "Default")]
-    
-    
     
     func cellRow() -> Int {
         return 30
@@ -55,6 +53,21 @@ class PlayVM {
         return self.arrCard[index]
     }
     
+    func changeCard(at index: Int, with card: Card) {
+        guard 0 <= index && index < self.arrCard.count else {
+            Log.error("Index out of range!!!")
+            return
+        }
+        
+        self.arrCard[index] = card
+    }
+    
+    func changeToCards(_ cards: [Card]) {
+        for i in 0 ..< self.arrCard.count {
+            self.changeCard(at: i, with: cards[i])
+        }
+    }
+    
     func changeMode(mode: Mode){
         switch mode {
         case .Chicken:
@@ -65,8 +78,7 @@ class PlayVM {
             self.arrCard = arrAlienCard
         }
     }
-
-  
+    
     func randomIndexCard() -> Int {
         return Int(arc4random_uniform(UInt32(NUMBER_CARD)))
     }

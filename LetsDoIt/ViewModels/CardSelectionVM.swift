@@ -10,7 +10,7 @@ import UIKit
 
 class CardSelectionVM {
     
-    internal var arrCard: Array<Card> = [Card(image: UIImage(named: "Card_Back")!, title: "Default"),
+    private var arrCard: Array<Card> = [Card(image: UIImage(named: "Card_Back")!, title: "Default"),
                                         Card(image: UIImage(named: "Card_Back")!, title: "Default"),
                                         Card(image: UIImage(named: "Card_Back")!, title: "Default"),
                                         Card(image: UIImage(named: "Card_Back")!, title: "Default"),
@@ -36,6 +36,10 @@ class CardSelectionVM {
         return self.arrCard[index]
     }
     
+    func getCards() -> [Card] {
+        return self.arrCard
+    }
+    
     func changeCard(at index: Int, with card: Card) {
         guard 0 <= index && index < self.arrCard.count else {
             Log.error("Index out of range!!!")
@@ -43,6 +47,12 @@ class CardSelectionVM {
         }
         
         self.arrCard[index] = card
+    }
+    
+    func changeToCards(_ cards: [Card]) {
+        for i in 0 ..< self.arrCard.count {
+            self.changeCard(at: i, with: cards[i])
+        }
     }
     
     func resetCardToDefault(at index:Int) {
@@ -87,6 +97,7 @@ class CardSelectionVM {
                 }
                 return
             }
+            
             self.arrCard = try! JSONDecoder().decode([Card].self, from: dataCards)
             if let completion = completion {
                 DispatchQueue.main.async {

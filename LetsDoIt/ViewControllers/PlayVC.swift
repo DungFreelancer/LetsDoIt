@@ -27,7 +27,7 @@ class PlayVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        addBtnMenuAndItem()
+        self.addBtnMenu()
         self.setUpCollectionView()
     }
     
@@ -66,28 +66,63 @@ class PlayVC: BaseVC {
         self.clCard.collectionViewLayout = sliderLayout
     }
     
-    func configAutoscrollTimer() {
+    private func addBtnMenu() {
+        //adjust btnMenu
+        self.btnMenu.buttonColor = UIColor.clear
+        self.btnMenu.buttonImage = UIImage(named: "galaxy")
+        self.btnMenu.verticalDirection = .down
+        
+        //adjust location btnMenu
+        self.btnMenu.paddingX = 8
+        self.btnMenu.paddingY = SCREEN_SIZE.height - self.btnMenu.frame.height - 26
+        
+        //add item to btnMenu
+        self.btnMenu.addItem(icon: UIImage(named: "chicken")) { (item) in
+            if self.isCardWillClose {
+                self.flipCard(at: 26)
+            }
+            self.playVM.changeMode(mode: .Chicken)
+        }
+        self.btnMenu.addItem(icon: UIImage(named: "alien")) { (item) in
+            if self.isCardWillClose {
+                self.flipCard(at: 26)
+            }
+            self.playVM.changeMode(mode: .Alien)
+        }
+        self.btnMenu.addItem(icon: UIImage(named: "gears")) { (item) in
+            if self.isCardWillClose {
+                self.flipCard(at: 26)
+            }
+            let vc = DestinationView.cardSelectionVC()
+            vc.delegate = self
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        
+        self.view.addSubview(self.btnMenu)
+    }
+    
+    func configAutosScrollTimer() {
         self.countLoop += 1
         
         if self.countLoop == 1 {
             self.timerPlay = Timer.scheduledTimer(timeInterval: 0.001, target: self, selector: #selector(offsetCard), userInfo: nil, repeats: true)
         } else if self.countLoop == 500 {
-            self.deconfigAutoscrollTimer()
+            self.deconfigAutoScrollTimer()
             self.timerPlay = Timer.scheduledTimer(timeInterval: 0.002, target: self, selector: #selector(offsetCard), userInfo: nil, repeats: true)
         } else if self.countLoop == 900 {
-            self.deconfigAutoscrollTimer()
+            self.deconfigAutoScrollTimer()
             self.timerPlay = Timer.scheduledTimer(timeInterval: 0.004, target: self, selector: #selector(offsetCard), userInfo: nil, repeats: true)
         } else if self.countLoop == 1100 {
-            self.deconfigAutoscrollTimer()
+            self.deconfigAutoScrollTimer()
             self.timerPlay = Timer.scheduledTimer(timeInterval: 0.007, target: self, selector: #selector(offsetCard), userInfo: nil, repeats: true)
         } else if self.countLoop == 1200 {
-            self.deconfigAutoscrollTimer()
+            self.deconfigAutoScrollTimer()
             self.timerPlay = Timer.scheduledTimer(timeInterval: 0.011, target: self, selector: #selector(offsetCard), userInfo: nil, repeats: true)
         } else if self.countLoop == 1250 {
-            self.deconfigAutoscrollTimer()
+            self.deconfigAutoScrollTimer()
             self.timerPlay = Timer.scheduledTimer(timeInterval: 0.016, target: self, selector: #selector(offsetCard), userInfo: nil, repeats: true)
         } else if self.countLoop == 1322 {
-            self.deconfigAutoscrollTimer()
+            self.deconfigAutoScrollTimer()
             self.flipCard(at: 26)
           
             let timeDelay = 2.0 // second unit
@@ -99,7 +134,7 @@ class PlayVC: BaseVC {
         }
     }
     
-    func deconfigAutoscrollTimer() {
+    func deconfigAutoScrollTimer() {
         self.timerPlay?.invalidate()
         self.timerPlay = nil
     }
@@ -120,7 +155,7 @@ class PlayVC: BaseVC {
             tempWidth = clCard.contentOffset.x
         }
         
-        self.configAutoscrollTimer()
+        self.configAutosScrollTimer()
     }
     
     @objc func showSaveMomentPopup() {
@@ -149,39 +184,8 @@ class PlayVC: BaseVC {
             self.isCardWillClose = true
         }
     }
-    
-    private func addBtnMenuAndItem() {
-        //adjust btnMenu
-        btnMenu.buttonColor = UIColor.clear
-        btnMenu.buttonImage = UIImage(named: "galaxy")
-        btnMenu.verticalDirection = .down
-        
-        //adjust location btnMenu
-        btnMenu.paddingX = 14
-        btnMenu.paddingY = 500
-        
-        //add item to btnMenu
-        btnMenu.addItem(icon: UIImage(named: "chicken")) { (item) in
-            self.playVM.changeMode(mode: Mode(rawValue: "Chicken")!)
-        }
-        btnMenu.addItem(icon: UIImage(named: "alien")) { (item) in
-            self.playVM.changeMode(mode: Mode(rawValue: "Alien")!)
-        }
-        btnMenu.addItem(icon: UIImage(named: "gears")) { (item) in
-            let vc = DestinationView.cardSelectionVC()
-            vc.delegate = self
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
-        
-        self.view.addSubview(btnMenu)
-    }
    
     // MARK: - Action
-    @IBAction func onClickGoToModeSelectionVC(_ sender: Any) {
-        self.isCardWillClose = true
-        self.flipCard(at: 26)
-    }
-    
     @IBAction func onClickPlay(_ sender: Any) {
         self.btnMenu.isHidden = true
         self.btnPlay.isHidden = true
@@ -194,9 +198,10 @@ class PlayVC: BaseVC {
                                      animated: false)
             
             self.countLoop = 0
-            self.configAutoscrollTimer()
+            self.configAutosScrollTimer()
         }
     }
+    
 }
 
 extension PlayVC: UICollectionViewDataSource, UICollectionViewDelegate {
@@ -211,10 +216,12 @@ extension PlayVC: UICollectionViewDataSource, UICollectionViewDelegate {
     
 }
 extension PlayVC: CardSelectionDelegate {
-    func passCustomCard(_ arrCard: [Card]) {
-        self.playVM.arrCard = arrCard
+    
+    func passCustomCards(_ arrCard: [Card]) {
+        self.playVM.changeToCards(arrCard)
         clCard.reloadData()
     }
+    
 }
 
 

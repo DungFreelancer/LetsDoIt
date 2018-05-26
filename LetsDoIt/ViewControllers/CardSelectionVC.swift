@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol CardSelectionDelegate: class {
+    func passCustomCard(_ arrCard: [Card])
+}
+
 class CardSelectionVC: BaseVC {
     
     @IBOutlet weak var clCard: UICollectionView!
@@ -15,10 +19,14 @@ class CardSelectionVC: BaseVC {
     
     let cardSelectionVM = CardSelectionVM()
     var selectedCellRow: Int?
+    weak var delegate: CardSelectionDelegate?
+    
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(handlerDone))
         
         self.setUpCollectionView()
         
@@ -52,6 +60,10 @@ class CardSelectionVC: BaseVC {
         }
     }
     
+    @objc private func handlerDone() {
+        self.delegate?.passCustomCard(cardSelectionVM.arrCard)
+        self.navigationController?.popViewController(animated: true)
+    }
 }
 
 extension CardSelectionVC : UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -103,7 +115,5 @@ extension CardSelectionVC: CardVCDelegate {
         self.cardSelectionVM.saveCards { (isSuccess) in
             HUDHelper.hideLoading()
         }
-        
     }
-
 }

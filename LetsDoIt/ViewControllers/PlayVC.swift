@@ -169,6 +169,7 @@ class PlayVC: BaseVC {
         }
         btnMenu.addItem(icon: UIImage(named: "gears")) { (item) in
             let vc = DestinationView.cardSelectionVC()
+            vc.delegate = self
             self.navigationController?.pushViewController(vc, animated: true)
         }
         
@@ -208,6 +209,12 @@ extension PlayVC: UICollectionViewDataSource, UICollectionViewDelegate {
         return self.playVM.cellInstance(collectionView: collectionView, indexPath: indexPath)
     }
     
+}
+extension PlayVC: CardSelectionDelegate {
+    func passCustomCard(_ arrCard: [Card]) {
+        self.playVM.arrCard = arrCard
+        clCard.reloadData()
+    }
 }
 
 

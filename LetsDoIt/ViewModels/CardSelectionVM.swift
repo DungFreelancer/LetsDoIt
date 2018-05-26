@@ -10,7 +10,7 @@ import UIKit
 
 class CardSelectionVM {
     
-    private var arrCard: Array<Card> = [Card(image: UIImage(named: "Card_Back")!, title: "Default"),
+    internal var arrCard: Array<Card> = [Card(image: UIImage(named: "Card_Back")!, title: "Default"),
                                         Card(image: UIImage(named: "Card_Back")!, title: "Default"),
                                         Card(image: UIImage(named: "Card_Back")!, title: "Default"),
                                         Card(image: UIImage(named: "Card_Back")!, title: "Default"),

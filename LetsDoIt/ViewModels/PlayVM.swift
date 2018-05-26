@@ -15,7 +15,7 @@ enum Mode: String {
 
 class PlayVM {
     
-    private var arrCard: Array<Card> = [Card(image: UIImage(named: "Card_Beer")!, title: "Default"),
+    internal var arrCard: Array<Card> = [Card(image: UIImage(named: "Card_Beer")!, title: "Default"),
                                         Card(image: UIImage(named: "Card_Cry")!, title: "Default"),
                                         Card(image: UIImage(named: "Card_Laugh")!, title: "Default"),
                                         Card(image: UIImage(named: "Card_Run")!, title: "Default"),
@@ -65,7 +65,8 @@ class PlayVM {
             self.arrCard = arrAlienCard
         }
     }
-    
+
+  
     func randomIndexCard() -> Int {
         return Int(arc4random_uniform(UInt32(NUMBER_CARD)))
     }

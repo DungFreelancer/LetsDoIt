@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum Mode: String {
+    case Chicken = "Chicken"
+    case Alien = "Alien"
+}
+
 class PlayVM {
     
     private var arrCard: Array<Card> = [Card(image: UIImage(named: "Card_Beer")!, title: "Default"),
@@ -16,13 +21,13 @@ class PlayVM {
                                         Card(image: UIImage(named: "Card_Run")!, title: "Default"),
                                         Card(image: UIImage(named: "Card_Sing")!, title: "Default")]
     
-    private var arrNormalMode: Array<Card> = [Card(image: UIImage(named: "beer")!, title: "A glass of beer"),
+    private var arrChickenCard: Array<Card> = [Card(image: UIImage(named: "beer")!, title: "A glass of beer"),
                                               Card(image: UIImage(named: "beers")!, title: "1 shot"),
                                               Card(image: UIImage(named: "wine")!, title: "A glass of wine"),
                                               Card(image: UIImage(named: "wines")!, title: "Default"),
                                               Card(image: UIImage(named: "Card_Sing")!, title: "Default")]
     
-    private var arrCrazyMode: Array<Card> = [Card(image: UIImage(named: "beers")!, title: "2 beers"),
+    private var arrAlienCard: Array<Card> = [Card(image: UIImage(named: "beers")!, title: "2 beers"),
                                              Card(image: UIImage(named: "shot")!, title: "2 shot"),
                                              Card(image: UIImage(named: "wines")!, title: "2 glasses of wine"),
                                              Card(image: UIImage(named: "Card_Run")!, title: "Default"),
@@ -50,13 +55,14 @@ class PlayVM {
         return self.arrCard[index]
     }
     
-    func changeMode(mode: String){
-        if mode == "Normal" {
-            self.arrCard = self.arrNormalMode
-        } else if mode == "Crazy" {
-            self.arrCard = self.arrCrazyMode
-        } else {
-            Log.debug("Custom")
+    func changeMode(mode: Mode){
+        switch mode {
+        case .Chicken:
+            Log.debug("Chicken Mode")
+            self.arrCard = arrChickenCard
+        case .Alien:
+            Log.debug("Alien Mode")
+            self.arrCard = arrAlienCard
         }
     }
     

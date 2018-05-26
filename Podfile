@@ -9,7 +9,7 @@ target 'LetsDoIt' do
   
   pod 'PKHUD', '~> 5.0'
   
-  pod 'FanMenu', '~>0.7.0'
+  pod "Floaty", "~> 4.0.0"
   
   
 

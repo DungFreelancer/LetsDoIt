@@ -9,52 +9,25 @@
 import UIKit
 import MobileCoreServices
 import GravitySliderFlowLayout
-import Macaw
-import FanMenu
+import Floaty
 
 class PlayVC: BaseVC {
     
     @IBOutlet weak var clCard: UICollectionView!
-    @IBOutlet weak var btnMode: UIButton!
     @IBOutlet weak var btnPlay: UIButton!
     
-    @IBOutlet weak var fanMenu: FanMenu!
-    
-    
+    private var btnMenu = Floaty()
     private let playVM = PlayVM()
     private var timerPlay: Timer?
     private var tempWidth: CGFloat = 0.0
     private var countLoop = 0
     private var isCardWillClose: Bool = true
     
-    private let colors = [0x231FE4, 0x00BFB6, 0xFFC43D, 0xFF5F3D, 0xF34766]
-    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        fanMenu.button = mainButton(colorHex: 0x7C93FE)
-        fanMenu.items = colors.enumerated().map { (index,item) in
-            FanMenuButton(
-                id: String(index), image: "", color: Color(val: item)
-            )
-        }
-        fanMenu.menuRadius = 20.0
-        fanMenu.duration = 0.2
-        fanMenu.interval = (Double.pi, 2 * Double.pi)
-        fanMenu.radius = 15.0
-        
-        fanMenu.onItemWillClick = { button in
-            if button.id != "main" {
-                let newColor = self.colors[Int(button.id)!]
-                let fanGroup = self.fanMenu.node as? Group
-                let circleGroup = fanGroup?.contents[2] as? Group
-                let shape = circleGroup?.contents[0] as? Shape
-                shape?.fill = Color(val: newColor)
-            }
-        }
-        fanMenu.transform = CGAffineTransform(rotationAngle: CGFloat(3 * Double.pi/2.0))
-        
+
+        addBtnMenuAndItem()
         self.setUpCollectionView()
     }
     
@@ -120,7 +93,7 @@ class PlayVC: BaseVC {
             let timeDelay = 2.0 // second unit
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + timeDelay, execute: {
                 self.showSaveMomentPopup()
-                self.btnMode.isHidden = false
+                self.btnMenu.isHidden = false
                 self.btnPlay.isHidden = false
             })
         }
@@ -177,14 +150,26 @@ class PlayVC: BaseVC {
         }
     }
     
-    func mainButton(colorHex: Int) -> FanMenuButton {
-        return FanMenuButton(
-            id: "main",
-            image: "",
-            color: Color(val: colorHex)
-        )
+    private func addBtnMenuAndItem() {
+        //adjust btnMenu
+        btnMenu.buttonColor = UIColor.clear
+        btnMenu.buttonImage = UIImage(named: "galaxy")
+        
+        //add item to btnMenu
+        btnMenu.addItem(icon: UIImage(named: "chicken")) { (item) in
+            self.playVM.changeMode(mode: Mode(rawValue: "Chicken")!)
+        }
+        btnMenu.addItem(icon: UIImage(named: "alien")) { (item) in
+            self.playVM.changeMode(mode: Mode(rawValue: "Alien")!)
+        }
+        btnMenu.addItem(icon: UIImage(named: "gears")) { (item) in
+            let vc = DestinationView.cardSelectionVC()
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        
+        self.view.addSubview(btnMenu)
     }
-    
+   
     // MARK: - Action
     @IBAction func onClickGoToModeSelectionVC(_ sender: Any) {
         self.isCardWillClose = true
@@ -192,7 +177,7 @@ class PlayVC: BaseVC {
     }
     
     @IBAction func onClickPlay(_ sender: Any) {
-        self.btnMode.isHidden = true
+        self.btnMenu.isHidden = true
         self.btnPlay.isHidden = true
         self.isCardWillClose = true
         self.flipCard(at: 26)

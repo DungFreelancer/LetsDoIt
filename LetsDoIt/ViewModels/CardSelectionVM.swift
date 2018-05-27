@@ -64,6 +64,15 @@ class CardSelectionVM {
         self.arrCard[index] = Card(image: UIImage(named: "Card_Back")!, title: "Default")
     }
     
+    func isValidCards() -> Bool {
+        for card in self.arrCard {
+            if card.image == UIImage(named: "Card_Back")! {
+                return false
+            }
+        }
+        return true
+    }
+    
     func saveCards(_ completion:((_ isSuccess: Bool)->())? = nil) {
         DispatchQueue.global().async {
             guard let dataCards: Data = try? JSONEncoder().encode(self.arrCard) else {

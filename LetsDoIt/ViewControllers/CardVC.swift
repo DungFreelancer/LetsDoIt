@@ -30,6 +30,7 @@ class CardVC: BaseVC {
         self.imgCard.image = self.cardDefault?.image
         self.imgCard.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleImageCard)))
         self.imgCard.isUserInteractionEnabled = true
+        self.imgCard.setBorderWithRadius(5.0, color: UIColor.clear)
     }
     
     // MARK: - Action
@@ -70,7 +71,7 @@ extension CardVC: UIImagePickerControllerDelegate, UINavigationControllerDelegat
         }
         
         if let selectedImage = selectedImageFromPicker {
-            self.imgCard.image = selectedImage
+            self.imgCard.image = selectedImage.resizing()
         }
         picker.dismiss(animated: true, completion: nil)
     }

@@ -33,3 +33,5 @@ var IOS: Int {
 let NUMBER_CARD: Int = 5
 
 let ARRAY_CARD: String = "ARRAY_CARD"
+
+let CURRENT_MODE: String = "CURRENT_MODE"

@@ -29,6 +29,12 @@ class PlayVC: BaseVC {
 
         self.addBtnMenu()
         self.setUpCollectionView()
+        
+        HUDHelper.showLoading()
+        self.playVM.changeMode(mode: self.playVM.currentMode) { [weak self] (isSuccess) in
+            HUDHelper.hideLoading()
+            self?.clCard.reloadData()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,9 +46,11 @@ class PlayVC: BaseVC {
         super.viewDidAppear(animated)
         
         // Move to the middle of the card list
-        self.clCard.scrollToItem(at: IndexPath(row: self.playVM.cellRow()/2, section: 0),
-                                 at: .centeredHorizontally,
-                                 animated: false)
+        if self.playVM.cellRow() > 0 {
+            self.clCard.scrollToItem(at: IndexPath(row: self.playVM.cellRow()/2, section: 0),
+                                     at: .centeredHorizontally,
+                                     animated: false)
+        }
         
     }
     
@@ -219,7 +227,7 @@ extension PlayVC: CardSelectionDelegate {
     
     func passCustomCards(_ arrCard: [Card]) {
         self.playVM.changeToCards(arrCard)
-        clCard.reloadData()
+        self.playVM.currentMode = .Custom
     }
     
 }

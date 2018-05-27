@@ -20,7 +20,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Card_Back" translatesAutoresizingMaskIntoConstraints="NO" id="ad0-hz-OMh">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Card_Back" translatesAutoresizingMaskIntoConstraints="NO" id="ad0-hz-OMh">
                                 <rect key="frame" x="58" y="149.5" width="260" height="388.5"/>
                                 <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -59,6 +59,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Card_Back" width="450" height="671"/>
+        <image name="Card_Back" width="225" height="335"/>
     </resources>
 </document>

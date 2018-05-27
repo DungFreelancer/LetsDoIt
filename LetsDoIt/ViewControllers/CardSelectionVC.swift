@@ -60,8 +60,12 @@ class CardSelectionVC: BaseVC {
     }
     
     @objc private func handlerDone() {
-        self.delegate?.passCustomCards(cardSelectionVM.getCards())
-        self.navigationController?.popViewController(animated: true)
+        if self.cardSelectionVM.isValidCards() {
+            self.delegate?.passCustomCards(cardSelectionVM.getCards())
+            self.navigationController?.popViewController(animated: true)
+        } else {
+            AlertHelper.showPopup(on: self, title: "", message: "The Custom mode must have 5 cards".localized(), mainButton: "OK".localized(), mainComplete: {_ in })
+        }
     }
 }
 

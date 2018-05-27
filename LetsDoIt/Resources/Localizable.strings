@@ -20,6 +20,8 @@
 
 // MARK: - CardSelectionVC
 
+"The Custom mode must have 5 cards" = "The Custom mode must have 5 cards";
+
 "Done" = "Done";
 
 // MARK: - CardVC

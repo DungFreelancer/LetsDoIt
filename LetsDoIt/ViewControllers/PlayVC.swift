@@ -70,7 +70,7 @@ class PlayVC: BaseVC {
         self.clCard.delegate = self
         self.clCard.isScrollEnabled = false
         
-        let sliderLayout = GravitySliderFlowLayout(with: CGSize(width: 200, height: 345))
+        let sliderLayout = GravitySliderFlowLayout(with: CGSize(width: CARD_SIZE.width, height: CARD_SIZE.height))
         self.clCard.collectionViewLayout = sliderLayout
     }
     

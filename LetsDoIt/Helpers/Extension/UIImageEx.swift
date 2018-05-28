@@ -17,7 +17,7 @@ extension UIImage {
     }
     
     func resizing() -> UIImage {
-        let newHeight = CGFloat(345)
+        let newHeight = CGFloat(CARD_SIZE.height)
         let scale = newHeight / self.size.height
         let newWidth = self.size.width * scale
         UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))

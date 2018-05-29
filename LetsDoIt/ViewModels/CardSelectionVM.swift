@@ -10,11 +10,11 @@ import UIKit
 
 class CardSelectionVM {
     
-    private var arrCard: Array<Card> = [Card(image: UIImage(named: "Card_Back")!, title: "Default"),
-                                        Card(image: UIImage(named: "Card_Back")!, title: "Default"),
-                                        Card(image: UIImage(named: "Card_Back")!, title: "Default"),
-                                        Card(image: UIImage(named: "Card_Back")!, title: "Default"),
-                                        Card(image: UIImage(named: "Card_Back")!, title: "Default")]
+    private var arrCard: Array<Card> = [Card(title: "Default", image: nil),
+                                        Card(title: "Default", image: nil),
+                                        Card(title: "Default", image: nil),
+                                        Card(title: "Default", image: nil),
+                                        Card(title: "Default", image: nil)]
     
     func cellRow() -> Int {
         return self.arrCard.count
@@ -22,7 +22,8 @@ class CardSelectionVM {
     
     func cellInstance(collectionView: UICollectionView, indexPath: IndexPath) -> CardCell {
         let cell: CardCell = collectionView.dequeueReusableCell(withReuseIdentifier: CardCell.cellID, for: indexPath) as! CardCell
-        cell.updateUI(image: self.arrCard[indexPath.row].image, title: self.arrCard[indexPath.row].title, canDelete: true)
+        cell.updateUI(image: self.arrCard[indexPath.row].image ?? UIImage(named: "Card_Back")!,
+                      title: self.arrCard[indexPath.row].title, canDelete: true)
         
         return cell
     }
@@ -61,12 +62,12 @@ class CardSelectionVM {
             return
         }
         
-        self.arrCard[index] = Card(image: UIImage(named: "Card_Back")!, title: "Default")
+        self.arrCard[index] = Card(title: "Default", image: nil)
     }
     
     func isValidCards() -> Bool {
         for card in self.arrCard {
-            if card.image == UIImage(named: "Card_Back")! {
+            if card.image == nil {
                 return false
             }
         }

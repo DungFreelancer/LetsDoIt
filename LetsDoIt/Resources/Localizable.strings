@@ -30,6 +30,7 @@
 "Camera" = "Camera";
 "Camera is not available!!!" = "Camera is not available!!!";
 "Photo Library" = "Photo Library";
+"Please add the title and take a picture first" = "Please add the title and take a picture first";
 
 // MARK: - RecordVC
 

@@ -16,23 +16,23 @@ enum Mode: String {
 
 class PlayVM {
     
-    private var arrCard: Array<Card> = [Card(image: UIImage(named: "Card_Back")!, title: "Default"),
-                                        Card(image: UIImage(named: "Card_Back")!, title: "Default"),
-                                        Card(image: UIImage(named: "Card_Back")!, title: "Default"),
-                                        Card(image: UIImage(named: "Card_Back")!, title: "Default"),
-                                        Card(image: UIImage(named: "Card_Back")!, title: "Default")]
+    private var arrCard: Array<Card> = [Card(title: "Default", image: nil),
+                                        Card(title: "Default", image: nil),
+                                        Card(title: "Default", image: nil),
+                                        Card(title: "Default", image: nil),
+                                        Card(title: "Default", image: nil)]
 
-    private var arrChickenCard: Array<Card> = [Card(image: UIImage(named: "beer")!, title: "A glass of beer"),
-                                              Card(image: UIImage(named: "beers")!, title: "1 shot"),
-                                              Card(image: UIImage(named: "wine")!, title: "A glass of wine"),
-                                              Card(image: UIImage(named: "wines")!, title: "Default"),
-                                              Card(image: UIImage(named: "Card_Sing")!, title: "Default")]
+    private var arrChickenCard: Array<Card> = [Card(title: "A glass of beer", image: UIImage(named: "beer")!),
+                                               Card(title: "A glass of beer", image: UIImage(named: "beer")!),
+                                               Card(title: "A glass of beer", image: UIImage(named: "beer")!),
+                                               Card(title: "A glass of beer", image: UIImage(named: "beer")!),
+                                               Card(title: "A glass of beer", image: UIImage(named: "beer")!)]
     
-    private var arrAlienCard: Array<Card> = [Card(image: UIImage(named: "beers")!, title: "2 beers"),
-                                             Card(image: UIImage(named: "shot")!, title: "2 shot"),
-                                             Card(image: UIImage(named: "wines")!, title: "2 glasses of wine"),
-                                             Card(image: UIImage(named: "Card_Run")!, title: "Default"),
-                                             Card(image: UIImage(named: "Card_Sing")!, title: "Default")]
+    private var arrAlienCard: Array<Card> = [Card(title: "2 glasses of wine", image: UIImage(named: "wines")!),
+                                             Card(title: "2 glasses of wine", image: UIImage(named: "wines")!),
+                                             Card(title: "2 glasses of wine", image: UIImage(named: "wines")!),
+                                             Card(title: "2 glasses of wine", image: UIImage(named: "wines")!),
+                                             Card(title: "2 glasses of wine", image: UIImage(named: "wines")!)]
     
     var currentMode: Mode {
         get {

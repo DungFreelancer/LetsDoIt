@@ -27,7 +27,7 @@ class CardVC: BaseVC {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(onClickAdd))
         
         self.txtTitle.text = self.cardDefault?.title
-        self.imgCard.image = self.cardDefault?.image
+        self.imgCard.image = self.cardDefault?.image ?? UIImage(named: "Card_Back")
         self.imgCard.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleImageCard)))
         self.imgCard.isUserInteractionEnabled = true
         self.imgCard.setBorderWithRadius(5.0, color: UIColor.clear)
@@ -52,8 +52,13 @@ class CardVC: BaseVC {
     }
     
     @objc func onClickAdd() {
-        self.delegate?.passCard(Card(image: self.imgCard.image!,
-                                     title: self.txtTitle.text!))
+        if self.txtTitle.text == "" || self.cardDefault?.image == nil {
+            AlertHelper.showPopup(on: self, title: "", message: "Please add the title and take a picture first".localized(), mainButton: "OK".localized(), mainComplete: {_ in })
+            return
+        }
+        
+        self.cardDefault?.title = self.txtTitle.text!
+        self.delegate?.passCard(self.cardDefault!)
         self.navigationController?.popViewController(animated: true)
     }
 
@@ -71,7 +76,8 @@ extension CardVC: UIImagePickerControllerDelegate, UINavigationControllerDelegat
         }
         
         if let selectedImage = selectedImageFromPicker {
-            self.imgCard.image = selectedImage.resizing()
+            self.cardDefault?.image = selectedImage.resizing()
+            self.imgCard.image = self.cardDefault?.image
         }
         picker.dismiss(animated: true, completion: nil)
     }

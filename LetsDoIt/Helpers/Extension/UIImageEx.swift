@@ -10,21 +10,23 @@ import UIKit
 
 extension UIImage {
     
-    static func ==(_ left: UIImage,_ right: UIImage) -> Bool {
-        let leftData: Data = UIImagePNGRepresentation(left.resizing())!
-        let rightData: Data = UIImagePNGRepresentation(right.resizing())!
-        return leftData == rightData
-    }
-    
     func resizing() -> UIImage {
-        let newHeight = CGFloat(CARD_SIZE.height)
-        let scale = newHeight / self.size.height
-        let newWidth = self.size.width * scale
-        UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
-        self.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
-        let newData = UIImageJPEGRepresentation(UIGraphicsGetImageFromCurrentImageContext()!, 0.5)
-        let newImage = UIImage(data: newData!)
+        let scale = max(CARD_SIZE.width / self.size.width,
+                        CARD_SIZE.height / self.size.height)
+        let newSize = CGSize(width: self.size.width * scale, height: self.size.height * scale)
+        
+        UIGraphicsBeginImageContext(newSize)
+        self.draw(in: CGRect(origin: CGPoint.zero, size: newSize))
+        var newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
+        
+        // Reduce image quality
+        let newData = UIImageJPEGRepresentation(newImage!, 0.5)
+        newImage = UIImage(data: newData!)
+        
+        // Cropping image
+        let cutImageRef = newImage?.cgImage?.cropping(to: CGRect(x: ((newImage?.size.width)! - CARD_SIZE.width) / 2, y: 0, width: CARD_SIZE.width, height: CARD_SIZE.height))
+        newImage = UIImage(cgImage: cutImageRef!)
         
         return newImage!
     }

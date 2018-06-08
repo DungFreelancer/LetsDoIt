@@ -35,6 +35,8 @@
 		E8B892DF1F7FFF8000DDA048 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B892DE1F7FFF8000DDA048 /* BaseVC.swift */; };
 		E8B892E41F7FFF8000DDA048 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8B892E31F7FFF8000DDA048 /* Assets.xcassets */; };
 		E8B892F01F80005000DDA048 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E8B892EF1F80005000DDA048 /* Localizable.strings */; };
+		E8D3CF5F20CAA1C9006C10CA /* Info.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8D3CF5E20CAA1C9006C10CA /* Info.storyboard */; };
+		E8D3CF6120CAA20A006C10CA /* InfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D3CF6020CAA20A006C10CA /* InfoVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +75,8 @@
 		E8B892E31F7FFF8000DDA048 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E8B892E81F7FFF8000DDA048 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8B892EF1F80005000DDA048 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		E8D3CF5E20CAA1C9006C10CA /* Info.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Info.storyboard; sourceTree = "<group>"; };
+		E8D3CF6020CAA20A006C10CA /* InfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,6 +219,7 @@
 				E81B988620A3CB01003DA2B2 /* CardSelectionVC.swift */,
 				9AB9552D20A4901D0073CBB9 /* CardVC.swift */,
 				9AB9552F20A4903D0073CBB9 /* RecordVC.swift */,
+				E8D3CF6020CAA20A006C10CA /* InfoVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -227,6 +232,7 @@
 				E81B988A20A3CD05003DA2B2 /* CardSelection.storyboard */,
 				9AB9553320A490A90073CBB9 /* Card.storyboard */,
 				9AB9553520A490B30073CBB9 /* Record.storyboard */,
+				E8D3CF5E20CAA1C9006C10CA /* Info.storyboard */,
 			);
 			path = Layouts;
 			sourceTree = "<group>";
@@ -303,6 +309,7 @@
 			files = (
 				E8B892F01F80005000DDA048 /* Localizable.strings in Resources */,
 				9AB9553420A490A90073CBB9 /* Card.storyboard in Resources */,
+				E8D3CF5F20CAA1C9006C10CA /* Info.storyboard in Resources */,
 				E8B892E41F7FFF8000DDA048 /* Assets.xcassets in Resources */,
 				9AB9553620A490B30073CBB9 /* Record.storyboard in Resources */,
 				E81B988B20A3CD05003DA2B2 /* CardSelection.storyboard in Resources */,
@@ -367,6 +374,7 @@
 				A0BA6DED20A2A45E0041466D /* AlertHelper.swift in Sources */,
 				9AB9553020A4903D0073CBB9 /* RecordVC.swift in Sources */,
 				E8AABAA820A5DE9800BE9D04 /* CardSelectionVM.swift in Sources */,
+				E8D3CF6120CAA20A006C10CA /* InfoVC.swift in Sources */,
 				9AB9552C20A48FF00073CBB9 /* PlayVC.swift in Sources */,
 				9A94BCB620A0B6FA00A60DED /* UIViewEx.swift in Sources */,
 				9AC07A7920B075500053D776 /* HUDHelper.swift in Sources */,

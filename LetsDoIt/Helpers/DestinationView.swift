@@ -27,4 +27,10 @@ class DestinationView {
         let recordVC = storyboard.instantiateViewController(withIdentifier: "RecordVC") as! RecordVC
         return recordVC
     }
+    
+    static func InfoVC() -> InfoVC {
+        let storyboard = UIStoryboard(name: "Info", bundle: nil)
+        let infoVC = storyboard.instantiateViewController(withIdentifier: "InfoVC") as! InfoVC
+        return infoVC
+    }
 }

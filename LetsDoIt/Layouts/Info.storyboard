@@ -13,7 +13,7 @@
         <!--InfoVC-->
         <scene sceneID="9XO-17-iFX">
             <objects>
-                <viewController id="jrO-zj-J0T" customClass="InfoVC" customModule="LetsDoIt" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InfoVC" id="jrO-zj-J0T" customClass="InfoVC" customModule="LetsDoIt" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gRi-sr-SwL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

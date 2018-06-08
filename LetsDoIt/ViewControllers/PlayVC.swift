@@ -105,6 +105,10 @@ class PlayVC: BaseVC {
             vc.delegate = self
             self.navigationController?.pushViewController(vc, animated: true)
         }
+        self.btnMenu.addItem(icon: UIImage(named: "info")) { (item) in
+            let vc = DestinationView.InfoVC()
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
         
         self.view.addSubview(self.btnMenu)
     }

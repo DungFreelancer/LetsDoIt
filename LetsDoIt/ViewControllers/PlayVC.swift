@@ -21,7 +21,7 @@ class PlayVC: BaseVC {
     private var timerPlay: Timer?
     private var tempWidth: CGFloat = 0.0
     private var countLoop = 0
-    private var isCardOpen: Bool = false
+    private var isCardOpening: Bool = false
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -86,19 +86,19 @@ class PlayVC: BaseVC {
         
         //add item to btnMenu
         self.btnMenu.addItem(icon: UIImage(named: "chicken")) { (item) in
-            if self.isCardOpen {
+            if self.isCardOpening {
                 self.flipCard(at: 26)
             }
             self.playVM.changeMode(mode: .Chicken)
         }
         self.btnMenu.addItem(icon: UIImage(named: "alien")) { (item) in
-            if self.isCardOpen {
+            if self.isCardOpening {
                 self.flipCard(at: 26)
             }
             self.playVM.changeMode(mode: .Alien)
         }
         self.btnMenu.addItem(icon: UIImage(named: "gears")) { (item) in
-            if self.isCardOpen {
+            if self.isCardOpening {
                 self.flipCard(at: 26)
             }
             let vc = DestinationView.cardSelectionVC()
@@ -135,7 +135,7 @@ class PlayVC: BaseVC {
             self.timerPlay = Timer.scheduledTimer(timeInterval: 0.016, target: self, selector: #selector(offsetCard), userInfo: nil, repeats: true)
         } else if self.countLoop == 1322 {
             self.deconfigAutoScrollTimer()
-            self.isCardOpen = false
+            self.isCardOpening = false
             self.flipCard(at: 26)
           
             let timeDelay = 2.0 // second unit
@@ -180,21 +180,21 @@ class PlayVC: BaseVC {
     func flipCard(at index: Int) {
         guard let cellCenter = self.clCard.cellForItem(at: IndexPath(item: index, section: 0)) as? CardCell else {
             // Fix crash for small screen
-            self.isCardOpen = false
+            self.isCardOpening = false
             return
         }
         
-        if self.isCardOpen {
+        if self.isCardOpening {
             UIView.transition(with: cellCenter, duration: 0.5, options: .transitionFlipFromRight, animations: {
                 cellCenter.imgCard.image = UIImage(named: "Card_Back")
             }, completion: nil)
-            self.isCardOpen = false
+            self.isCardOpening = false
         } else {
             let cardRandom = self.playVM.getCard(at: self.playVM.randomIndexCard())
             UIView.transition(with: cellCenter, duration: 0.5, options: .transitionFlipFromLeft, animations: {
                 cellCenter.imgCard.image = cardRandom?.image
             }, completion: nil)
-            self.isCardOpen = true
+            self.isCardOpening = true
         }
     }
    
@@ -203,7 +203,7 @@ class PlayVC: BaseVC {
         self.btnMenu.isHidden = true
         self.btnPlay.isHidden = true
         
-        if self.isCardOpen {
+        if self.isCardOpening {
             self.flipCard(at: 26)
         }
         

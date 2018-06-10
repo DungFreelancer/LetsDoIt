@@ -7,9 +7,13 @@
 //
 
 import UIKit
+import AVKit
+import Photos
 import MobileCoreServices
 
 class RecordVC: BaseVC {
+    
+    @IBOutlet weak var imgSnapshot: UIImageView!
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -48,7 +52,46 @@ class RecordVC: BaseVC {
 extension RecordVC:UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        //
+        picker.dismiss(animated: true) {
+            let type = info[UIImagePickerControllerMediaType] as! String
+            if (type == "public.image") {
+                let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+                self.imgSnapshot.image = image
+                
+                let logo = UIImageView(image: UIImage(named: "Logo")!)
+                logo.frame = CGRect(x: 0, y: self.view.frame.height-logo.frame.size.height-44, width: 100, height: 100)
+                self.imgSnapshot.addSubview(logo)
+                
+                let size = self.imgSnapshot.bounds.size
+                let rec = self.imgSnapshot.bounds
+                UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale)
+                self.imgSnapshot.drawHierarchy(in: rec, afterScreenUpdates: true)
+                let result = UIGraphicsGetImageFromCurrentImageContext()
+                UIGraphicsEndImageContext()
+                
+                UIImageWriteToSavedPhotosAlbum(result!, nil, nil, nil) // Share the result image here
+            } else {
+                let videoURL = info[UIImagePickerControllerMediaURL] as! URL
+                let logo = UIImage(named: "Logo")!
+                
+                HUDHelper.showLoading()
+                Merge(config: .custom).overlayVideo(video: AVAsset(url: videoURL), overlayImage: logo, completion: { (url) in
+                    // Share the result video here
+                    PHPhotoLibrary.shared().performChanges({
+                        PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: url!)
+                    }, completionHandler: { (success, error) in
+                        let playerVC = AVPlayerViewController()
+                        playerVC.view.frame = self.view.bounds
+                        playerVC.player = AVPlayer(url: url!)
+                        
+                        self.present(playerVC, animated: true) {
+                            HUDHelper.hideLoading()
+                            playerVC.player?.play()
+                        }
+                    })
+                }) { (progress) in }
+            }
+        }
     }
 
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

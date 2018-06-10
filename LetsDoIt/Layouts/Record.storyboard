@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3DY-i6-fKc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3DY-i6-fKc">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -17,13 +17,27 @@
                     <view key="view" contentMode="scaleToFill" id="Zgv-CG-Jor">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gux-p3-MdN">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="gux-p3-MdN" firstAttribute="top" secondItem="V5j-Ai-ewa" secondAttribute="top" id="V7s-lq-oBZ"/>
+                            <constraint firstItem="gux-p3-MdN" firstAttribute="bottom" secondItem="V5j-Ai-ewa" secondAttribute="bottom" id="XeD-NX-xTH"/>
+                            <constraint firstItem="gux-p3-MdN" firstAttribute="leading" secondItem="V5j-Ai-ewa" secondAttribute="leading" id="aHA-YS-qXY"/>
+                            <constraint firstItem="gux-p3-MdN" firstAttribute="trailing" secondItem="V5j-Ai-ewa" secondAttribute="trailing" id="na0-Wm-gN4"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="V5j-Ai-ewa"/>
                     </view>
+                    <connections>
+                        <outlet property="imgSnapshot" destination="gux-p3-MdN" id="TdN-Ee-gSA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wPm-qN-iJY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="37" y="376"/>
+            <point key="canvasLocation" x="36" y="375.56221889055473"/>
         </scene>
     </scenes>
 </document>

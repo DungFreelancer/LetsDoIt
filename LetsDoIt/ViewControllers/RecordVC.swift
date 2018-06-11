@@ -22,6 +22,8 @@ class RecordVC: BaseVC {
         super.viewDidLoad()
         
         popupActionSheet()
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Share", style: .plain, target: self, action:  #selector(handleShare))
     }
    
     // Action:
@@ -51,6 +53,17 @@ class RecordVC: BaseVC {
             })
         }
     
+    @objc func handleShare() {
+        UIGraphicsBeginImageContext(view.frame.size)
+        view.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        
+        let activityViewController = UIActivityViewController(activityItems: [image!], applicationActivities: nil)
+        
+        activityViewController.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+        present(activityViewController,animated: true,completion: nil)
+    }
+    
 }
 
 extension RecordVC:UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -75,13 +88,13 @@ extension RecordVC:UIImagePickerControllerDelegate, UINavigationControllerDelega
                 
                 UIImageWriteToSavedPhotosAlbum(result!, nil, nil, nil)
                 // Share the result image here
-                let photo: FBSDKSharePhoto = FBSDKSharePhoto()
-                
-                photo.image = result
-                photo.isUserGenerated = true
-                
-                let content:FBSDKSharePhotoContent = FBSDKSharePhotoContent()
-                content.photos = [photo]
+//                let photo: FBSDKSharePhoto = FBSDKSharePhoto()
+//
+//                photo.image = result
+//                photo.isUserGenerated = true
+//
+//                let content:FBSDKSharePhotoContent = FBSDKSharePhotoContent()
+//                content.photos = [photo]
                 
             } else {
                 let videoURL = info[UIImagePickerControllerMediaURL] as! URL

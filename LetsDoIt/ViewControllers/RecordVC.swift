@@ -10,6 +10,8 @@ import UIKit
 import AVKit
 import Photos
 import MobileCoreServices
+import FBSDKShareKit
+import FBSDKCoreKit
 
 class RecordVC: BaseVC {
     
@@ -21,6 +23,8 @@ class RecordVC: BaseVC {
         
         popupActionSheet()
     }
+   
+    // Action:
     
     //popup ActionSheet to select record or snapshot
     func popupActionSheet() {
@@ -69,7 +73,16 @@ extension RecordVC:UIImagePickerControllerDelegate, UINavigationControllerDelega
                 let result = UIGraphicsGetImageFromCurrentImageContext()
                 UIGraphicsEndImageContext()
                 
-                UIImageWriteToSavedPhotosAlbum(result!, nil, nil, nil) // Share the result image here
+                UIImageWriteToSavedPhotosAlbum(result!, nil, nil, nil)
+                // Share the result image here
+                let photo: FBSDKSharePhoto = FBSDKSharePhoto()
+                
+                photo.image = result
+                photo.isUserGenerated = true
+                
+                let content:FBSDKSharePhotoContent = FBSDKSharePhotoContent()
+                content.photos = [photo]
+                
             } else {
                 let videoURL = info[UIImagePickerControllerMediaURL] as! URL
                 let logo = UIImage(named: "Logo")!

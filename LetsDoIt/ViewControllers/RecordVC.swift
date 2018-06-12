@@ -22,8 +22,6 @@ class RecordVC: BaseVC {
         super.viewDidLoad()
         
         popupActionSheet()
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Share", style: .plain, target: self, action:  #selector(handleShare))
     }
    
     // Action:
@@ -52,18 +50,6 @@ class RecordVC: BaseVC {
                 }
             })
         }
-    
-    @objc func handleShare() {
-        UIGraphicsBeginImageContext(view.frame.size)
-        view.layer.render(in: UIGraphicsGetCurrentContext()!)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        
-        let activityViewController = UIActivityViewController(activityItems: [image!], applicationActivities: nil)
-        
-        activityViewController.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
-        present(activityViewController,animated: true,completion: nil)
-    }
-    
 }
 
 extension RecordVC:UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -88,13 +74,12 @@ extension RecordVC:UIImagePickerControllerDelegate, UINavigationControllerDelega
                 
                 UIImageWriteToSavedPhotosAlbum(result!, nil, nil, nil)
                 // Share the result image here
-//                let photo: FBSDKSharePhoto = FBSDKSharePhoto()
-//
-//                photo.image = result
-//                photo.isUserGenerated = true
-//
-//                let content:FBSDKSharePhotoContent = FBSDKSharePhotoContent()
-//                content.photos = [photo]
+                UIGraphicsBeginImageContext(self.view.frame.size)
+                self.view.layer.render(in: UIGraphicsGetCurrentContext()!)
+                let imageShare = UIGraphicsGetImageFromCurrentImageContext()
+                
+                let activityViewController = UIActivityViewController(activityItems: [imageShare!], applicationActivities: nil)
+                self.present(activityViewController,animated: true,completion: nil)
                 
             } else {
                 let videoURL = info[UIImagePickerControllerMediaURL] as! URL
@@ -110,9 +95,15 @@ extension RecordVC:UIImagePickerControllerDelegate, UINavigationControllerDelega
                         playerVC.view.frame = self.view.bounds
                         playerVC.player = AVPlayer(url: url!)
                         
-                        self.present(playerVC, animated: true) {
+//                        self.present(playerVC, animated: true) {
+//                            HUDHelper.hideLoading()
+//                            playerVC.player?.play()
+//
+//                        }
+                        if let url = url {
+                            let activityController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+                            self.present(activityController, animated: true, completion: nil)
                             HUDHelper.hideLoading()
-                            playerVC.player?.play()
                         }
                     })
                 }) { (progress) in }

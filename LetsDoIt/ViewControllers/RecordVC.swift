@@ -10,8 +10,6 @@ import UIKit
 import AVKit
 import Photos
 import MobileCoreServices
-import FBSDKShareKit
-import FBSDKCoreKit
 
 class RecordVC: BaseVC {
     

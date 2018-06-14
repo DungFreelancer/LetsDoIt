@@ -93,11 +93,6 @@ extension RecordVC:UIImagePickerControllerDelegate, UINavigationControllerDelega
                         playerVC.view.frame = self.view.bounds
                         playerVC.player = AVPlayer(url: url!)
                         
-//                        self.present(playerVC, animated: true) {
-//                            HUDHelper.hideLoading()
-//                            playerVC.player?.play()
-//
-//                        }
                         if let url = url {
                             let activityController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
                             self.present(activityController, animated: true, completion: nil)

@@ -7,23 +7,43 @@
 //
 
 import UIKit
-import AVKit
+import AVFoundation
 import Photos
 import MobileCoreServices
 
 class RecordVC: BaseVC {
     
+   
     @IBOutlet weak var imgSnapshot: UIImageView!
     
+    @IBOutlet weak var videoPlayerView: UIView!
+
+    
+    var videoURL: URL?
+    var player: AVPlayer?
+    var isPlaying: Bool = false
+    var imageShare: UIImage?
+    
+   
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Share", style: .plain, target: self, action: #selector(shareHandler))
         popupActionSheet()
     }
    
     // Action:
     
+    @objc func shareHandler() {
+        if videoPlayerView.isHidden {
+            let activityViewController = UIActivityViewController(activityItems: [imageShare!], applicationActivities: nil)
+            self.present(activityViewController,animated: true,completion: nil)
+        } else {
+            let activityViewController = UIActivityViewController(activityItems: [videoURL!], applicationActivities: nil)
+            self.present(activityViewController,animated: true,completion: nil)
+        }
+    }
+
     //popup ActionSheet to select record or snapshot
     func popupActionSheet() {
         let picker = UIImagePickerController()
@@ -46,12 +66,12 @@ class RecordVC: BaseVC {
                 } else {
                     Log.error("Camera is not available!!!")
                 }
-            })
-        }
+        })
+    }
 }
 
 extension RecordVC:UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
+
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         picker.dismiss(animated: true) {
             let type = info[UIImagePickerControllerMediaType] as! String
@@ -74,36 +94,32 @@ extension RecordVC:UIImagePickerControllerDelegate, UINavigationControllerDelega
                 // Share the result image here
                 UIGraphicsBeginImageContext(self.view.frame.size)
                 self.view.layer.render(in: UIGraphicsGetCurrentContext()!)
-                let imageShare = UIGraphicsGetImageFromCurrentImageContext()
-                
-                let activityViewController = UIActivityViewController(activityItems: [imageShare!], applicationActivities: nil)
-                self.present(activityViewController,animated: true,completion: nil)
-                
+                self.imageShare = UIGraphicsGetImageFromCurrentImageContext()
+         
             } else {
-                let videoURL = info[UIImagePickerControllerMediaURL] as! URL
+                self.videoURL = info[UIImagePickerControllerMediaURL] as? URL
                 let logo = UIImage(named: "Logo")!
                 
                 HUDHelper.showLoading()
-                Merge(config: .custom).overlayVideo(video: AVAsset(url: videoURL), overlayImage: logo, completion: { (url) in
+                Merge(config: .custom).overlayVideo(video: AVAsset(url: self.videoURL!), overlayImage: logo, completion: { (url) in
                     // Share the result video here
                     PHPhotoLibrary.shared().performChanges({
                         PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: url!)
                     }, completionHandler: { (success, error) in
-                        let playerVC = AVPlayerViewController()
-                        playerVC.view.frame = self.view.bounds
-                        playerVC.player = AVPlayer(url: url!)
-                        
-                        if let url = url {
-                            let activityController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
-                            self.present(activityController, animated: true, completion: nil)
+                        DispatchQueue.main.async {
+                            self.videoPlayerView.isHidden = false
+                            self.player = AVPlayer(url: url!)
+                            let playerLayer = AVPlayerLayer.init(player: self.player!)
+                            playerLayer.frame = self.videoPlayerView.bounds
+                            self.videoPlayerView.layer.addSublayer(playerLayer)
                             HUDHelper.hideLoading()
+                            self.player?.play()
                         }
                     })
                 }) { (progress) in }
             }
         }
     }
-
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }

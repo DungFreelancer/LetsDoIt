@@ -172,9 +172,19 @@ class PlayVC: BaseVC {
     }
     
     @objc func showSaveMomentPopup() {
-        AlertHelper.showPopup(on: self, title: nil, message: "Wana save this moment?".localized(), mainButton: "Yes".localized(), mainComplete: { (action:UIAlertAction) in
-            self.navigationController?.pushViewController(DestinationView.recordVC(), animated: true)
-        }, otherButton: "No".localized(), otherComplete: nil)
+        AlertHelper.showActionSheet(on: self, title: "Save This Moment".localized(), message: nil, firstButton: "Snapshot".localized(), firstComplete: {_ in
+            let vc = DestinationView.recordVC()
+            vc.recordType = 1
+            self.navigationController?.pushViewController(vc, animated: false)
+        }, secondButton: "Short Video".localized(), secondComplete: { (action:UIAlertAction) in
+            let vc = DestinationView.recordVC()
+            vc.recordType = 2
+            self.navigationController?.pushViewController(vc, animated: false)
+        })
+        
+//        AlertHelper.showPopup(on: self, title: nil, message: "Wana save this moment?".localized(), mainButton: "Yes".localized(), mainComplete: { (action:UIAlertAction) in
+//            self.navigationController?.pushViewController(DestinationView.recordVC(), animated: true)
+//        }, otherButton: "No".localized(), otherComplete: nil)
     }
     
     func flipCard(at index: Int) {

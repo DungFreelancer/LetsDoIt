@@ -23,12 +23,14 @@ class RecordVC: BaseVC {
     var player: AVPlayer?
     var isPlaying: Bool = false
     var imageShare: UIImage?
+    var recordType:Int?
     
    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Share", style: .plain, target: self, action: #selector(shareHandler))
+        Log.debug(recordType!)
         popupActionSheet()
     }
    
@@ -48,14 +50,14 @@ class RecordVC: BaseVC {
     func popupActionSheet() {
         let picker = UIImagePickerController()
         picker.delegate = self
-        AlertHelper.showActionSheet(on: self, title: "Save This Moment".localized(), message: nil, firstButton: "Snapshot".localized(), firstComplete: { (action:UIAlertAction) in
+        if recordType == 1 {
                 if UIImagePickerController.isSourceTypeAvailable(.camera) {
                     picker.sourceType = .camera
                     self.present(picker,animated: true,completion: nil)
                 } else {
                     Log.error("Camera is not available!!!")
                 }
-            }, secondButton: "Short Video".localized(), secondComplete: { (action:UIAlertAction) in
+        } else if recordType == 2 {
                 if UIImagePickerController.isSourceTypeAvailable(.camera) {
                     picker.sourceType = .camera
                     picker.videoMaximumDuration = 5
@@ -66,10 +68,9 @@ class RecordVC: BaseVC {
                 } else {
                     Log.error("Camera is not available!!!")
                 }
-        })
+        }
     }
 }
-
 extension RecordVC:UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {

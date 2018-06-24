@@ -11,6 +11,11 @@ import MobileCoreServices
 import GravitySliderFlowLayout
 import Floaty
 
+enum RecordType: String {
+    case Snapshot
+    case Video
+}
+
 class PlayVC: BaseVC {
     
     @IBOutlet weak var clCard: UICollectionView!
@@ -174,11 +179,11 @@ class PlayVC: BaseVC {
     @objc func showSaveMomentPopup() {
         AlertHelper.showActionSheet(on: self, title: "Save This Moment".localized(), message: nil, firstButton: "Snapshot".localized(), firstComplete: {_ in
             let vc = DestinationView.recordVC()
-            vc.recordType = 1
+            vc.recordType = RecordType.Snapshot
             self.navigationController?.pushViewController(vc, animated: false)
         }, secondButton: "Short Video".localized(), secondComplete: { (action:UIAlertAction) in
             let vc = DestinationView.recordVC()
-            vc.recordType = 2
+            vc.recordType = RecordType.Video
             self.navigationController?.pushViewController(vc, animated: false)
         })
         

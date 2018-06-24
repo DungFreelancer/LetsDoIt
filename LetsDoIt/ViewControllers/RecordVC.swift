@@ -19,11 +19,11 @@ class RecordVC: BaseVC {
     @IBOutlet weak var videoPlayerView: UIView!
 
     
-    var videoURL: URL?
+    var url: URL?
     var player: AVPlayer?
     var isPlaying: Bool = false
-    var imageShare: UIImage?
-    var recordType:Int?
+    var imgShare: UIImage?
+    var recordType: RecordType?
     
    
     // MARK: - Lifecycle
@@ -38,10 +38,10 @@ class RecordVC: BaseVC {
     
     @objc func shareHandler() {
         if videoPlayerView.isHidden {
-            let activityViewController = UIActivityViewController(activityItems: [imageShare!], applicationActivities: nil)
+            let activityViewController = UIActivityViewController(activityItems: [imgShare!], applicationActivities: nil)
             self.present(activityViewController,animated: true,completion: nil)
         } else {
-            let activityViewController = UIActivityViewController(activityItems: [videoURL!], applicationActivities: nil)
+            let activityViewController = UIActivityViewController(activityItems: [url!], applicationActivities: nil)
             self.present(activityViewController,animated: true,completion: nil)
         }
     }
@@ -50,14 +50,14 @@ class RecordVC: BaseVC {
     func popupActionSheet() {
         let picker = UIImagePickerController()
         picker.delegate = self
-        if recordType == 1 {
+        if recordType == RecordType.Snapshot {
                 if UIImagePickerController.isSourceTypeAvailable(.camera) {
                     picker.sourceType = .camera
                     self.present(picker,animated: true,completion: nil)
                 } else {
                     Log.error("Camera is not available!!!")
                 }
-        } else if recordType == 2 {
+        } else if recordType == RecordType.Video {
                 if UIImagePickerController.isSourceTypeAvailable(.camera) {
                     picker.sourceType = .camera
                     picker.videoMaximumDuration = 5
@@ -95,14 +95,14 @@ extension RecordVC:UIImagePickerControllerDelegate, UINavigationControllerDelega
                 // Share the result image here
                 UIGraphicsBeginImageContext(self.view.frame.size)
                 self.view.layer.render(in: UIGraphicsGetCurrentContext()!)
-                self.imageShare = UIGraphicsGetImageFromCurrentImageContext()
+                self.imgShare = UIGraphicsGetImageFromCurrentImageContext()
          
             } else {
-                self.videoURL = info[UIImagePickerControllerMediaURL] as? URL
+                self.url = info[UIImagePickerControllerMediaURL] as? URL
                 let logo = UIImage(named: "Logo")!
                 
                 HUDHelper.showLoading()
-                Merge(config: .custom).overlayVideo(video: AVAsset(url: self.videoURL!), overlayImage: logo, completion: { (url) in
+                Merge(config: .custom).overlayVideo(video: AVAsset(url: self.url!), overlayImage: logo, completion: { (url) in
                     // Share the result video here
                     PHPhotoLibrary.shared().performChanges({
                         PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: url!)

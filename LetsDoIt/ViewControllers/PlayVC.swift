@@ -9,7 +9,6 @@
 import UIKit
 import MobileCoreServices
 import GravitySliderFlowLayout
-import Floaty
 
 enum RecordType: String {
     case Snapshot
@@ -21,19 +20,55 @@ class PlayVC: BaseVC {
     @IBOutlet weak var clCard: UICollectionView!
     @IBOutlet weak var btnPlay: UIButton!
     
-    private var btnMenu = Floaty()
     private let playVM = PlayVM()
     private var timerPlay: Timer?
     private var tempWidth: CGFloat = 0.0
     private var countLoop = 0
     private var isCardOpening: Bool = false
     
+    private var isOpenSubMenu: Bool = false
+    //menuButton and subMenuButton
+    @IBOutlet weak var menuBtnView: UIView!
+    {
+        didSet{
+            menuBtnView.backgroundColor = .clear
+        }
+    }
+    @IBOutlet weak var menuButton: UIButton!
+        {
+        didSet{
+            menuButton.setBackgroundImage(#imageLiteral(resourceName: "galaxy"), for: .normal)
+        }
+    }
+  
+    @IBOutlet weak var chickenModeButton: UIButton!
+        {
+        didSet{
+            chickenModeButton.setBackgroundImage(#imageLiteral(resourceName: "chicken"), for: .normal)
+            chickenModeButton.alpha = 0
+        }
+    }
+    @IBOutlet weak var alienModeButton: UIButton!
+        {
+        didSet{
+            alienModeButton.setBackgroundImage(#imageLiteral(resourceName: "alien"), for: .normal)
+            alienModeButton.alpha = 0
+        }
+    }
+    @IBOutlet weak var customModeButton: UIButton!
+        {
+        didSet{
+            customModeButton.setBackgroundImage(#imageLiteral(resourceName: "gears"), for: .normal)
+            customModeButton.alpha = 0
+        }
+    }
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.addBtnMenu()
         self.setUpCollectionView()
+        self.setupActionForButtons()
         
         HUDHelper.showLoading()
         self.playVM.changeMode(mode: self.playVM.currentMode) { [weak self] (isSuccess) in
@@ -79,45 +114,6 @@ class PlayVC: BaseVC {
         self.clCard.collectionViewLayout = sliderLayout
     }
     
-    private func addBtnMenu() {
-        //adjust btnMenu
-        self.btnMenu.buttonColor = UIColor.clear
-        self.btnMenu.buttonImage = UIImage(named: "galaxy")
-        self.btnMenu.verticalDirection = .down
-        
-        //adjust location btnMenu
-        self.btnMenu.paddingX = 8
-        self.btnMenu.paddingY = SCREEN_SIZE.height - self.btnMenu.frame.height - 26
-        
-        //add item to btnMenu
-        self.btnMenu.addItem(icon: UIImage(named: "chicken")) { (item) in
-            if self.isCardOpening {
-                self.flipCard(at: 26)
-            }
-            self.playVM.changeMode(mode: .Chicken)
-        }
-        self.btnMenu.addItem(icon: UIImage(named: "alien")) { (item) in
-            if self.isCardOpening {
-                self.flipCard(at: 26)
-            }
-            self.playVM.changeMode(mode: .Alien)
-        }
-        self.btnMenu.addItem(icon: UIImage(named: "gears")) { (item) in
-            if self.isCardOpening {
-                self.flipCard(at: 26)
-            }
-            let vc = DestinationView.cardSelectionVC()
-            vc.delegate = self
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
-        self.btnMenu.addItem(icon: UIImage(named: "info")) { (item) in
-            let vc = DestinationView.InfoVC()
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
-        
-        self.view.addSubview(self.btnMenu)
-    }
-    
     func configAutosScrollTimer() {
         self.countLoop += 1
         
@@ -146,7 +142,7 @@ class PlayVC: BaseVC {
             let timeDelay = 2.0 // second unit
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + timeDelay, execute: {
                 self.showSaveMomentPopup()
-                self.btnMenu.isHidden = false
+                self.menuButton.isHidden = false
                 self.btnPlay.isHidden = false
             })
         }
@@ -186,10 +182,6 @@ class PlayVC: BaseVC {
             vc.recordType = RecordType.Video
             self.navigationController?.pushViewController(vc, animated: false)
         })
-        
-//        AlertHelper.showPopup(on: self, title: nil, message: "Wana save this moment?".localized(), mainButton: "Yes".localized(), mainComplete: { (action:UIAlertAction) in
-//            self.navigationController?.pushViewController(DestinationView.recordVC(), animated: true)
-//        }, otherButton: "No".localized(), otherComplete: nil)
     }
     
     func flipCard(at index: Int) {
@@ -214,8 +206,93 @@ class PlayVC: BaseVC {
     }
    
     // MARK: - Action
+    fileprivate func setupActionForButtons(){
+        self.menuButton.addTarget(self, action: #selector(onClickMenuButton), for: .touchUpInside)
+        self.chickenModeButton.addTarget(self, action: #selector(onClickChickenModeButton), for: .touchUpInside)
+        self.alienModeButton.addTarget(self, action: #selector(onClickAlienModeButton), for: .touchUpInside)
+        self.customModeButton.addTarget(self, action: #selector(onClickCustomModeButton), for: .touchUpInside)
+    }
+    
+    @objc func onClickMenuButton() {
+        if !isOpenSubMenu {
+            UIView.animate(withDuration: 0.3, animations: {
+                
+                self.menuButton.transform = self.menuButton.transform.rotated(by: CGFloat(Double.pi/2))
+                self.chickenModeButton.alpha = 0
+            }) { (true) in
+                self.showChikenButton()
+            }
+            self.isOpenSubMenu = true
+            
+            
+        } else {
+            UIView.animate(withDuration: 0.3, animations: {
+                self.menuButton.transform = self.menuButton.transform.rotated(by: CGFloat(Double.pi/(-2) ))
+                self.customModeButton.alpha = 0
+            }) { (true) in
+                self.showAlienButton()
+            }
+            self.isOpenSubMenu = false
+            
+        }
+    }
+    
+    fileprivate func showChikenButton() {
+        UIView.animate(withDuration: 0.1, animations: {
+            self.chickenModeButton.alpha = self.isOpenSubMenu == true ? 1 : 0
+            
+        }) {(true) in
+            if self.isOpenSubMenu {
+                self.showAlienButton()
+            }
+        }
+    }
+    
+    fileprivate func showAlienButton() {
+        UIView.animate(withDuration: 0.1, animations: {
+            self.alienModeButton.alpha = self.isOpenSubMenu == true ? 1 : 0
+            
+        }){(true) in
+            if self.isOpenSubMenu {
+                self.showCustomButton()
+            } else {
+                self.showChikenButton()
+            }
+        }
+    }
+    
+    fileprivate func showCustomButton() {
+        UIView.animate(withDuration: 0.1, animations: {
+            self.customModeButton.alpha = self.isOpenSubMenu == true ? 1 : 0
+        })
+    }
+    
+    @objc func onClickChickenModeButton() {
+        if self.isCardOpening {
+                self.flipCard(at: 26)
+        }
+        self.playVM.changeMode(mode: .Chicken)
+    }
+    
+    @objc func onClickAlienModeButton() {
+        if self.isCardOpening {
+                self.flipCard(at: 26)
+        }
+        self.playVM.changeMode(mode: .Alien)
+        
+    }
+    
+    @objc func onClickCustomModeButton() {
+        if self.isCardOpening {
+                self.flipCard(at: 26)
+                }
+        let vc = DestinationView.cardSelectionVC()
+        vc.delegate = self
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     @IBAction func onClickPlay(_ sender: Any) {
-        self.btnMenu.isHidden = true
+        self.menuButton.isHidden = true
         self.btnPlay.isHidden = true
         
         if self.isCardOpening {
@@ -232,7 +309,6 @@ class PlayVC: BaseVC {
             self.configAutosScrollTimer()
         }
     }
-    
 }
 
 extension PlayVC: UICollectionViewDataSource, UICollectionViewDelegate {

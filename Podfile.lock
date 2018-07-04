@@ -1,28 +1,24 @@
 PODS:
-  - Floaty (4.0.1)
   - GravitySliderFlowLayout (1.0)
   - IQKeyboardManagerSwift (6.0.3)
   - PKHUD (5.0.0)
 
 DEPENDENCIES:
-  - Floaty (~> 4.0.0)
   - GravitySliderFlowLayout (~> 1.0)
   - IQKeyboardManagerSwift (~> 6.0)
   - PKHUD (~> 5.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - Floaty
     - GravitySliderFlowLayout
     - IQKeyboardManagerSwift
     - PKHUD
 
 SPEC CHECKSUMS:
-  Floaty: 82854e1a5ef4fa208281ebd4da2f3d1e51ba67a6
   GravitySliderFlowLayout: bb9ae6a302b85821c9e0271c00533fae8091143b
   IQKeyboardManagerSwift: 04e8679f85e496bb2c474eeb9284052f1b3c391c
   PKHUD: 3c001512c6e002091184197a8de7a20420786e3b
 
-PODFILE CHECKSUM: 4e323996c403daefbfc1b14ddae3d828dca10848
+PODFILE CHECKSUM: bed6f880b010350f554ab6b723f00d1ad5529c3e
 
 COCOAPODS: 1.5.2

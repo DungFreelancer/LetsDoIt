@@ -9,6 +9,5 @@ target 'LetsDoIt' do
   
   pod 'PKHUD', '~> 5.0'
   
-  pod "Floaty", "~> 4.0.0"
 
 end

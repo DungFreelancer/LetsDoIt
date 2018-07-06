@@ -52,7 +52,7 @@ class PlayVM {
     
     func cellInstance(collectionView: UICollectionView, indexPath: IndexPath) -> CardCell {
         let cell: CardCell = collectionView.dequeueReusableCell(withReuseIdentifier: CardCell.cellID, for: indexPath) as! CardCell
-        cell.updateUI(image: UIImage(named: "Card_Back")!,
+        cell.updateUI(image: UIImage(named: "cardbackside")!,
                       title: self.arrCard[indexPath.row % NUMBER_CARD].title)
         cell.lbTitle.isHidden = true 
         return cell

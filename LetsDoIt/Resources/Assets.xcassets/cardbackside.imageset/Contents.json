@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "cardbackside.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Bg_Play.jpg",
       "scale" : "2x"
     },
     {

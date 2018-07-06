@@ -193,7 +193,7 @@ class PlayVC: BaseVC {
         
         if self.isCardOpening {
             UIView.transition(with: cellCenter, duration: 0.5, options: .transitionFlipFromRight, animations: {
-                cellCenter.imgCard.image = UIImage(named: "Card_Back")
+                cellCenter.imgCard.image = UIImage(named: "cardbackside")
             }, completion: nil)
             self.isCardOpening = false
         } else {

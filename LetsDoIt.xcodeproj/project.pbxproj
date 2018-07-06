@@ -28,13 +28,13 @@
 		E81B988420A3C6A2003DA2B2 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81B988320A3C6A2003DA2B2 /* Card.swift */; };
 		E81B988720A3CB01003DA2B2 /* CardSelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81B988620A3CB01003DA2B2 /* CardSelectionVC.swift */; };
 		E81B988B20A3CD05003DA2B2 /* CardSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E81B988A20A3CD05003DA2B2 /* CardSelection.storyboard */; };
+		E85A7E1420EFAFE300D44565 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E85A7E1320EFAFE200D44565 /* Assets.xcassets */; };
 		E880D09B1F807803002EEB55 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = E880D09A1F807803002EEB55 /* Log.swift */; };
 		E880D09F1F808D5E002EEB55 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E880D09E1F808D5E002EEB55 /* Constants.swift */; };
 		E880D0A11F809F4F002EEB55 /* Commons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E880D0A01F809F4F002EEB55 /* Commons.swift */; };
 		E8AABAA820A5DE9800BE9D04 /* CardSelectionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AABAA720A5DE9800BE9D04 /* CardSelectionVM.swift */; };
 		E8B892DD1F7FFF8000DDA048 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B892DC1F7FFF8000DDA048 /* AppDelegate.swift */; };
 		E8B892DF1F7FFF8000DDA048 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B892DE1F7FFF8000DDA048 /* BaseVC.swift */; };
-		E8B892E41F7FFF8000DDA048 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8B892E31F7FFF8000DDA048 /* Assets.xcassets */; };
 		E8B892F01F80005000DDA048 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E8B892EF1F80005000DDA048 /* Localizable.strings */; };
 		E8D3CF5F20CAA1C9006C10CA /* Info.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8D3CF5E20CAA1C9006C10CA /* Info.storyboard */; };
 		E8D3CF6120CAA20A006C10CA /* InfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D3CF6020CAA20A006C10CA /* InfoVC.swift */; };
@@ -67,6 +67,7 @@
 		E81B988320A3C6A2003DA2B2 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		E81B988620A3CB01003DA2B2 /* CardSelectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSelectionVC.swift; sourceTree = "<group>"; };
 		E81B988A20A3CD05003DA2B2 /* CardSelection.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CardSelection.storyboard; sourceTree = "<group>"; };
+		E85A7E1320EFAFE200D44565 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E880D09A1F807803002EEB55 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		E880D09E1F808D5E002EEB55 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E880D0A01F809F4F002EEB55 /* Commons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commons.swift; sourceTree = "<group>"; };
@@ -74,7 +75,6 @@
 		E8B892D91F7FFF8000DDA048 /* LetsDoIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LetsDoIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8B892DC1F7FFF8000DDA048 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8B892DE1F7FFF8000DDA048 /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
-		E8B892E31F7FFF8000DDA048 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E8B892E81F7FFF8000DDA048 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8B892EF1F80005000DDA048 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		E8D3CF5E20CAA1C9006C10CA /* Info.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Info.storyboard; sourceTree = "<group>"; };
@@ -192,7 +192,7 @@
 		E8B892EE1F7FFFF100DDA048 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				E8B892E31F7FFF8000DDA048 /* Assets.xcassets */,
+				E85A7E1320EFAFE200D44565 /* Assets.xcassets */,
 				E8B892EF1F80005000DDA048 /* Localizable.strings */,
 			);
 			path = Resources;
@@ -313,10 +313,10 @@
 				E8B892F01F80005000DDA048 /* Localizable.strings in Resources */,
 				9AB9553420A490A90073CBB9 /* Card.storyboard in Resources */,
 				E8D3CF5F20CAA1C9006C10CA /* Info.storyboard in Resources */,
-				E8B892E41F7FFF8000DDA048 /* Assets.xcassets in Resources */,
 				9AB9553620A490B30073CBB9 /* Record.storyboard in Resources */,
 				E81B988B20A3CD05003DA2B2 /* CardSelection.storyboard in Resources */,
 				9AB9553220A4908B0073CBB9 /* Play.storyboard in Resources */,
+				E85A7E1420EFAFE300D44565 /* Assets.xcassets in Resources */,
 				9AB9553B20A49D7E0073CBB9 /* Card.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

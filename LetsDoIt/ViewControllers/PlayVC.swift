@@ -26,7 +26,7 @@ class PlayVC: BaseVC {
     private var countLoop = 0
     private var isCardOpening: Bool = false
     
-    private var isOpenSubMenu: Bool = false
+    private var isOpeningSubMenu: Bool = false
     //menuButton and subMenuButton
     @IBOutlet weak var menuBtnView: UIView!
     {
@@ -214,7 +214,8 @@ class PlayVC: BaseVC {
     }
     
     @objc func onClickMenuButton() {
-        if !isOpenSubMenu {
+        //Open menubutton
+        if !isOpeningSubMenu {
             UIView.animate(withDuration: 0.3, animations: {
                 
                 self.menuButton.transform = self.menuButton.transform.rotated(by: CGFloat(Double.pi/2))
@@ -222,27 +223,28 @@ class PlayVC: BaseVC {
             }) { (true) in
                 self.showChikenButton()
             }
-            self.isOpenSubMenu = true
+            self.isOpeningSubMenu = true
             
             
         } else {
+            //close menubutton
             UIView.animate(withDuration: 0.3, animations: {
                 self.menuButton.transform = self.menuButton.transform.rotated(by: CGFloat(Double.pi/(-2) ))
                 self.customModeButton.alpha = 0
             }) { (true) in
                 self.showAlienButton()
             }
-            self.isOpenSubMenu = false
+            self.isOpeningSubMenu = false
             
         }
     }
     
     fileprivate func showChikenButton() {
         UIView.animate(withDuration: 0.1, animations: {
-            self.chickenModeButton.alpha = self.isOpenSubMenu == true ? 1 : 0
+            self.chickenModeButton.alpha = self.isOpeningSubMenu == true ? 1 : 0
             
         }) {(true) in
-            if self.isOpenSubMenu {
+            if self.isOpeningSubMenu {
                 self.showAlienButton()
             }
         }
@@ -250,10 +252,10 @@ class PlayVC: BaseVC {
     
     fileprivate func showAlienButton() {
         UIView.animate(withDuration: 0.1, animations: {
-            self.alienModeButton.alpha = self.isOpenSubMenu == true ? 1 : 0
+            self.alienModeButton.alpha = self.isOpeningSubMenu == true ? 1 : 0
             
         }){(true) in
-            if self.isOpenSubMenu {
+            if self.isOpeningSubMenu {
                 self.showCustomButton()
             } else {
                 self.showChikenButton()
@@ -263,7 +265,7 @@ class PlayVC: BaseVC {
     
     fileprivate func showCustomButton() {
         UIView.animate(withDuration: 0.1, animations: {
-            self.customModeButton.alpha = self.isOpenSubMenu == true ? 1 : 0
+            self.customModeButton.alpha = self.isOpeningSubMenu == true ? 1 : 0
         })
     }
     

@@ -20,8 +20,9 @@ class CardCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.btnDelete.titleLabel?.text = "Delete".localized()
-        self.btnDelete.backgroundColor = UIColor.red
+        self.btnDelete.setBackgroundImage(#imageLiteral(resourceName: "removeButton"), for: .normal)
+        self.btnDelete.layer.cornerRadius = 5
+        self.btnDelete.layer.masksToBounds = true 
         self.imgCard.setBorderWithRadius(5.0, color: UIColor.clear)
     }
     

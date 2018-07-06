@@ -37,7 +37,7 @@ class PlayVC: BaseVC {
     @IBOutlet weak var menuButton: UIButton!
         {
         didSet{
-            menuButton.setBackgroundImage(#imageLiteral(resourceName: "menu"), for: .normal)
+            menuButton.setBackgroundImage(#imageLiteral(resourceName: "arrow"), for: .normal)
         }
     }
   
@@ -218,7 +218,7 @@ class PlayVC: BaseVC {
         if !isOpeningSubMenu {
             UIView.animate(withDuration: 0.3, animations: {
                 
-                self.menuButton.transform = self.menuButton.transform.rotated(by: CGFloat(Double.pi/2))
+                self.menuButton.transform = self.menuButton.transform.rotated(by: CGFloat(Double.pi * (0.999)))
                 self.chickenModeButton.alpha = 0
             }) { (true) in
                 self.showChikenButton()
@@ -229,7 +229,7 @@ class PlayVC: BaseVC {
         } else {
             //close menubutton
             UIView.animate(withDuration: 0.3, animations: {
-                self.menuButton.transform = self.menuButton.transform.rotated(by: CGFloat(Double.pi/(-2) ))
+                self.menuButton.transform = self.menuButton.transform.rotated(by: CGFloat(Double.pi/0.999 ))
                 self.customModeButton.alpha = 0
             }) { (true) in
                 self.showAlienButton()

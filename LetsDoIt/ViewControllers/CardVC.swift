@@ -27,7 +27,7 @@ class CardVC: BaseVC {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(onClickAdd))
         
         self.txtTitle.text = self.cardDefault?.title
-        self.imgCard.image = self.cardDefault?.image ?? UIImage(named: "Card_Back")
+        self.imgCard.image = self.cardDefault?.image ?? UIImage(named: "cardbackside")
         self.imgCard.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleImageCard)))
         self.imgCard.isUserInteractionEnabled = true
         self.imgCard.setBorderWithRadius(5.0, color: UIColor.clear)

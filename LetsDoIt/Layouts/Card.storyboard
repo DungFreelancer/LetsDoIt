@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YRO-Yc-d3x">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YRO-Yc-d3x">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -20,6 +20,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="3uM-w6-sXb">
+                                <rect key="frame" x="0.0" y="10" width="375" height="667"/>
+                            </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Card_Back" translatesAutoresizingMaskIntoConstraints="NO" id="ad0-hz-OMh">
                                 <rect key="frame" x="58" y="149.5" width="260" height="388.5"/>
                                 <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -41,8 +44,12 @@
                         <constraints>
                             <constraint firstItem="ad0-hz-OMh" firstAttribute="centerX" secondItem="yUl-Nk-Esx" secondAttribute="centerX" id="26F-2A-AKX"/>
                             <constraint firstItem="BZs-Sc-CWN" firstAttribute="leading" secondItem="ad0-hz-OMh" secondAttribute="leading" id="7Bn-bh-pub"/>
+                            <constraint firstItem="3uM-w6-sXb" firstAttribute="height" secondItem="sUF-yZ-G4M" secondAttribute="height" id="Fve-mg-Tef"/>
+                            <constraint firstItem="3uM-w6-sXb" firstAttribute="centerY" secondItem="yUl-Nk-Esx" secondAttribute="centerY" id="Iqj-Ej-0gi"/>
                             <constraint firstItem="ad0-hz-OMh" firstAttribute="centerY" secondItem="yUl-Nk-Esx" secondAttribute="centerY" id="LtP-dA-S4f"/>
+                            <constraint firstItem="3uM-w6-sXb" firstAttribute="width" secondItem="sUF-yZ-G4M" secondAttribute="width" id="MJn-TP-U8z"/>
                             <constraint firstItem="ad0-hz-OMh" firstAttribute="top" secondItem="BZs-Sc-CWN" secondAttribute="bottom" constant="24" id="Uii-Ja-Bgj"/>
+                            <constraint firstItem="3uM-w6-sXb" firstAttribute="centerX" secondItem="yUl-Nk-Esx" secondAttribute="centerX" id="mzf-qp-Uwj"/>
                             <constraint firstItem="ad0-hz-OMh" firstAttribute="height" secondItem="yUl-Nk-Esx" secondAttribute="height" multiplier="0.6" id="s3g-8M-fZ6"/>
                             <constraint firstItem="BZs-Sc-CWN" firstAttribute="width" secondItem="ad0-hz-OMh" secondAttribute="width" id="zgW-j9-UWt"/>
                         </constraints>
@@ -60,5 +67,6 @@
     </scenes>
     <resources>
         <image name="Card_Back" width="225" height="335"/>
+        <image name="bg" width="600" height="590"/>
     </resources>
 </document>

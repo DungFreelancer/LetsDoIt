@@ -19,6 +19,7 @@ class BaseVC: UIViewController {
     // MARK: - private function
     func hideNavigationBar(_ isHidden: Bool) {
         self.navigationController?.setNavigationBarHidden(isHidden, animated: false)
+        self.navigationController?.navigationBar.setBackgroundImage(#imageLiteral(resourceName: "bg"), for: UIBarMetrics.default )
     }
     
 }

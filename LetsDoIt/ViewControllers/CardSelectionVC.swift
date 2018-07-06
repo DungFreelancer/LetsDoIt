@@ -25,6 +25,7 @@ class CardSelectionVC: BaseVC {
         super.viewDidLoad()
         
         self.setUpCollectionView()
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done".localized(),
                                                             style: .plain,
                                                             target: self,
@@ -44,6 +45,7 @@ class CardSelectionVC: BaseVC {
         self.clCard.register(UINib(nibName: CardCell.nibName, bundle: nil), forCellWithReuseIdentifier: CardCell.cellID)
         self.clCard.dataSource = self
         self.clCard.delegate = self
+        self.clCard.backgroundView = UIImageView(image: #imageLiteral(resourceName: "bg"))
     }
     
     // MARK: - Action

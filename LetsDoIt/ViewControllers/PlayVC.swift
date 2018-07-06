@@ -37,7 +37,7 @@ class PlayVC: BaseVC {
     @IBOutlet weak var menuButton: UIButton!
         {
         didSet{
-            menuButton.setBackgroundImage(#imageLiteral(resourceName: "galaxy"), for: .normal)
+            menuButton.setBackgroundImage(#imageLiteral(resourceName: "menu"), for: .normal)
         }
     }
   
@@ -295,6 +295,9 @@ class PlayVC: BaseVC {
     
     @IBAction func onClickPlay(_ sender: Any) {
         self.menuButton.isHidden = true
+        if isOpeningSubMenu {
+            onClickMenuButton()
+        }
         self.btnPlay.isHidden = true
         
         if self.isCardOpening {

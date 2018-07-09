@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GGo-Ha-J0t">
-                                <rect key="frame" x="-0.5" y="10" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="10" width="375" height="667"/>
                             </imageView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mmf-zl-TtE">
                                 <rect key="frame" x="0.0" y="10" width="375" height="667"/>
@@ -28,14 +28,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="mmf-zl-TtE" firstAttribute="width" secondItem="Zgv-CG-Jor" secondAttribute="width" id="77C-8m-g85"/>
-                            <constraint firstItem="mmf-zl-TtE" firstAttribute="centerY" secondItem="V5j-Ai-ewa" secondAttribute="centerY" id="CJU-0b-cTk"/>
-                            <constraint firstItem="GGo-Ha-J0t" firstAttribute="width" secondItem="Zgv-CG-Jor" secondAttribute="width" id="JCK-RP-QB9"/>
-                            <constraint firstItem="mmf-zl-TtE" firstAttribute="centerX" secondItem="V5j-Ai-ewa" secondAttribute="centerX" id="dOR-Sz-82P"/>
-                            <constraint firstItem="mmf-zl-TtE" firstAttribute="height" secondItem="Zgv-CG-Jor" secondAttribute="height" id="f8n-Pa-2ng"/>
-                            <constraint firstItem="GGo-Ha-J0t" firstAttribute="centerY" secondItem="V5j-Ai-ewa" secondAttribute="centerY" id="hHg-MJ-ujt"/>
-                            <constraint firstItem="GGo-Ha-J0t" firstAttribute="centerX" secondItem="V5j-Ai-ewa" secondAttribute="centerX" id="vvi-5w-Hb5"/>
-                            <constraint firstItem="GGo-Ha-J0t" firstAttribute="height" secondItem="Zgv-CG-Jor" secondAttribute="height" id="zOd-UH-F22"/>
+                            <constraint firstItem="GGo-Ha-J0t" firstAttribute="centerY" secondItem="V5j-Ai-ewa" secondAttribute="centerY" id="3oj-Sa-ONR"/>
+                            <constraint firstItem="GGo-Ha-J0t" firstAttribute="width" secondItem="Zgv-CG-Jor" secondAttribute="width" id="9rK-3V-aoO"/>
+                            <constraint firstItem="GGo-Ha-J0t" firstAttribute="centerX" secondItem="V5j-Ai-ewa" secondAttribute="centerX" id="LGc-L7-Crm"/>
+                            <constraint firstItem="mmf-zl-TtE" firstAttribute="centerX" secondItem="V5j-Ai-ewa" secondAttribute="centerX" id="SEf-PK-kSY"/>
+                            <constraint firstItem="mmf-zl-TtE" firstAttribute="height" secondItem="Zgv-CG-Jor" secondAttribute="height" id="d3t-rF-5Pa"/>
+                            <constraint firstItem="GGo-Ha-J0t" firstAttribute="height" secondItem="Zgv-CG-Jor" secondAttribute="height" id="nwq-T6-9qN"/>
+                            <constraint firstItem="mmf-zl-TtE" firstAttribute="width" secondItem="Zgv-CG-Jor" secondAttribute="width" id="yhH-tJ-PTR"/>
+                            <constraint firstItem="mmf-zl-TtE" firstAttribute="centerY" secondItem="V5j-Ai-ewa" secondAttribute="centerY" id="ypF-o3-fGJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="V5j-Ai-ewa"/>
                     </view>

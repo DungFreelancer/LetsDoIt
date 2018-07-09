@@ -22,5 +22,8 @@ class BaseVC: UIViewController {
         self.navigationController?.navigationBar.setBackgroundImage(#imageLiteral(resourceName: "bg"), for: UIBarMetrics.default )
     }
     
+//    override var prefersStatusBarHidden: Bool {
+//        return true 
+//    }
 }
 

@@ -15,27 +15,30 @@ class RecordVC: BaseVC {
     
    
     @IBOutlet weak var imgSnapshot: UIImageView!
-    
-    @IBOutlet weak var videoPlayerView: UIView!
 
+    @IBOutlet weak var videoPlayerView: UIView!
     
     var url: URL?
     var player: AVPlayer?
     var isPlaying: Bool = false
     var imgShare: UIImage?
     var recordType: RecordType?
+    var havingImageOrVideo: Bool = false
     
-   
+    
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Share", style: .plain, target: self, action: #selector(shareHandler))
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "share1"), style: .plain, target: self, action: #selector(shareHandler))
+        navigationItem.rightBarButtonItem?.isEnabled = false
         Log.debug(recordType!)
         popupActionSheet()
+
     }
-   
+
     // Action:
-    
     @objc func shareHandler() {
         if videoPlayerView.isHidden {
             let activityViewController = UIActivityViewController(activityItems: [imgShare!], applicationActivities: nil)
@@ -79,9 +82,11 @@ extension RecordVC:UIImagePickerControllerDelegate, UINavigationControllerDelega
             if (type == "public.image") {
                 let image = info[UIImagePickerControllerOriginalImage] as! UIImage
                 self.imgSnapshot.image = image
+                self.navigationItem.rightBarButtonItem?.isEnabled = true
                 
+                //Add logo
                 let logo = UIImageView(image: UIImage(named: "Logo")!)
-                logo.frame = CGRect(x: 0, y: self.view.frame.height-logo.frame.size.height-44, width: 100, height: 100)
+                logo.frame = CGRect(x: 0, y: self.imgSnapshot.frame.height-logo.frame.size.height-10, width: 100, height: 100)
                 self.imgSnapshot.addSubview(logo)
                 
                 let size = self.imgSnapshot.bounds.size
@@ -118,6 +123,7 @@ extension RecordVC:UIImagePickerControllerDelegate, UINavigationControllerDelega
                         }
                     })
                 }) { (progress) in }
+                self.navigationItem.rightBarButtonItem?.isEnabled = true
             }
         }
     }

@@ -22,7 +22,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bze-Y5-fZu">
-                                <rect key="frame" x="168" y="530" width="39" height="30"/>
+                                <rect key="frame" x="137.5" y="530" width="100" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="PEx-hv-AOK"/>
+                                    <constraint firstAttribute="height" constant="50" id="TWQ-Ty-fHy"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="PLAY">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -45,6 +49,13 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wo9-vo-h0S">
+                                <rect key="frame" x="0.0" y="171" width="375" height="345"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="345" id="WrZ-yY-HMm"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ghN-Yy-Mjy">
                                 <rect key="frame" x="315" y="28" width="44" height="200"/>
                                 <subviews>
@@ -102,12 +113,15 @@
                             <constraint firstItem="j6T-KY-Wnk" firstAttribute="centerY" secondItem="7me-KI-F74" secondAttribute="centerY" id="6MG-u3-RRP"/>
                             <constraint firstItem="Bze-Y5-fZu" firstAttribute="top" secondItem="j6T-KY-Wnk" secondAttribute="bottom" constant="24" id="6cJ-xs-cgz"/>
                             <constraint firstItem="6Mb-pE-bCR" firstAttribute="bottom" secondItem="aIh-uI-k8s" secondAttribute="bottom" id="K6c-Ea-W0M"/>
+                            <constraint firstItem="Wo9-vo-h0S" firstAttribute="width" secondItem="7me-KI-F74" secondAttribute="width" id="OeV-DY-ees"/>
                             <constraint firstItem="6Mb-pE-bCR" firstAttribute="top" secondItem="7me-KI-F74" secondAttribute="top" id="QHU-Ut-TVw"/>
                             <constraint firstItem="j6T-KY-Wnk" firstAttribute="leading" secondItem="aIh-uI-k8s" secondAttribute="leading" id="aMp-K4-7TC"/>
                             <constraint firstItem="aIh-uI-k8s" firstAttribute="trailing" secondItem="ghN-Yy-Mjy" secondAttribute="trailing" constant="16" id="bV7-5l-5W8"/>
                             <constraint firstItem="6Mb-pE-bCR" firstAttribute="leading" secondItem="aIh-uI-k8s" secondAttribute="leading" id="hRK-f3-oG2"/>
                             <constraint firstItem="6Mb-pE-bCR" firstAttribute="trailing" secondItem="aIh-uI-k8s" secondAttribute="trailing" id="iGr-Pd-MHa"/>
                             <constraint firstItem="j6T-KY-Wnk" firstAttribute="trailing" secondItem="aIh-uI-k8s" secondAttribute="trailing" id="lFN-Wb-fwa"/>
+                            <constraint firstItem="Wo9-vo-h0S" firstAttribute="centerY" secondItem="aIh-uI-k8s" secondAttribute="centerY" id="m8q-ZF-cJT"/>
+                            <constraint firstItem="Wo9-vo-h0S" firstAttribute="centerX" secondItem="aIh-uI-k8s" secondAttribute="centerX" id="sOf-oo-0tt"/>
                             <constraint firstItem="Bze-Y5-fZu" firstAttribute="centerX" secondItem="7me-KI-F74" secondAttribute="centerX" id="wjP-SF-Gfv"/>
                             <constraint firstItem="j6T-KY-Wnk" firstAttribute="centerX" secondItem="7me-KI-F74" secondAttribute="centerX" id="zTa-18-vwr"/>
                         </constraints>

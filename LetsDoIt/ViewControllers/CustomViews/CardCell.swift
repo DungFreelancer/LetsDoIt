@@ -24,6 +24,10 @@ class CardCell: UICollectionViewCell {
         self.btnDelete.layer.cornerRadius = 5
         self.btnDelete.layer.masksToBounds = true 
         self.imgCard.setBorderWithRadius(5.0, color: UIColor.clear)
+        self.lbTitle.textColor = .gray
+        self.lbTitle.textAlignment = NSTextAlignment.center
+        
+        
     }
     
     func updateUI(image: UIImage, title: String, canDelete: Bool = false) {

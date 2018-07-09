@@ -19,6 +19,13 @@ class PlayVC: BaseVC {
     
     @IBOutlet weak var clCard: UICollectionView!
     @IBOutlet weak var btnPlay: UIButton!
+    {
+        didSet {
+            btnPlay.setBackgroundImage(#imageLiteral(resourceName: "buttonPlay"), for: .normal)
+            btnPlay.layer.cornerRadius = 5
+            btnPlay.layer.masksToBounds = true
+        }
+    }
     
     private let playVM = PlayVM()
     private var timerPlay: Timer?
@@ -101,6 +108,15 @@ class PlayVC: BaseVC {
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch: UITouch? = touches.first
+        if touch?.view != menuBtnView {
+            if isOpeningSubMenu {
+                onClickMenuButton()
+            }
+        }
     }
     
     // MARK: - Private method
@@ -194,12 +210,14 @@ class PlayVC: BaseVC {
         if self.isCardOpening {
             UIView.transition(with: cellCenter, duration: 0.5, options: .transitionFlipFromRight, animations: {
                 cellCenter.imgCard.image = UIImage(named: "cardbackside")
+                cellCenter.lbTitle.isHidden = true
             }, completion: nil)
             self.isCardOpening = false
         } else {
             let cardRandom = self.playVM.getCard(at: self.playVM.randomIndexCard())
             UIView.transition(with: cellCenter, duration: 0.5, options: .transitionFlipFromLeft, animations: {
                 cellCenter.imgCard.image = cardRandom?.image
+                cellCenter.lbTitle.isHidden = false
             }, completion: nil)
             self.isCardOpening = true
         }

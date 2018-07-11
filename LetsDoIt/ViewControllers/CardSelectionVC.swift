@@ -25,8 +25,9 @@ class CardSelectionVC: BaseVC {
         super.viewDidLoad()
         
         self.setUpCollectionView()
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "backbtn"), style: .plain, target: self, action: #selector(backHandler))
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done".localized(),
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done".localized(),
                                                             style: .plain,
                                                             target: self,
                                                             action: #selector(handlerDone))
@@ -49,7 +50,13 @@ class CardSelectionVC: BaseVC {
     }
     
     // MARK: - Action
+    @objc private func backHandler() {
+        AudioPlayerService.sharedInstance.playSound(name: "onclick")
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     @objc private func onClickDelete(sender: UIButton) {
+        AudioPlayerService.sharedInstance.playSound(name: "onclick")
         self.cardSelectionVM.resetCardToDefault(at: sender.tag)
         
         HUDHelper.showLoading()
@@ -87,7 +94,8 @@ extension CardSelectionVC : UICollectionViewDataSource, UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.selectedCellRow = indexPath.row
-        
+        AudioPlayerService.sharedInstance.playSound(name: "onclick")
+
         // pass data to CardVC
         let cardVC = DestinationView.cardVC()
         cardVC.delegate = self

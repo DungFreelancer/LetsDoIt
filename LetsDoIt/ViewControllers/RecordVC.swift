@@ -33,13 +33,20 @@ class RecordVC: BaseVC {
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "share1"), style: .plain, target: self, action: #selector(shareHandler))
         navigationItem.rightBarButtonItem?.isEnabled = false
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "backbtn"), style: .plain, target: self, action: #selector(backHandler))
         Log.debug(recordType!)
         popupActionSheet()
 
     }
 
     // Action:
+    @objc func backHandler() {
+        AudioPlayerService.sharedInstance.playSound(name: "onclick")
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     @objc func shareHandler() {
+        AudioPlayerService.sharedInstance.playSound(name: "onclick")
         if videoPlayerView.isHidden {
             let activityViewController = UIActivityViewController(activityItems: [imgShare!], applicationActivities: nil)
             self.present(activityViewController,animated: true,completion: nil)

@@ -9,6 +9,7 @@
 import UIKit
 import MobileCoreServices
 import GravitySliderFlowLayout
+import AVFoundation
 
 enum RecordType: String {
     case Snapshot
@@ -44,6 +45,7 @@ class PlayVC: BaseVC {
     @IBOutlet weak var menuButton: UIButton!
         {
         didSet{
+
             menuButton.setBackgroundImage(#imageLiteral(resourceName: "arrow"), for: .normal)
         }
     }
@@ -73,7 +75,7 @@ class PlayVC: BaseVC {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.setUpCollectionView()
         self.setupActionForButtons()
         
@@ -201,6 +203,7 @@ class PlayVC: BaseVC {
     }
     
     func flipCard(at index: Int) {
+        AudioPlayerService.sharedInstance.playSound(name: "flipping")
         guard let cellCenter = self.clCard.cellForItem(at: IndexPath(item: index, section: 0)) as? CardCell else {
             // Fix crash for small screen
             self.isCardOpening = false
@@ -233,6 +236,7 @@ class PlayVC: BaseVC {
     
     @objc func onClickMenuButton() {
         //Open menubutton
+        AudioPlayerService.sharedInstance.playSound(name: "onclick")
         if !isOpeningSubMenu {
             UIView.animate(withDuration: 0.3, animations: {
                 
@@ -288,6 +292,7 @@ class PlayVC: BaseVC {
     }
     
     @objc func onClickChickenModeButton() {
+        AudioPlayerService.sharedInstance.playSound(name: "chickensound")
         if self.isCardOpening {
                 self.flipCard(at: 26)
         }
@@ -295,6 +300,7 @@ class PlayVC: BaseVC {
     }
     
     @objc func onClickAlienModeButton() {
+        AudioPlayerService.sharedInstance.playSound(name: "aliensound")
         if self.isCardOpening {
                 self.flipCard(at: 26)
         }
@@ -303,6 +309,7 @@ class PlayVC: BaseVC {
     }
     
     @objc func onClickCustomModeButton() {
+        AudioPlayerService.sharedInstance.playSound(name: "onclick")
         if self.isCardOpening {
                 self.flipCard(at: 26)
                 }
@@ -312,17 +319,19 @@ class PlayVC: BaseVC {
     }
     
     @IBAction func onClickPlay(_ sender: Any) {
+//        self.btnPlay.onClickWithSound(file: "onclick", offType: "mp3")
+        AudioPlayerService.sharedInstance.playSound(name: "onclick", type: "mp3")
         self.menuButton.isHidden = true
         if isOpeningSubMenu {
             onClickMenuButton()
         }
         self.btnPlay.isHidden = true
-        
         if self.isCardOpening {
             self.flipCard(at: 26)
         }
-        
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.6) {
+            AudioPlayerService.sharedInstance.playSound(name: "flip", type: "mp3")
+
             // Move to the middle of the card list
             self.clCard.scrollToItem(at: IndexPath(row: self.playVM.cellRow()/2, section: 0),
                                      at: .centeredHorizontally,
@@ -353,5 +362,3 @@ extension PlayVC: CardSelectionDelegate {
     }
     
 }
-
-

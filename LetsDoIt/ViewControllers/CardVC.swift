@@ -23,7 +23,7 @@ class CardVC: BaseVC {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "backbtn"), style: .plain, target: self, action: #selector(backHandler))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(onClickAdd))
         
         self.txtTitle.text = self.cardDefault?.title
@@ -34,6 +34,11 @@ class CardVC: BaseVC {
     }
     
     // MARK: - Action
+    @objc func backHandler() {
+        AudioPlayerService.sharedInstance.playSound(name: "onclick")
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     @objc func handleImageCard() {
         let picker = UIImagePickerController()
         picker.delegate = self
@@ -52,6 +57,7 @@ class CardVC: BaseVC {
     }
     
     @objc func onClickAdd() {
+        AudioPlayerService.sharedInstance.playSound(name: "onclick")
         if self.txtTitle.text == "" || self.cardDefault?.image == nil {
             AlertHelper.showPopup(on: self, title: "", message: "Please add the title and take a picture first".localized(), mainButton: "OK".localized(), mainComplete: {_ in })
             return

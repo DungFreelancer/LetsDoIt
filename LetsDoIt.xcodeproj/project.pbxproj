@@ -25,6 +25,13 @@
 		A0BA6DED20A2A45E0041466D /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BA6DEC20A2A45E0041466D /* AlertHelper.swift */; };
 		ADA63C7C3BBE7B3A04EB64B1 /* Pods_LetsDoIt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB6BD7309657A187AEA34468 /* Pods_LetsDoIt.framework */; };
 		E80B521620A0E275000083AE /* UIColorEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80B521520A0E275000083AE /* UIColorEx.swift */; };
+		E8161FEB20F6611D00996ED1 /* onclick.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E8161FEA20F6611D00996ED1 /* onclick.mp3 */; };
+		E8161FF420F68C5400996ED1 /* UIButtonEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8161FF320F68C5400996ED1 /* UIButtonEx.swift */; };
+		E8161FF620F690C600996ED1 /* AudioPlayerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8161FF520F690C600996ED1 /* AudioPlayerService.swift */; };
+		E8161FFA20F694CE00996ED1 /* flipping.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E8161FF920F694CE00996ED1 /* flipping.mp3 */; };
+		E8161FFC20F6969D00996ED1 /* chickensound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E8161FFB20F6969D00996ED1 /* chickensound.mp3 */; };
+		E8161FFE20F6983E00996ED1 /* aliensound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E8161FFD20F6983E00996ED1 /* aliensound.mp3 */; };
+		E816200220F6A62300996ED1 /* flip.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E816200120F6A62300996ED1 /* flip.mp3 */; };
 		E81B988420A3C6A2003DA2B2 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81B988320A3C6A2003DA2B2 /* Card.swift */; };
 		E81B988720A3CB01003DA2B2 /* CardSelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81B988620A3CB01003DA2B2 /* CardSelectionVC.swift */; };
 		E81B988B20A3CD05003DA2B2 /* CardSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E81B988A20A3CD05003DA2B2 /* CardSelection.storyboard */; };
@@ -64,6 +71,13 @@
 		BAB76CFD7309A3C94DCD59DA /* Pods-TemplateProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TemplateProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TemplateProject/Pods-TemplateProject.debug.xcconfig"; sourceTree = "<group>"; };
 		CB6BD7309657A187AEA34468 /* Pods_LetsDoIt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LetsDoIt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E80B521520A0E275000083AE /* UIColorEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorEx.swift; sourceTree = "<group>"; };
+		E8161FEA20F6611D00996ED1 /* onclick.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = onclick.mp3; sourceTree = "<group>"; };
+		E8161FF320F68C5400996ED1 /* UIButtonEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonEx.swift; sourceTree = "<group>"; };
+		E8161FF520F690C600996ED1 /* AudioPlayerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerService.swift; sourceTree = "<group>"; };
+		E8161FF920F694CE00996ED1 /* flipping.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = flipping.mp3; sourceTree = "<group>"; };
+		E8161FFB20F6969D00996ED1 /* chickensound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = chickensound.mp3; sourceTree = "<group>"; };
+		E8161FFD20F6983E00996ED1 /* aliensound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = aliensound.mp3; sourceTree = "<group>"; };
+		E816200120F6A62300996ED1 /* flip.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = flip.mp3; sourceTree = "<group>"; };
 		E81B988320A3C6A2003DA2B2 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		E81B988620A3CB01003DA2B2 /* CardSelectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSelectionVC.swift; sourceTree = "<group>"; };
 		E81B988A20A3CD05003DA2B2 /* CardSelection.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CardSelection.storyboard; sourceTree = "<group>"; };
@@ -115,6 +129,7 @@
 		9AB9553C20A49E8D0073CBB9 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				E8B892DE1F7FFF8000DDA048 /* BaseVC.swift */,
 				9AB9553D20A49ED00073CBB9 /* CardCell.swift */,
 			);
 			path = CustomViews;
@@ -127,6 +142,18 @@
 				E8AABAA720A5DE9800BE9D04 /* CardSelectionVM.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		E8161FE920F6610500996ED1 /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				E8161FEA20F6611D00996ED1 /* onclick.mp3 */,
+				E816200120F6A62300996ED1 /* flip.mp3 */,
+				E8161FF920F694CE00996ED1 /* flipping.mp3 */,
+				E8161FFD20F6983E00996ED1 /* aliensound.mp3 */,
+				E8161FFB20F6969D00996ED1 /* chickensound.mp3 */,
+			);
+			path = Music;
 			sourceTree = "<group>";
 		};
 		E81B988220A3C68D003DA2B2 /* Model */ = {
@@ -152,6 +179,7 @@
 				E80B521520A0E275000083AE /* UIColorEx.swift */,
 				9A87534C20ADE44E00D5A2EE /* StringEx.swift */,
 				9AB7701C20B9DF3300B8B53E /* UIImageEx.swift */,
+				E8161FF320F68C5400996ED1 /* UIButtonEx.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -192,6 +220,7 @@
 		E8B892EE1F7FFFF100DDA048 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E8161FE920F6610500996ED1 /* Music */,
 				E85A7E1320EFAFE200D44565 /* Assets.xcassets */,
 				E8B892EF1F80005000DDA048 /* Localizable.strings */,
 			);
@@ -209,6 +238,7 @@
 				9AC07A7820B075500053D776 /* HUDHelper.swift */,
 				9A0702A520A5FA6E0018C015 /* DestinationView.swift */,
 				9A35A9C220CD748F008A1320 /* Merge.swift */,
+				E8161FF520F690C600996ED1 /* AudioPlayerService.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -217,7 +247,6 @@
 			isa = PBXGroup;
 			children = (
 				9AB9553C20A49E8D0073CBB9 /* CustomViews */,
-				E8B892DE1F7FFF8000DDA048 /* BaseVC.swift */,
 				9AB9552B20A48FF00073CBB9 /* PlayVC.swift */,
 				E81B988620A3CB01003DA2B2 /* CardSelectionVC.swift */,
 				9AB9552D20A4901D0073CBB9 /* CardVC.swift */,
@@ -312,9 +341,14 @@
 			files = (
 				E8B892F01F80005000DDA048 /* Localizable.strings in Resources */,
 				9AB9553420A490A90073CBB9 /* Card.storyboard in Resources */,
+				E8161FFE20F6983E00996ED1 /* aliensound.mp3 in Resources */,
 				E8D3CF5F20CAA1C9006C10CA /* Info.storyboard in Resources */,
 				9AB9553620A490B30073CBB9 /* Record.storyboard in Resources */,
+				E8161FFC20F6969D00996ED1 /* chickensound.mp3 in Resources */,
+				E8161FEB20F6611D00996ED1 /* onclick.mp3 in Resources */,
 				E81B988B20A3CD05003DA2B2 /* CardSelection.storyboard in Resources */,
+				E816200220F6A62300996ED1 /* flip.mp3 in Resources */,
+				E8161FFA20F694CE00996ED1 /* flipping.mp3 in Resources */,
 				9AB9553220A4908B0073CBB9 /* Play.storyboard in Resources */,
 				E85A7E1420EFAFE300D44565 /* Assets.xcassets in Resources */,
 				9AB9553B20A49D7E0073CBB9 /* Card.xib in Resources */,
@@ -390,8 +424,10 @@
 				9A87534D20ADE44E00D5A2EE /* StringEx.swift in Sources */,
 				E880D0A11F809F4F002EEB55 /* Commons.swift in Sources */,
 				9A35A9C320CD748F008A1320 /* Merge.swift in Sources */,
+				E8161FF420F68C5400996ED1 /* UIButtonEx.swift in Sources */,
 				E81B988420A3C6A2003DA2B2 /* Card.swift in Sources */,
 				E880D09B1F807803002EEB55 /* Log.swift in Sources */,
+				E8161FF620F690C600996ED1 /* AudioPlayerService.swift in Sources */,
 				E880D09F1F808D5E002EEB55 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="6Mb-pE-bCR">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="6Mb-pE-bCR">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bze-Y5-fZu">
@@ -28,9 +28,10 @@
                                     <constraint firstAttribute="height" constant="50" id="TWQ-Ty-fHy"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="PLAY">
+                                <state key="normal" title="Let's do it" backgroundImage="btn_play">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <state key="selected" backgroundImage="btn_played-4"/>
                                 <connections>
                                     <action selector="onClickPlay:" destination="C79-Mi-Tbq" eventType="touchUpInside" id="iOw-O5-XyP"/>
                                 </connections>
@@ -163,6 +164,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bg" width="600" height="590"/>
+        <image name="background" width="590" height="1049"/>
+        <image name="btn_play" width="279" height="100"/>
+        <image name="btn_played-4" width="275" height="88"/>
     </resources>
 </document>

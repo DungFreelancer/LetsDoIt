@@ -14,6 +14,18 @@ protocol CardSelectionDelegate: class {
 
 class CardSelectionVC: BaseVC {
     
+    @IBOutlet weak var btnDone: UIButton!
+        {
+        didSet{
+            btnDone.addTarget(self, action: #selector(handlerDone), for: .touchUpInside)
+            }
+        }
+    @IBOutlet weak var btnBack: UIButton!
+        {
+            didSet{
+                btnBack.addTarget(self, action: #selector(backHandler), for: .touchUpInside)
+            }
+        }
     @IBOutlet weak var clCard: UICollectionView!
     
     let cardSelectionVM = CardSelectionVM()
@@ -25,13 +37,7 @@ class CardSelectionVC: BaseVC {
         super.viewDidLoad()
         
         self.setUpCollectionView()
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "backbtn"), style: .plain, target: self, action: #selector(backHandler))
-        
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done".localized(),
-                                                            style: .plain,
-                                                            target: self,
-                                                            action: #selector(handlerDone))
-        
+    
         HUDHelper.showLoading()
         self.cardSelectionVM.loadCards { [weak self] (isSuccess) in
             HUDHelper.hideLoading()
@@ -46,7 +52,7 @@ class CardSelectionVC: BaseVC {
         self.clCard.register(UINib(nibName: CardCell.nibName, bundle: nil), forCellWithReuseIdentifier: CardCell.cellID)
         self.clCard.dataSource = self
         self.clCard.delegate = self
-        self.clCard.backgroundView = UIImageView(image: #imageLiteral(resourceName: "bg"))
+        
     }
     
     // MARK: - Action

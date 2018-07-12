@@ -12,11 +12,27 @@ import Photos
 import MobileCoreServices
 
 class RecordVC: BaseVC {
-    
-   
-    @IBOutlet weak var imgSnapshot: UIImageView!
 
+    @IBOutlet weak var imgSnapshot: UIImageView!
+     
+    @IBOutlet weak var imgScrollView: UIScrollView!
+  
     @IBOutlet weak var videoPlayerView: UIView!
+    
+    //Fake navigationbar
+    @IBOutlet weak var btnBack: UIButton!
+        {
+            didSet{
+                btnBack.addTarget(self, action: #selector(backHandler), for: .touchUpInside)
+            }
+        }
+    @IBOutlet weak var btnShare: UIButton!
+        {
+            didSet{
+                btnShare.isEnabled = false
+                btnShare.addTarget(self, action: #selector(shareHandler), for: .touchUpInside)
+            }
+        }
     
     var url: URL?
     var player: AVPlayer?
@@ -30,15 +46,13 @@ class RecordVC: BaseVC {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "share1"), style: .plain, target: self, action: #selector(shareHandler))
-        navigationItem.rightBarButtonItem?.isEnabled = false
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "backbtn"), style: .plain, target: self, action: #selector(backHandler))
+        super.hideNavigationBar(true)
         Log.debug(recordType!)
         popupActionSheet()
+        minAndMaxScaleOfScrollView()
 
     }
-
+    
     // Action:
     @objc func backHandler() {
         AudioPlayerService.sharedInstance.playSound(name: "onclick")
@@ -80,20 +94,30 @@ class RecordVC: BaseVC {
                 }
         }
     }
+    
+    func minAndMaxScaleOfScrollView() {
+        self.imgScrollView.minimumZoomScale = 1.0
+        self.imgScrollView.maximumZoomScale = 3.0
+    }
+ 
 }
-extension RecordVC:UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension RecordVC:UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate {
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         picker.dismiss(animated: true) {
             let type = info[UIImagePickerControllerMediaType] as! String
             if (type == "public.image") {
                 let image = info[UIImagePickerControllerOriginalImage] as! UIImage
-                self.imgSnapshot.image = image
-                self.navigationItem.rightBarButtonItem?.isEnabled = true
+                let imageSize = image.imageWithSize(size:image.size)
+                self.imgSnapshot.image = imageSize
+                
+                self.btnShare.isEnabled = true
                 
                 //Add logo
-                let logo = UIImageView(image: UIImage(named: "Logo")!)
-                logo.frame = CGRect(x: 0, y: self.imgSnapshot.frame.height-logo.frame.size.height-10, width: 100, height: 100)
+                let logo = UIImageView(image: UIImage(named: "logoVP")!)
+                Log.debug(logo.frame.height)
+                Log.debug(self.imgSnapshot.frame.height)
+                logo.frame = CGRect(x: 8, y: self.imgSnapshot.frame.height-logo.frame.size.height + 150, width: 100, height: 100)
                 self.imgSnapshot.addSubview(logo)
                 
                 let size = self.imgSnapshot.bounds.size
@@ -102,16 +126,15 @@ extension RecordVC:UIImagePickerControllerDelegate, UINavigationControllerDelega
                 self.imgSnapshot.drawHierarchy(in: rec, afterScreenUpdates: true)
                 let result = UIGraphicsGetImageFromCurrentImageContext()
                 UIGraphicsEndImageContext()
-                
                 UIImageWriteToSavedPhotosAlbum(result!, nil, nil, nil)
                 // Share the result image here
-                UIGraphicsBeginImageContext(self.view.frame.size)
-                self.view.layer.render(in: UIGraphicsGetCurrentContext()!)
+                UIGraphicsBeginImageContext(self.imgSnapshot.frame.size)
+                self.imgSnapshot.layer.render(in: UIGraphicsGetCurrentContext()!)
                 self.imgShare = UIGraphicsGetImageFromCurrentImageContext()
          
             } else {
                 self.url = info[UIImagePickerControllerMediaURL] as? URL
-                let logo = UIImage(named: "Logo")!
+                let logo = UIImage(named: "logoVP")!
                 
                 HUDHelper.showLoading()
                 Merge(config: .custom).overlayVideo(video: AVAsset(url: self.url!), overlayImage: logo, completion: { (url) in
@@ -130,7 +153,7 @@ extension RecordVC:UIImagePickerControllerDelegate, UINavigationControllerDelega
                         }
                     })
                 }) { (progress) in }
-                self.navigationItem.rightBarButtonItem?.isEnabled = true
+                self.btnShare.isEnabled = true
             }
         }
     }
@@ -138,5 +161,8 @@ extension RecordVC:UIImagePickerControllerDelegate, UINavigationControllerDelega
         picker.dismiss(animated: true, completion: nil)
     }
     
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return self.imgSnapshot
+    }
 }
 

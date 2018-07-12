@@ -14,7 +14,25 @@ protocol CardVCDelegate: class {
 
 class CardVC: BaseVC {
     
+    @IBOutlet weak var btnBack: UIButton!
+        {
+            didSet{
+                btnBack.addTarget(self, action: #selector(backHandler), for: .touchUpInside)
+            }
+        }
+    @IBOutlet weak var btnDone: UIButton!
+        {
+            didSet{
+                btnDone.addTarget(self, action: #selector(onClickAdd), for: .touchUpInside)
+            }
+        }
     @IBOutlet weak var imgCard: UIImageView!
+        {
+            didSet{
+                imgCard.layer.cornerRadius = 5
+                imgCard.layer.masksToBounds = true 
+            }
+        }
     @IBOutlet weak var txtTitle: UITextField!
     
     var cardDefault: Card?
@@ -23,14 +41,11 @@ class CardVC: BaseVC {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "backbtn"), style: .plain, target: self, action: #selector(backHandler))
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(onClickAdd))
         
         self.txtTitle.text = self.cardDefault?.title
-        self.imgCard.image = self.cardDefault?.image ?? UIImage(named: "cardbackside")
         self.imgCard.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleImageCard)))
         self.imgCard.isUserInteractionEnabled = true
-        self.imgCard.setBorderWithRadius(5.0, color: UIColor.clear)
+      
     }
     
     // MARK: - Action

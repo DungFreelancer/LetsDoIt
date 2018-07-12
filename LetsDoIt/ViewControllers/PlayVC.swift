@@ -19,12 +19,17 @@ enum RecordType: String {
 class PlayVC: BaseVC {
     
     @IBOutlet weak var clCard: UICollectionView!
-    @IBOutlet weak var btnPlay: UIButton!
+    {
+        didSet{
+            clCard.backgroundColor = UIColor.clear
+        }
+    }
+    @IBOutlet weak var btnPlay = ButtonCustom(name: "onclick")
     {
         didSet {
-            btnPlay.setBackgroundImage(#imageLiteral(resourceName: "buttonPlay"), for: .normal)
-            btnPlay.layer.cornerRadius = 5
-            btnPlay.layer.masksToBounds = true
+            
+            btnPlay?.layer.cornerRadius = 5
+            btnPlay?.layer.masksToBounds = true
         }
     }
     
@@ -86,11 +91,6 @@ class PlayVC: BaseVC {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        super.hideNavigationBar(true)
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -101,11 +101,6 @@ class PlayVC: BaseVC {
                                      animated: false)
         }
         
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        super.hideNavigationBar(false)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -161,7 +156,7 @@ class PlayVC: BaseVC {
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + timeDelay, execute: {
                 self.showSaveMomentPopup()
                 self.menuButton.isHidden = false
-                self.btnPlay.isHidden = false
+                self.btnPlay?.isHidden = false
             })
         }
     }
@@ -212,7 +207,7 @@ class PlayVC: BaseVC {
         
         if self.isCardOpening {
             UIView.transition(with: cellCenter, duration: 0.5, options: .transitionFlipFromRight, animations: {
-                cellCenter.imgCard.image = UIImage(named: "cardbackside")
+                cellCenter.imgCard.image = UIImage(named: "backcard")
                 cellCenter.lbTitle.isHidden = true
             }, completion: nil)
             self.isCardOpening = false
@@ -319,18 +314,16 @@ class PlayVC: BaseVC {
     }
     
     @IBAction func onClickPlay(_ sender: Any) {
-//        self.btnPlay.onClickWithSound(file: "onclick", offType: "mp3")
-        AudioPlayerService.sharedInstance.playSound(name: "onclick", type: "mp3")
         self.menuButton.isHidden = true
         if isOpeningSubMenu {
             onClickMenuButton()
         }
-        self.btnPlay.isHidden = true
+        self.btnPlay?.isHidden = true
         if self.isCardOpening {
             self.flipCard(at: 26)
         }
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.6) {
-            AudioPlayerService.sharedInstance.playSound(name: "flip", type: "mp3")
+            AudioPlayerService.sharedInstance.playSound(name: "flipsound", type: "mp3")
 
             // Move to the middle of the card list
             self.clCard.scrollToItem(at: IndexPath(row: self.playVM.cellRow()/2, section: 0),

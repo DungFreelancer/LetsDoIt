@@ -23,9 +23,11 @@ class CardCell: UICollectionViewCell {
         self.btnDelete.setBackgroundImage(#imageLiteral(resourceName: "removeButton"), for: .normal)
         self.btnDelete.layer.cornerRadius = 5
         self.btnDelete.layer.masksToBounds = true 
-        self.imgCard.setBorderWithRadius(5.0, color: UIColor.clear)
+        self.imgCard.setBorderWithRadius(5, color: UIColor.clear)
+        self.imgCard.backgroundColor = UIColor.clear
         self.lbTitle.textColor = .gray
         self.lbTitle.textAlignment = NSTextAlignment.center
+        self.backgroundColor = .clear
         
         
     }

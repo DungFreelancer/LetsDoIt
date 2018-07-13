@@ -14,7 +14,8 @@ class BaseVC: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-       hideNavigationBar(true)
+        
+        hideNavigationBar(true)
     }
     
     // MARK: - private function

@@ -24,12 +24,11 @@ class PlayVC: BaseVC {
             clCard.backgroundColor = UIColor.clear
         }
     }
-    @IBOutlet weak var btnPlay = ButtonCustom(name: "onclick")
+    @IBOutlet weak var btnPlay: UIButton!
     {
         didSet {
-            
-            btnPlay?.layer.cornerRadius = 5
-            btnPlay?.layer.masksToBounds = true
+            btnPlay.layer.cornerRadius = 5
+            btnPlay.layer.masksToBounds = true
         }
     }
     
@@ -40,6 +39,7 @@ class PlayVC: BaseVC {
     private var isCardOpening: Bool = false
     
     private var isOpeningSubMenu: Bool = false
+    
     //menuButton and subMenuButton
     @IBOutlet weak var menuBtnView: UIView!
     {
@@ -47,7 +47,7 @@ class PlayVC: BaseVC {
             menuBtnView.backgroundColor = .clear
         }
     }
-    @IBOutlet weak var menuButton: UIButton!
+    @IBOutlet weak var menuButton : UIButton!
         {
         didSet{
 
@@ -83,7 +83,8 @@ class PlayVC: BaseVC {
         
         self.setUpCollectionView()
         self.setupActionForButtons()
-        
+        AudioPlayerService.sharedInstance.playSound(soundFileName: "pianosound")
+
         HUDHelper.showLoading()
         self.playVM.changeMode(mode: self.playVM.currentMode) { [weak self] (isSuccess) in
             HUDHelper.hideLoading()
@@ -198,7 +199,7 @@ class PlayVC: BaseVC {
     }
     
     func flipCard(at index: Int) {
-        AudioPlayerService.sharedInstance.playSound(name: "flipping")
+        AudioPlayerService.sharedInstance.playSound(soundFileName: "flipping")
         guard let cellCenter = self.clCard.cellForItem(at: IndexPath(item: index, section: 0)) as? CardCell else {
             // Fix crash for small screen
             self.isCardOpening = false
@@ -231,7 +232,7 @@ class PlayVC: BaseVC {
     
     @objc func onClickMenuButton() {
         //Open menubutton
-        AudioPlayerService.sharedInstance.playSound(name: "onclick")
+        AudioPlayerService.sharedInstance.playSound(soundFileName: "onclick")
         if !isOpeningSubMenu {
             UIView.animate(withDuration: 0.3, animations: {
                 
@@ -287,7 +288,7 @@ class PlayVC: BaseVC {
     }
     
     @objc func onClickChickenModeButton() {
-        AudioPlayerService.sharedInstance.playSound(name: "chickensound")
+        AudioPlayerService.sharedInstance.playSound(soundFileName: "chickensound")
         if self.isCardOpening {
                 self.flipCard(at: 26)
         }
@@ -295,7 +296,7 @@ class PlayVC: BaseVC {
     }
     
     @objc func onClickAlienModeButton() {
-        AudioPlayerService.sharedInstance.playSound(name: "aliensound")
+        AudioPlayerService.sharedInstance.playSound(soundFileName: "aliensound")
         if self.isCardOpening {
                 self.flipCard(at: 26)
         }
@@ -304,7 +305,7 @@ class PlayVC: BaseVC {
     }
     
     @objc func onClickCustomModeButton() {
-        AudioPlayerService.sharedInstance.playSound(name: "onclick")
+        AudioPlayerService.sharedInstance.playSound(soundFileName: "onclick")
         if self.isCardOpening {
                 self.flipCard(at: 26)
                 }
@@ -314,7 +315,8 @@ class PlayVC: BaseVC {
     }
     
     @IBAction func onClickPlay(_ sender: Any) {
-        self.menuButton.isHidden = true
+        AudioPlayerService.sharedInstance.playSound(soundFileName: "onclick")
+        self.menuButton?.isHidden = true
         if isOpeningSubMenu {
             onClickMenuButton()
         }
@@ -323,7 +325,7 @@ class PlayVC: BaseVC {
             self.flipCard(at: 26)
         }
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.6) {
-            AudioPlayerService.sharedInstance.playSound(name: "flipsound", type: "mp3")
+            AudioPlayerService.sharedInstance.playSound(soundFileName: "flipsound")
 
             // Move to the middle of the card list
             self.clCard.scrollToItem(at: IndexPath(row: self.playVM.cellRow()/2, section: 0),

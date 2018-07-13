@@ -35,6 +35,7 @@
 		E81B988B20A3CD05003DA2B2 /* CardSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E81B988A20A3CD05003DA2B2 /* CardSelection.storyboard */; };
 		E83EB40020F79675000ED5FD /* flipsound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E83EB3FF20F79675000ED5FD /* flipsound.mp3 */; };
 		E83EB40420F7FE89000ED5FD /* ButtonCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83EB40320F7FE89000ED5FD /* ButtonCustom.swift */; };
+		E83EB40620F901F3000ED5FD /* pianosound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E83EB40520F901F3000ED5FD /* pianosound.mp3 */; };
 		E85A7E1420EFAFE300D44565 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E85A7E1320EFAFE200D44565 /* Assets.xcassets */; };
 		E880D09B1F807803002EEB55 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = E880D09A1F807803002EEB55 /* Log.swift */; };
 		E880D09F1F808D5E002EEB55 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E880D09E1F808D5E002EEB55 /* Constants.swift */; };
@@ -81,6 +82,7 @@
 		E81B988A20A3CD05003DA2B2 /* CardSelection.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CardSelection.storyboard; sourceTree = "<group>"; };
 		E83EB3FF20F79675000ED5FD /* flipsound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = flipsound.mp3; sourceTree = "<group>"; };
 		E83EB40320F7FE89000ED5FD /* ButtonCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCustom.swift; sourceTree = "<group>"; };
+		E83EB40520F901F3000ED5FD /* pianosound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pianosound.mp3; sourceTree = "<group>"; };
 		E85A7E1320EFAFE200D44565 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E880D09A1F807803002EEB55 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		E880D09E1F808D5E002EEB55 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 		E8161FE920F6610500996ED1 /* Music */ = {
 			isa = PBXGroup;
 			children = (
+				E83EB40520F901F3000ED5FD /* pianosound.mp3 */,
 				E8161FEA20F6611D00996ED1 /* onclick.mp3 */,
 				E83EB3FF20F79675000ED5FD /* flipsound.mp3 */,
 				E8161FF920F694CE00996ED1 /* flipping.mp3 */,
@@ -343,6 +346,7 @@
 				9AB9553420A490A90073CBB9 /* Card.storyboard in Resources */,
 				E8161FFE20F6983E00996ED1 /* aliensound.mp3 in Resources */,
 				E8D3CF5F20CAA1C9006C10CA /* Info.storyboard in Resources */,
+				E83EB40620F901F3000ED5FD /* pianosound.mp3 in Resources */,
 				E83EB40020F79675000ED5FD /* flipsound.mp3 in Resources */,
 				9AB9553620A490B30073CBB9 /* Record.storyboard in Resources */,
 				E8161FFC20F6969D00996ED1 /* chickensound.mp3 in Resources */,

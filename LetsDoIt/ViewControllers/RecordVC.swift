@@ -47,6 +47,7 @@ class RecordVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         super.hideNavigationBar(true)
+        imgScrollView.delegate = self 
         Log.debug(recordType!)
         popupActionSheet()
         minAndMaxScaleOfScrollView()
@@ -55,12 +56,12 @@ class RecordVC: BaseVC {
     
     // Action:
     @objc func backHandler() {
-        AudioPlayerService.sharedInstance.playSound(name: "onclick")
+        AudioPlayerService.sharedInstance.playSound(soundFileName: "onclick")
         self.navigationController?.popViewController(animated: true)
     }
     
     @objc func shareHandler() {
-        AudioPlayerService.sharedInstance.playSound(name: "onclick")
+        AudioPlayerService.sharedInstance.playSound(soundFileName: "onclick")
         if videoPlayerView.isHidden {
             let activityViewController = UIActivityViewController(activityItems: [imgShare!], applicationActivities: nil)
             self.present(activityViewController,animated: true,completion: nil)
@@ -111,7 +112,7 @@ extension RecordVC:UIImagePickerControllerDelegate, UINavigationControllerDelega
                 let imageSize = image.imageWithSize(size:image.size)
                 self.imgSnapshot.image = imageSize
                 
-                self.btnShare.isEnabled = true
+                self.btnShare?.isEnabled = true
                 
                 //Add logo
                 let logo = UIImageView(image: UIImage(named: "logoVP")!)
@@ -153,7 +154,7 @@ extension RecordVC:UIImagePickerControllerDelegate, UINavigationControllerDelega
                         }
                     })
                 }) { (progress) in }
-                self.btnShare.isEnabled = true
+                self.btnShare?.isEnabled = true
             }
         }
     }

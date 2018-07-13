@@ -15,10 +15,10 @@ class ButtonCustom: UIButton {
     
     
 
-    init(name:String) {
+    required init(name:String) {
         super.init(frame:.zero)
 
-        self.playSound(name: name)
+        playSound(name: name)
         
     }
     
@@ -33,7 +33,7 @@ class ButtonCustom: UIButton {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
             try AVAudioSession.sharedInstance().setActive(true)
             
-            //            UIApplication.shared.beginReceivingRemoteControlEvents()
+            UIApplication.shared.beginReceivingRemoteControlEvents()
             
             audioPlayer = try AVAudioPlayer(contentsOf: sound)
             audioPlayer?.prepareToPlay()

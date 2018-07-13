@@ -50,11 +50,12 @@ class CardVC: BaseVC {
     
     // MARK: - Action
     @objc func backHandler() {
-        AudioPlayerService.sharedInstance.playSound(name: "onclick")
+        AudioPlayerService.sharedInstance.playSound(soundFileName: "onclick")
         self.navigationController?.popViewController(animated: true)
     }
     
     @objc func handleImageCard() {
+        AudioPlayerService.sharedInstance.playSound(soundFileName: "onclick")
         let picker = UIImagePickerController()
         picker.delegate = self
         
@@ -72,7 +73,7 @@ class CardVC: BaseVC {
     }
     
     @objc func onClickAdd() {
-        AudioPlayerService.sharedInstance.playSound(name: "onclick")
+        AudioPlayerService.sharedInstance.playSound(soundFileName: "onclick")
         if self.txtTitle.text == "" || self.cardDefault?.image == nil {
             AlertHelper.showPopup(on: self, title: "", message: "Please add the title and take a picture first".localized(), mainButton: "OK".localized(), mainComplete: {_ in })
             return

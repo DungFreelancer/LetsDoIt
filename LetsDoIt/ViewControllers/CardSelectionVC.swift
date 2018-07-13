@@ -57,12 +57,12 @@ class CardSelectionVC: BaseVC {
     
     // MARK: - Action
     @objc private func backHandler() {
-        AudioPlayerService.sharedInstance.playSound(name: "onclick")
+        AudioPlayerService.sharedInstance.playSound(soundFileName: "onclick")
         self.navigationController?.popViewController(animated: true)
     }
     
     @objc private func onClickDelete(sender: UIButton) {
-        AudioPlayerService.sharedInstance.playSound(name: "onclick")
+        AudioPlayerService.sharedInstance.playSound(soundFileName: "onclick")
         self.cardSelectionVM.resetCardToDefault(at: sender.tag)
         
         HUDHelper.showLoading()
@@ -75,6 +75,7 @@ class CardSelectionVC: BaseVC {
     }
     
     @objc private func handlerDone() {
+        AudioPlayerService.sharedInstance.playSound(soundFileName: "onclick")
         if self.cardSelectionVM.isValidCards() {
             self.delegate?.passCustomCards(cardSelectionVM.getCards())
             self.navigationController?.popViewController(animated: true)
@@ -100,7 +101,7 @@ extension CardSelectionVC : UICollectionViewDataSource, UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.selectedCellRow = indexPath.row
-        AudioPlayerService.sharedInstance.playSound(name: "onclick")
+        AudioPlayerService.sharedInstance.playSound(soundFileName: "onclick")
 
         // pass data to CardVC
         let cardVC = DestinationView.cardVC()

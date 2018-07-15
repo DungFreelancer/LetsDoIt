@@ -129,37 +129,71 @@ class PlayVC: BaseVC {
     }
     
     func configAutosScrollTimer() {
-        self.countLoop += 1
-        
-        if self.countLoop == 1 {
-            self.timerPlay = Timer.scheduledTimer(timeInterval: 0.001, target: self, selector: #selector(offsetCard), userInfo: nil, repeats: true)
-        } else if self.countLoop == 500 {
-            self.deconfigAutoScrollTimer()
-            self.timerPlay = Timer.scheduledTimer(timeInterval: 0.002, target: self, selector: #selector(offsetCard), userInfo: nil, repeats: true)
-        } else if self.countLoop == 900 {
-            self.deconfigAutoScrollTimer()
-            self.timerPlay = Timer.scheduledTimer(timeInterval: 0.004, target: self, selector: #selector(offsetCard), userInfo: nil, repeats: true)
-        } else if self.countLoop == 1100 {
-            self.deconfigAutoScrollTimer()
-            self.timerPlay = Timer.scheduledTimer(timeInterval: 0.007, target: self, selector: #selector(offsetCard), userInfo: nil, repeats: true)
-        } else if self.countLoop == 1200 {
-            self.deconfigAutoScrollTimer()
-            self.timerPlay = Timer.scheduledTimer(timeInterval: 0.011, target: self, selector: #selector(offsetCard), userInfo: nil, repeats: true)
-        } else if self.countLoop == 1250 {
-            self.deconfigAutoScrollTimer()
-            self.timerPlay = Timer.scheduledTimer(timeInterval: 0.016, target: self, selector: #selector(offsetCard), userInfo: nil, repeats: true)
-        } else if self.countLoop == 1322 {
-            self.deconfigAutoScrollTimer()
-            self.isCardOpening = false
-            self.flipCard(at: 26)
-          
-            let timeDelay = 2.0 // second unit
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + timeDelay, execute: {
-               
-                self.showSaveMomentPopup()
-                self.menuButton.isHidden = false
-                self.btnPlay?.isHidden = false
-            })
+        if SCREEN_SIZE.height == 375 && SCREEN_SIZE.width == 812 {
+            self.countLoop += 1
+            
+            if self.countLoop == 1 {
+                self.timerPlay = Timer.scheduledTimer(timeInterval: 0.001, target: self, selector: #selector(offsetCard), userInfo: nil, repeats: true)
+            } else if self.countLoop == 500 {
+                self.deconfigAutoScrollTimer()
+                self.timerPlay = Timer.scheduledTimer(timeInterval: 0.002, target: self, selector: #selector(offsetCard), userInfo: nil, repeats: true)
+            } else if self.countLoop == 900 {
+                self.deconfigAutoScrollTimer()
+                self.timerPlay = Timer.scheduledTimer(timeInterval: 0.004, target: self, selector: #selector(offsetCard), userInfo: nil, repeats: true)
+            } else if self.countLoop == 1100 {
+                self.deconfigAutoScrollTimer()
+                self.timerPlay = Timer.scheduledTimer(timeInterval: 0.007, target: self, selector: #selector(offsetCard), userInfo: nil, repeats: true)
+            } else if self.countLoop == 1200 {
+                self.deconfigAutoScrollTimer()
+                self.timerPlay = Timer.scheduledTimer(timeInterval: 0.011, target: self, selector: #selector(offsetCard), userInfo: nil, repeats: true)
+            } else if self.countLoop == 1250 {
+                self.deconfigAutoScrollTimer()
+                self.timerPlay = Timer.scheduledTimer(timeInterval: 0.016, target: self, selector: #selector(offsetCard), userInfo: nil, repeats: true)
+            } else if self.countLoop == 1322 {
+                self.deconfigAutoScrollTimer()
+                self.isCardOpening = false
+                self.flipCard(at: 26)
+                
+                let timeDelay = 2.0 // second unit
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + timeDelay, execute: {
+                    self.showSaveMomentPopup()
+                    self.menuButton.isHidden = false
+                    self.btnPlay?.isHidden = false
+                })
+            }
+        } else {
+            
+            self.countLoop += 1
+            
+            if self.countLoop == 1 {
+                self.timerPlay = Timer.scheduledTimer(timeInterval: 0.001, target: self, selector: #selector(offsetCard), userInfo: nil, repeats: true)
+            } else if self.countLoop == 500 {
+                self.deconfigAutoScrollTimer()
+                self.timerPlay = Timer.scheduledTimer(timeInterval: 0.002, target: self, selector: #selector(offsetCard), userInfo: nil, repeats: true)
+            } else if self.countLoop == 900 {
+                self.deconfigAutoScrollTimer()
+                self.timerPlay = Timer.scheduledTimer(timeInterval: 0.004, target: self, selector: #selector(offsetCard), userInfo: nil, repeats: true)
+            } else if self.countLoop == 1100 {
+                self.deconfigAutoScrollTimer()
+                self.timerPlay = Timer.scheduledTimer(timeInterval: 0.007, target: self, selector: #selector(offsetCard), userInfo: nil, repeats: true)
+            } else if self.countLoop == 1200 {
+                self.deconfigAutoScrollTimer()
+                self.timerPlay = Timer.scheduledTimer(timeInterval: 0.011, target: self, selector: #selector(offsetCard), userInfo: nil, repeats: true)
+            } else if self.countLoop == 1250 {
+                self.deconfigAutoScrollTimer()
+                self.timerPlay = Timer.scheduledTimer(timeInterval: 0.016, target: self, selector: #selector(offsetCard), userInfo: nil, repeats: true)
+            } else if self.countLoop == 1322 {
+                self.deconfigAutoScrollTimer()
+                self.isCardOpening = false
+                self.flipCard(at: 26)
+                
+                let timeDelay = 2.0 // second unit
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + timeDelay, execute: {
+                    self.showSaveMomentPopup()
+                    self.menuButton.isHidden = false
+                    self.btnPlay?.isHidden = false
+                })
+            }
         }
     }
     
@@ -210,7 +244,7 @@ class PlayVC: BaseVC {
         
         if self.isCardOpening {
             UIView.transition(with: cellCenter, duration: 0.5, options: .transitionFlipFromRight, animations: {
-                cellCenter.imgCard.image = UIImage(named: "backcard")
+                cellCenter.imgCard.image = UIImage(named: "cardback")
                 cellCenter.lbTitle.isHidden = true
             }, completion: nil)
             self.isCardOpening = false

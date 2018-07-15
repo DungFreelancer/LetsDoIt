@@ -22,7 +22,7 @@ class CardSelectionVM {
     
     func cellInstance(collectionView: UICollectionView, indexPath: IndexPath) -> CardCell {
         let cell: CardCell = collectionView.dequeueReusableCell(withReuseIdentifier: CardCell.cellID, for: indexPath) as! CardCell
-        cell.updateUI(image: self.arrCard[indexPath.row].image ?? UIImage(named: "backcard")!,
+        cell.updateUI(image: self.arrCard[indexPath.row].image ?? UIImage(named: "cardback")!,
                       title: self.arrCard[indexPath.row].title, canDelete: true)
         
         return cell

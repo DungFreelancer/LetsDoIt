@@ -32,6 +32,7 @@ var IOS: Int {
 
 let NUMBER_CARD: Int = 5
 
+// w200 h345 
 let CARD_SIZE: CGSize = CGSize(width: 200, height: 345)
 
 let ARRAY_CARD: String = "ARRAY_CARD"

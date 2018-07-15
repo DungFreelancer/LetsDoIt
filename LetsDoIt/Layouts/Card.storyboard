@@ -72,7 +72,7 @@
                                     <constraint firstItem="L64-4p-RmX" firstAttribute="centerY" secondItem="5L7-Qw-z6r" secondAttribute="centerY" multiplier="4/3" id="qw8-3Z-DLB"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backcard" translatesAutoresizingMaskIntoConstraints="NO" id="NcM-Pb-2Nd">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cardback" translatesAutoresizingMaskIntoConstraints="NO" id="NcM-Pb-2Nd">
                                 <rect key="frame" x="47" y="141.5" width="281" height="444.5"/>
                             </imageView>
                         </subviews>
@@ -110,8 +110,8 @@
     </scenes>
     <resources>
         <image name="back5" width="40" height="40"/>
-        <image name="backcard" width="386" height="561"/>
         <image name="background" width="590" height="1049"/>
         <image name="btnDone" width="80" height="80"/>
+        <image name="cardback" width="200" height="317"/>
     </resources>
 </document>

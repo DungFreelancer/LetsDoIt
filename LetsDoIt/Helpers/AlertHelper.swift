@@ -73,6 +73,7 @@ class AlertHelper {
                 popoverController.permittedArrowDirections = []
             }
         }
+        
         viewController.present(actionSheet, animated: true, completion: nil)
     }
     

@@ -25,7 +25,7 @@ class CardCell: UICollectionViewCell {
         self.btnDelete.layer.masksToBounds = true 
         self.imgCard.setBorderWithRadius(5, color: UIColor.clear)
         self.imgCard.backgroundColor = UIColor.clear
-        self.lbTitle.textColor = .gray
+        self.lbTitle.textColor = .white
         self.lbTitle.textAlignment = NSTextAlignment.center
         self.backgroundColor = .clear
         

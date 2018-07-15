@@ -155,6 +155,7 @@ class PlayVC: BaseVC {
           
             let timeDelay = 2.0 // second unit
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + timeDelay, execute: {
+               
                 self.showSaveMomentPopup()
                 self.menuButton.isHidden = false
                 self.btnPlay?.isHidden = false
@@ -163,6 +164,7 @@ class PlayVC: BaseVC {
     }
     
     func deconfigAutoScrollTimer() {
+       
         self.timerPlay?.invalidate()
         self.timerPlay = nil
     }

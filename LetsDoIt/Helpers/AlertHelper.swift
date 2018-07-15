@@ -66,6 +66,13 @@ class AlertHelper {
         
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            if let popoverController = actionSheet.popoverPresentationController {
+                popoverController.sourceView = viewController.view
+                popoverController.sourceRect = CGRect(x: viewController.view.bounds.midX, y: viewController.view.bounds.midY, width: 0, height: 0)
+                popoverController.permittedArrowDirections = []
+            }
+        }
         viewController.present(actionSheet, animated: true, completion: nil)
     }
     

@@ -134,14 +134,16 @@ extension RecordVC:UIImagePickerControllerDelegate, UINavigationControllerDelega
                 self.imgShare = UIGraphicsGetImageFromCurrentImageContext()
          
             } else {
-                self.url = info[UIImagePickerControllerMediaURL] as? URL
+                let videoURL = info[UIImagePickerControllerMediaURL] as? URL
                 let logo = UIImage(named: "logoVP")!
                 
                 HUDHelper.showLoading()
-                Merge(config: .custom).overlayVideo(video: AVAsset(url: self.url!), overlayImage: logo, completion: { (url) in
+                Merge(config: .custom).overlayVideo(video: AVAsset(url: videoURL!), overlayImage: logo, completion: { (url) in
                     // Share the result video here
                     PHPhotoLibrary.shared().performChanges({
                         PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: url!)
+                        self.url = url 
+                        
                     }, completionHandler: { (success, error) in
                         DispatchQueue.main.async {
                             self.videoPlayerView.isHidden = false
